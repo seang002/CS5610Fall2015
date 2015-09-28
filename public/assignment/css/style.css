@@ -1,6 +1,10 @@
 /* MAIN BODY */
+body {
+  padding-top: 50px;
+}
+
 .main {
-  padding-top: 75px;
+  padding: 20px;
 }
 
 .main .page-header {
@@ -22,10 +26,7 @@
   color: #fff;
 }
 
-.coffee, .coffee:hover {
-  color: #886451;
-}
-
+.coffee, .coffee:hover,
 form a, table a {
   color: #886451;
 }
