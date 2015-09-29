@@ -26,13 +26,34 @@ body {
   color: #fff;
 }
 
-.coffee, .coffee:hover,
-form a, table a {
-  color: #886451;
+.coffee {
+  background-color: #886451;
+  color: #fff;
 }
 
-form a:hover, table a:hover {
-  color: #645188;
+.coffee:hover {
+  background-color: #937362;
+  color: #fff;
+}
+
+.forest {
+  background-color: #528881;
+  color: #fff;
+}
+
+.forest:hover {
+  background-color: #63938d;
+  color: #fff;
+}
+
+.lavender {
+  background-color: #645188;
+  color: #fff;
+}
+
+.lavender:hover {
+  background-color: #736293;
+  color: #fff;
 }
 
 /* SIDE NAVIGATION */
