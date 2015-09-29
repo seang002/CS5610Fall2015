@@ -1,207 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="/assignment/css/style.css" />
-		
-		<!-- TEMP FAVICON: STACKOVERFLOW -->
-		<link rel="icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
-		
-		<title>Forms</title>
-	</head>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<body>
-		<!-- TOP NAVIGATION -->
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="/assignment/home.html"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> FORM MAKER</a>
-				</div>
-				
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Username</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		
-		<!-- MAIN BODY -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/assignment/css/style.css" />
+	
+	<!-- TEMP FAVICON: STACKOVERFLOW -->
+	<link rel="icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+	
+	<title>Forms</title>
+</head>
+
+<body>
+	<!-- TOP NAVIGATION -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
-			<div class="row">
-				
-				<!-- SIDE NAVIGATION -->
-				<div class="col-sm-3 col-md-2 sidebar">
-					<ul class="nav nav-sidebar">
-						<li><a href="/assignment/home.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-						<li><a href="/assignment/profile.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile</a></li>
-						<li><a href="/assignment/admin.html"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Admin</a></li>
-						<li class="active"><a href="/assignment/forms.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Forms <span class="sr-only">(current)</span></a></li>
-					</ul>
-				</div>
-				
-				<!-- MAIN -->
-				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					<h1 class="page-header">Forms: Registration Form</h1>
-					<ul class="nav nav-tabs">
-						<li role="presentation"><a href="/assignment/forms.html">Forms</a></li>
-						<li role="presentation" class="active"><a href="/assignment/form-fields.html">Fields <span class="sr-only">(current)</span></a></li>
-					</ul>
-					<form>
-						<div class="form-group">
-							<label for="input-fname" class="control-label">First Name:</label>
-							<div class="row">
-								<div class="col-md-5">
-									<input type="text" class="form-control" placeholder="First Name">
-								</div>
-								<div class="col-sm-5 btn-group" role="group" aria-label="Field options">
-									<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
-									<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
-									<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
-									<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="input-lname">Last Name:</label>
-							<div class="row">
-								<div class="col-md-5">
-									<input type="text" class="form-control" placeholder="Last Name">
-								</div>
-								<div class="col-sm-5 btn-group" role="group" aria-label="Field options">
-									<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
-									<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
-									<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
-									<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="input-dob">Date of Birth:</label>
-							<div class="row">
-								<div class="col-md-5">
-									<input type="date" class="form-control" placeholder="Select Date">
-								</div>
-								<div class="col-sm-5 btn-group" role="group" aria-label="Field options">
-									<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
-									<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
-									<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
-									<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="input-gender">Gender:</label>
-							<div class="row">
-								<div class="col-md-5">
-									<select class="form-control">
-										<option>Male</option>
-										<option>Female</option>
-									</select>
-								</div>
-								<div class="col-sm-5 btn-group" role="group" aria-label="Field options">
-									<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
-									<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
-									<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
-									<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="input-roles">Roles:</label>
-							<div class="row">
-								<div class="col-md-5">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" value="admin">
-											Admin
-										</label>
-									</div>
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" value="student">
-											Student
-										</label>
-									</div>
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" value="user">
-											User
-										</label>
-									</div>
-								</div>
-								<div class="col-sm-5 btn-group" role="group" aria-label="Field options">
-									<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
-									<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
-									<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
-									<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="input-lic">License Agreement:</label>
-							<div class="row">
-								<div class="col-md-5">
-									<div class="radio">
-										<label>
-											<input type="radio" name="optionsRadios" value="yes">
-											Yes
-										</label>
-									</div>
-									<div class="radio">
-										<label>
-											<input type="radio" name="optionsRadios" value="no">
-											No
-										</label>
-									</div>
-								</div>
-								<div class="col-sm-5 btn-group" role="group" aria-label="Field options">
-									<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
-									<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
-									<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
-									<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
-								</div>
-							</div>
-						</div>
-					</form>
-					<h1 class="page-header"></h1>
-					<form>
-						<div class="form-group">
-							<label for="input-newfield">Add New Field:</label>
-							<div class="row">
-								<div class="col-md-5">
-									<select class="form-control">
-										<option>Single Line Text</option>
-										<option>Date</option>
-										<option>Dropdown</option>
-										<option>Checkboxes</option>
-										<option>Radio Buttons</option>
-										<option>Paragraph Text Field</option>
-									</select>
-								</div>
-								<div class="col-sm-3">
-									<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Add field</span></a>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/assignment/home.html"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> FORM MAKER</a>
+			</div>
+			
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Username</a></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
 			</div>
 		</div>
-		
-		<!-- Bootstrap JavaScript -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	</body>
+	</nav>
+	
+	<!-- MAIN BODY -->
+	<div class="container-fluid">
+		<div class="row">
+			
+			<!-- SIDE NAVIGATION -->
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li><a href="/assignment/home.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+					<li><a href="/assignment/profile.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile</a></li>
+					<li><a href="/assignment/admin.html"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Admin</a></li>
+					<li class="active"><a href="/assignment/forms.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Forms <span class="sr-only">(current)</span></a></li>
+				</ul>
+			</div>
+			
+			<!-- MAIN -->
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h1 class="page-header">Forms: Registration Form</h1>
+				<ul class="nav nav-tabs">
+					<li role="presentation"><a href="/assignment/forms.html">Forms</a></li>
+					<li role="presentation" class="active"><a href="/assignment/form-fields.html">Fields <span class="sr-only">(current)</span></a></li>
+				</ul>
+				<form>
+					<div class="form-group">
+						<label for="input-fname" class="control-label">First Name:</label>
+						<div class="row">
+							<div class="col-md-5">
+								<input type="text" class="form-control" placeholder="First Name">
+							</div>
+							<div class="col-sm-5 btn-group btn-group-sm" role="group" aria-label="Field options">
+								<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
+								<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
+								<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
+								<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input-lname" class="control-label">Last Name:</label>
+						<div class="row">
+							<div class="col-md-5">
+								<input type="text" class="form-control" placeholder="Last Name">
+							</div>
+							<div class="col-sm-5 btn-group btn-group-sm" role="group" aria-label="Field options">
+								<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
+								<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
+								<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
+								<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input-dob" class="control-label">Date of Birth:</label>
+						<div class="row">
+							<div class="col-md-5">
+								<input type="date" class="form-control" placeholder="Select Date">
+							</div>
+							<div class="col-sm-5 btn-group btn-group-sm" role="group" aria-label="Field options">
+								<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
+								<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
+								<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
+								<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input-gender" class="control-label">Gender:</label>
+						<div class="row">
+							<div class="col-md-5">
+								<select class="form-control">
+									<option>Male</option>
+									<option>Female</option>
+								</select>
+							</div>
+							<div class="col-sm-5 btn-group btn-group-sm" role="group" aria-label="Field options">
+								<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
+								<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
+								<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
+								<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input-roles" class="control-label">Roles:</label>
+						<div class="row">
+							<div class="col-md-5">
+								<div class="checkbox">
+									<label><input type="checkbox" value="admin"> Admin</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="student"> Student</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" value="user"> User</label>
+								</div>
+							</div>
+							<div class="col-sm-5 btn-group btn-group-sm" role="group" aria-label="Field options">
+								<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
+								<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
+								<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
+								<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input-lic" class="control-label">License Agreement:</label>
+						<div class="row">
+							<div class="col-md-5">
+								<div class="radio">
+									<label><input type="radio" name="licRadios" value="yes"> Yes</label>
+								</div>
+								<div class="radio">
+									<label><input type="radio" name="licRadios" value="no"> No</label>
+								</div>
+							</div>
+							<div class="col-sm-5 btn-group btn-group-sm" role="group" aria-label="Field options">
+								<a href="#" class="btn coffee glyphicon glyphicon-pencil" role="button"><span class="sr-only">Edit field</span></a>
+								<a href="#" class="btn forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Clone field</span></a>
+								<a href="#" class="btn maroon glyphicon glyphicon-remove" role="button"><span class="sr-only">Delete field</span></a>
+								<a href="#" class="btn lavender glyphicon glyphicon-align-justify" role="button"><span class="sr-only">>Reorder field</span></a>
+							</div>
+						</div>
+					</div>
+				</form>
+				<h1 class="page-header"></h1>
+				<div class="form-group">
+					<label for="input-newfield" class="control-label">Add New Field:</label>
+					<div class="row">
+						<div class="col-md-5">
+							<select class="form-control">
+								<option>Single Line Text</option>
+								<option>Date</option>
+								<option>Dropdown</option>
+								<option>Checkboxes</option>
+								<option>Radio Buttons</option>
+								<option>Paragraph Text Field</option>
+							</select>
+						</div>
+						<div class="col-sm-3">
+							<a href="#" class="btn btn-sm forest glyphicon glyphicon-plus" role="button"><span class="sr-only">Add field</span></a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Bootstrap JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
 </html>
