@@ -1,16 +1,4 @@
 /* MAIN BODY */
-body {
-  padding-top: 50px;
-}
-
-.main {
-  padding: 20px;
-}
-
-.main .page-header {
-  margin-top: 0;
-}
-
 .centered {
   text-align: center;
 }
@@ -54,44 +42,4 @@ body {
 .lavender:hover {
   background-color: #736293;
   color: #fff;
-}
-
-/* SIDE NAVIGATION */
-.sidebar {
-  display: none;
-}
-
-.nav-sidebar {
-  margin: 0px -20px 20px -20px;
-}
-
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-  color: #528881;
-}
-
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #528881;
-}
-
-/* PHONES/TABLETS-RESPONSIVE */
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-  
-  .sidebar {
-    position: fixed;
-    top: 50px;
-    bottom: 0;
-    display: block;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
-  }
 }
