@@ -1,45 +1,50 @@
-/* MAIN BODY */
-.centered {
-  text-align: center;
-}
-
-/* LINK CUSTOMISATION */
-.maroon {
-  background-color: #885159;
+/* COLOUR CUSTOMISATION */
+.fire {
+  background-color: #f05574;
   color: #fff;
 }
 
-.maroon:hover {
-  background-color: #936269;
+.fire:hover {
+  background-color: #a83b51;
   color: #fff;
 }
 
-.coffee {
-  background-color: #886451;
+.wood {
+  background-color: #e1b560;
   color: #fff;
 }
 
-.coffee:hover {
-  background-color: #937362;
+.wood:hover {
+  background-color: #9d7e43;
   color: #fff;
 }
 
-.forest {
-  background-color: #528881;
+.earth {
+  background-color: #4fc682;
   color: #fff;
 }
 
-.forest:hover {
-  background-color: #63938d;
+.earth:hover {
+  background-color: #3d9a65;
   color: #fff;
 }
 
-.lavender {
-  background-color: #645188;
+.water {
+  background-color: #4db1ce;
+  color: #fff; 
+}
+
+.water:hover {
+  background-color: #0190BA;
+  color: #fff;  
+}
+
+.metal {
+  background-color: #888;
   color: #fff;
 }
 
-.lavender:hover {
-  background-color: #736293;
+.metal:hover {
+  background-color: #767676;
   color: #fff;
 }
