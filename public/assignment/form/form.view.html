@@ -11,34 +11,21 @@
     </tr>
     <tr>
         <th>
-            <label class="sr-only">Form name</label><input type="text" class="form-control" placeholder="Name">
+            <label class="sr-only">Form name</label>
+            <input type="text" ng-model="form.name" class="form-control" placeholder="Name">
         </th>
         <th>
-            <a href="#" class="btn btn-sm earth glyphicon glyphicon-plus" role="button" title="Add"><span class="sr-only">Add form</span></a>
-            <a href="#" class="btn btn-sm water glyphicon glyphicon-ok" role="button" title="Update"><span class="sr-only">Update form</span></a>
+            <button ng-click="addForm(form)" class="btn btn-sm earth glyphicon glyphicon-plus" title="Add"><span class="sr-only">Add form</span></button>
+            <button ng-click="updateForm(form)" class="btn btn-sm water glyphicon glyphicon-ok" title="Update"><span class="sr-only">Update form</span></button>
         </th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><a href="form-fields.html">Registration Form</a></td>
+    <tr ng-repeat="form in forms">
+        <td><a href="#">{{form.name}}</a></td>
         <td>
-            <a href="#" class="btn btn-sm fire glyphicon glyphicon-remove" role="button" title="Delete"><span class="sr-only">Delete form</span></a>
-            <a href="#" class="btn btn-sm wood glyphicon glyphicon-pencil" role="button" title="Edit"><span class="sr-only">Edit form</span></a>
-        </td>
-    </tr>
-    <tr>
-        <td><a href="form-fields.html">Contact List</a></td>
-        <td>
-            <a href="#" class="btn btn-sm fire glyphicon glyphicon-remove" role="button" title="Delete"><span class="sr-only">Delete form</span></a>
-            <a href="#" class="btn btn-sm wood glyphicon glyphicon-pencil" role="button" title="Edit"><span class="sr-only">Edit form</span></a>
-        </td>
-    </tr>
-    <tr>
-        <td><a href="form-fields.html">To-Do List</a></td>
-        <td>
-            <a href="#" class="btn btn-sm fire glyphicon glyphicon-remove" role="button" title="Delete"><span class="sr-only">Delete form</span></a>
-            <a href="#" class="btn btn-sm wood glyphicon glyphicon-pencil" role="button" title="Edit"><span class="sr-only">Edit form</span></a>
+            <button ng-click="deleteForm($index)" class="btn btn-sm fire glyphicon glyphicon-remove" title="Delete"><span class="sr-only">Delete form</span></button>
+            <button ng-click="selectForm($index)" class="btn btn-sm wood glyphicon glyphicon-pencil" title="Edit"><span class="sr-only">Edit form</span></button>
         </td>
     </tr>
     </tbody>

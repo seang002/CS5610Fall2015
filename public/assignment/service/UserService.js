@@ -8,12 +8,12 @@
     function UserService() {
         var currentUsers = [
             { //testing object
+                id: guid(),
                 username:"admin",
                 password: "admin",
-                id: guid(),
-                email: "admin@gmail.com",
                 firstName: "verena",
-                lastName: "chung"
+                lastName: "chung",
+                email: "admin@gmail.com"
             }
         ];
 

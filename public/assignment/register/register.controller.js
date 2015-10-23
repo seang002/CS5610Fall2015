@@ -7,16 +7,23 @@
 
     function RegisterController(UserService, $scope, $rootScope) {
         $scope.register = function() {
-            var newUser = {
-                username: $scope.username,
-                password: $scope.password,
-                email: $scope.email
-            };
+            var user = $scope.user;
+            if (user.password != user.vPassword) {
+                alert("Passwords do not match.");
+            } else {
+                var newUser = {
+                    username: $scope.username,
+                    password: $scope.password,
+                    firstName: "",
+                    lastName: "",
+                    email: $scope.email
+                };
 
-            var user = UserService.createUser(newUser);
+                var user = UserService.createUser(newUser);
 
-            $rootScope.user = user;
-            $scope.$location.url("/profile")
+                $rootScope.user = user;
+                $scope.$location.url("/profile")
+            }
         };
     }
 })();
