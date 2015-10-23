@@ -12,7 +12,10 @@
                 $scope.password
             );
 
-            $rootScope
+            if (user) {
+                $rootScope.user = user;
+                $scope.$location.url("/profile");
+            }
         }
     }
 })();
