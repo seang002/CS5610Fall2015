@@ -18,6 +18,8 @@
                 $scope.user,
                 callback
             );
+            console.log("Profile updated!");
+
             console.log("After:")
             console.log($scope.user); //to check userObj after update
         }

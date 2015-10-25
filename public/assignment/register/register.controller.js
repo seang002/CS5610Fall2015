@@ -9,7 +9,10 @@
         $scope.register = register;
 
         function register() {
-            if ($scope.password != $scope.vPassword) {
+            if ($scope.username == undefined || $scope.password == undefined
+                    || $scope.email == undefined) {
+                alert("Please fill out the missing fields.");
+            } else if ($scope.password != $scope.vPassword) {
                 alert("Passwords do not match.");
             } else {
                 var newUser = {
