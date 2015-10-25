@@ -12,6 +12,8 @@
             {id: guid(), userId: "234", name: "Exams"}
         ];
 
+        var userForms = [];
+
         var service = {
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
@@ -21,18 +23,15 @@
         return service;
 
         function createFormForUser(userId, form, callback) {
-            var newForm = {
-                id: guid(),
-                userId: userId,
-                name: form.name
-            };
-            forms.push(newForm);
-            callback(newForm);
+            form.id = guid();
+            form.userId = userId;
+            forms.push(form);
+            userForms.push(form);
+            callback(form);
         }
 
         function findAllFormsForUser(userId, callback) {
             console.log("Find all forms for user.");
-            var userForms = [];
             for (var i in forms){
                 var form = forms[i];
                 if (form.userId == userId) {
@@ -44,23 +43,33 @@
 
         function deleteFormById(formId, callback) {
             console.log(formId);
+            //update all forms overall
             for (var i = 0; i < forms.length; i++) {
                 if (forms[i].id == formId) {
                     forms.splice(i, 1);
-                    break;
                 }
             }
-            callback(forms);
+
+            //update forms for user
+            for (var i = 0; i < userForms.length; i++) {
+                if (userForms[i].id == formId) {
+                    userForms.splice(i, 1);
+                }
+            }
+            console.log(forms);
+            callback(userForms);
         }
 
         function updateFormById(formId, newForm, callback) {
-            for (var form in forms) {
+            for (var i in forms) {
+                var form = forms[i];
                 if (form.id == formId) {
-                    form = newForm;
-                    //callback(form);
+                    form.name = newForm.name;
+                    console.log(form);
+                    callback(form);
                 }
             }
-            //callback(newForm);
+            callback(newForm);
         }
 
         function guid() {

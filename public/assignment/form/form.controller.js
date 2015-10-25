@@ -6,45 +6,48 @@
         .controller("FormController", FormController);
 
     function FormController(FormService, $scope, $rootScope) {
-        //var user = $rootScope.user;
-        //var userId = user.id;
-        var userId = "123";
+        var user = $rootScope.user;
+        var userId = user.id;
+        //var userId = "123";
         console.log(userId);
-        FormService.findAllFormsForUser(userId, getUserForms);
+        FormService.findAllFormsForUser(userId, callbackUserForms);
 
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;
         $scope.deleteForm = deleteForm;
         $scope.selectForm = selectForm;
 
-        function addForm(form) {
-            FormService.createFormForUser(userId, form, getForm);
-            FormService.findAllFormsForUser(userId, getUserForms);
+        function addForm() {
+            var form = {name: $scope.name}
+            FormService.createFormForUser(userId, form, callbackForm);
         }
 
-        function updateForm(form) {
-            FormService.updateFormById(form.id, form, getForm);
-            FormService.findAllFormsForUser(userId, getUserForms);
+        function updateForm() {
+            var form = {name: $scope.name};
+            FormService.updateFormById(
+                $scope.selectedForm.id,
+                form,
+                callbackForm
+            );
         }
 
         function deleteForm(index) {
             var formId = $scope.forms[index].id;
-            FormService.deleteFormById(formId, getUserForms);
+            console.log(formId);
+            FormService.deleteFormById(formId, callbackUserForms);
         }
 
         function selectForm(index) {
-            $scope.selectedIndex = index;
-            $scope.form = {
-                name: $scope.forms[index].name
-            };
+            $scope.selectedForm = $scope.forms[index];
+            $scope.name = $scope.forms[index].name
         }
 
-        function getUserForms(userForms) {
+        function callbackUserForms(userForms) {
             console.log('get user forms');
             $scope.forms = userForms;
         }
 
-        function getForm(form){
+        function callbackForm(form){
             $scope.form = form;
         }
     }
