@@ -8,7 +8,7 @@
     function ProfileController(UserService, $scope, $rootScope) {
         $scope.user = $rootScope.user;
         console.log("Before:");
-        console.log($scope.user); //to check userObj before update
+        console.log($scope.user); //checking userObj before update
 
         $scope.update = update;
 
@@ -21,7 +21,7 @@
             console.log("Profile updated!");
 
             console.log("After:")
-            console.log($scope.user); //to check userObj after update
+            console.log($scope.user); //checking userObj after update
         }
 
         function callback(user) {

@@ -41,7 +41,7 @@
             var newUser = userObj;
             newUser.id = guid();
             currentUsers.push(newUser);
-            console.log(currentUsers); //to check if user has been added to array
+            console.log(currentUsers); //checking if user added to array
             callback(newUser);
         }
 
@@ -61,10 +61,10 @@
                 if (user.id == userId) {
                     user = userObj;
                     callback(user);
+                    return; //to exit function early
                 }
 
             }
-            callback(userObj);
         }
 
         function guid() {

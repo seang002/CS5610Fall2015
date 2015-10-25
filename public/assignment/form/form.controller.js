@@ -32,13 +32,14 @@
 
         function deleteForm(index) {
             var formId = $scope.forms[index].id;
-            console.log(formId);
+            console.log(formId); //checking formId
             FormService.deleteFormById(formId, callbackUserForms);
         }
 
         function selectForm(index) {
             $scope.selectedForm = $scope.forms[index];
-            $scope.name = $scope.forms[index].name
+            console.log($scope.selectedForm); //checking selectedForm
+            $scope.name = $scope.forms[index].name;
         }
 
         function callbackUserForms(userForms) {

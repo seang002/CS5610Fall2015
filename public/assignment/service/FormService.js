@@ -27,6 +27,7 @@
             form.userId = userId;
             forms.push(form);
             userForms.push(form);
+            console.log(userForms); //checking if form added to array
             callback(form);
         }
 
@@ -56,7 +57,7 @@
                     userForms.splice(i, 1);
                 }
             }
-            console.log(forms);
+            console.log(forms); //checking if form deleted in array
             callback(userForms);
         }
 
@@ -65,11 +66,9 @@
                 var form = forms[i];
                 if (form.id == formId) {
                     form.name = newForm.name;
-                    console.log(form);
                     callback(form);
                 }
             }
-            callback(newForm);
         }
 
         function guid() {

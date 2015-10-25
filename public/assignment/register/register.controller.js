@@ -16,14 +16,11 @@
                 alert("Passwords do not match.");
             } else {
                 var newUser = {
-                    id: "",
                     username: $scope.username,
                     password: $scope.password,
-                    firstName: "",
-                    lastName: "",
                     email: $scope.email
                 };
-                console.log(newUser);
+                console.log(newUser); //checking user object
 
                 UserService.createUser(newUser, callback);
 

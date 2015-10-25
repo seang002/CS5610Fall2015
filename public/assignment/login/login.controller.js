@@ -14,7 +14,6 @@
                 $scope.password,
                 callback
             );
-            console.log($scope.user);
 
             if ($scope.user != null) {
                 $rootScope.user = $scope.user;
