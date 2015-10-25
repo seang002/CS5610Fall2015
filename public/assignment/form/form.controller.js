@@ -6,9 +6,11 @@
         .controller("FormController", FormController);
 
     function FormController(FormService, $scope, $rootScope) {
-        var user = $rootScope.user;
-        var userId = user.id;
-        $scope.forms = FormService.findAllFormsForUser(user);
+        //var user = $rootScope.user;
+        //var userId = user.id;
+        var userId = "123";
+        console.log(userId);
+        FormService.findAllFormsForUser(userId, getUserForms);
 
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;
@@ -16,16 +18,18 @@
         $scope.selectForm = selectForm;
 
         function addForm(form) {
-            var newForm = FormService.createFormForUser(userId, form);
-            $scope.forms.push(newForm);
+            FormService.createFormForUser(userId, form, getForm);
+            FormService.findAllFormsForUser(userId, getUserForms);
         }
 
         function updateForm(form) {
-            $scope.form = FormService.updateFormById(form.id, form);
+            FormService.updateFormById(form.id, form, getForm);
+            FormService.findAllFormsForUser(userId, getUserForms);
         }
 
         function deleteForm(index) {
-            $scope.forms = FormService.deleteFormById(index);
+            var formId = $scope.forms[index].id;
+            FormService.deleteFormById(formId, getUserForms);
         }
 
         function selectForm(index) {
@@ -33,6 +37,15 @@
             $scope.form = {
                 name: $scope.forms[index].name
             };
+        }
+
+        function getUserForms(userForms) {
+            console.log('get user forms');
+            $scope.forms = userForms;
+        }
+
+        function getForm(form){
+            $scope.form = form;
         }
     }
 })();

@@ -6,10 +6,10 @@
         .factory("FormService", FormService);
 
     function FormService() {
-        var forms = [
-            {//testing object
-
-            }
+        var forms = [ //testing forms
+            {id: guid(), userId: "123", name: "Registration"},
+            {id: guid(), userId: "123", name: "Quizzes"},
+            {id: guid(), userId: "234", name: "Exams"}
         ];
 
         var service = {
@@ -21,23 +21,29 @@
         return service;
 
         function createFormForUser(userId, form, callback) {
-            var newForm = form;
-            newForm.id = guid();
-            newForm.userid = userId;
+            var newForm = {
+                id: guid(),
+                userId: userId,
+                name: form.name
+            };
             forms.push(newForm);
             callback(newForm);
         }
 
         function findAllFormsForUser(userId, callback) {
-            for (var form in forms) {
-                if (form.userid == userId) {
-                    callback(form);
+            console.log("Find all forms for user.");
+            var userForms = [];
+            for (var i in forms){
+                var form = forms[i];
+                if (form.userId == userId) {
+                    userForms.push(form);
                 }
             }
-            callback([]);
+            callback(userForms);
         }
 
         function deleteFormById(formId, callback) {
+            console.log(formId);
             for (var i = 0; i < forms.length; i++) {
                 if (forms[i].id == formId) {
                     forms.splice(i, 1);
@@ -51,7 +57,7 @@
             for (var form in forms) {
                 if (form.id == formId) {
                     form = newForm;
-                    callback(form);
+                    //callback(form);
                 }
             }
             //callback(newForm);
@@ -63,7 +69,6 @@
                     .toString(16)
                     .substring(1);
             }
-
             return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
                 s4() + '-' + s4() + s4() + s4();
         }

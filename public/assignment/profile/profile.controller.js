@@ -6,11 +6,24 @@
         .controller("ProfileController", ProfileController);
 
     function ProfileController(UserService, $scope, $rootScope) {
-        var user = $rootScope.user;
-        $scope.user = user;
+        $scope.user = $rootScope.user;
+        console.log("Before:");
+        console.log($scope.user); //to check userObj before update
 
-        $scope.update = function() {
-            UserService.updateUser(user.id, user);
+        $scope.update = update;
+
+        function update() {
+            UserService.updateUser(
+                $scope.user.id,
+                $scope.user,
+                callback
+            );
+            console.log("After:")
+            console.log($scope.user); //to check userObj after update
+        }
+
+        function callback(user) {
+            $scope.user = user;
         }
     }
 })();
