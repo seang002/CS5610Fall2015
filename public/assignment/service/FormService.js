@@ -31,7 +31,7 @@
         }
 
         function findAllFormsForUser(userId, callback) {
-            console.log("Find all forms for user.");
+            console.log(userId);
             for (var i in forms){
                 var form = forms[i];
                 if (form.userId == userId) {

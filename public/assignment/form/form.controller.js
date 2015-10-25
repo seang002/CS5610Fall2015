@@ -8,7 +8,6 @@
     function FormController(FormService, $scope, $rootScope) {
         var user = $rootScope.user;
         var userId = user.id;
-        //var userId = "123";
         console.log(userId);
         FormService.findAllFormsForUser(userId, callbackUserForms);
 
@@ -43,7 +42,6 @@
         }
 
         function callbackUserForms(userForms) {
-            console.log('get user forms');
             $scope.forms = userForms;
         }
 
