@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/project/client/css/jumbotron.css" />
+    <link rel="stylesheet" href="/project/client/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Slab" type='text/css' />
+
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+
+    <title>Happy Paws!</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"><span class="glyphicon glyphicon-heart-empty" aria-hidden=""true"></span> Hi Verena!</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/project/client/profile/profile.view.html">Profile</a></li>
+                <li><a href="/project/client/walkers/walkers.view.html">Find a Walker</a></li>
+                <li><a href="/project/client/appointments/appointments.view.html">Appointments</a></li>
+                <li><a href="/project/client/index.html">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h1 class="page-header">Profile</h1>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="walker.view.html">Walker <span class="sr-only">(current)</span></a></li>
+        <li role="presentation"><a href="profile.view.html">Dog</a></li>
+    </ul>
+    <div class="row">
+        <div class="col-sm-3">
+            <p><img class="img-responsive img-rounded" src="http://s17.postimg.org/nozqpso4v/walker.png"></p>
+            <div class="rating">
+                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="badge">3</span>
+                    <a>Read reviews</a>
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">1</span>
+                    <a>Requests</a>
+                </li>
+                <li class="list-group-item">
+                    <a>Send report card</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-7">
+            <h2>Verena C.</h2>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="city" class="col-sm-3 control-label">City:</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="city" id="city" class="form-control" placeholder="City">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="zip" class="col-sm-3 control-label">Zip Code:</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="zip" id="zip" class="form-control" placeholder="Zip Code">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email:</label>
+                    <div class="col-sm-9">
+                        <input type="email" ng-model="email" id="email" class="form-control" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-sm-3 control-label">Phone:</label>
+                    <div class="col-sm-4">
+                        <input type="tel" ng-model="phone" id="phone" class="form-control" placeholder="xxx-xxx-xxxx">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="days" class="col-sm-3 control-label">Available Days:</label>
+                    <div class="col-sm-9">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>M</th>
+                                <th>T</th>
+                                <th>W</th>
+                                <th>Th</th>
+                                <th>F</th>
+                                <th>S</th>
+                                <th>Su</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="checkbox" name="days" value="mon"></td>
+                                <td><input type="checkbox" name="days" value="tues"></td>
+                                <td><input type="checkbox" name="days" value="wed"></td>
+                                <td><input type="checkbox" name="days" value="thurs"></td>
+                                <td><input type="checkbox" name="days" value="fri"></td>
+                                <td><input type="checkbox" name="days" value="sat"></td>
+                                <td><input type="checkbox" name="days" value="sun"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="times" class="col-sm-3 control-label">Available Times:</label>
+                    <div class="col-sm-9">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>6-9a</th>
+                                <th>9-12p</th>
+                                <th>12-3p</th>
+                                <th>3-6p</th>
+                                <th>6-9p</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="checkbox" name="times" value="dawn"></td>
+                                <td><input type="checkbox" name="times" value="morning"></td>
+                                <td><input type="checkbox" name="times" value="midday"></td>
+                                <td><input type="checkbox" name="times" value="afternoon"></td>
+                                <td><input type="checkbox" name="times" value="evening"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-success form-control" role="button">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery & Bootstrap JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

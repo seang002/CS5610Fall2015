@@ -1,0 +1,50 @@
+.picture {
+    background-image: url("http://s30.postimg.org/fmoe6f6e9/DSC_9674.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 550px;
+    text-align: center;
+}
+
+.main {
+    color: #fff;
+    position: relative;
+    top: 65%;
+    overflow: hidden;
+}
+
+.main h1, .main p {
+    font-family: "Josefin Slab";
+    text-transform: uppercase;
+}
+
+
+.signup {
+    display: block;
+    padding-right: 25px;
+    margin-right: 10px;
+    border-right: 1px solid #000;
+}
+
+.rating {
+    text-align: center;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    color: gold;
+}
+
+.rating > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+}
+
+.center {
+    text-align: center;
+}

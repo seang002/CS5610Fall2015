@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/project/client/css/jumbotron.css" />
+    <link rel="stylesheet" href="/project/client/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Slab" type='text/css' />
+
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+
+    <title>Happy Paws!</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-heart-empty" aria-hidden=""true"></span> Happy Paws</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right" action="/project/client/profile/profile.view.html">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h1 class="page-header">Signup</h1>
+    <div class="row">
+        <div class="col-sm-6 signup">
+            <h3>Dog Owners</h3>
+            <p>Is life getting a bit ruff and you can't take your dog on walks as frequently as before? Register now and start looking for a walker in your area! All of our walkers are certified and background-checked to give your best friend the best time!</p>
+            <p>NOTE: Your dog must be up-to-date with all its vaccinations.</p>
+            <form class="form-horizontal" role="form" action="profile/profile.view.html">
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email:</label>
+                    <div class="col-sm-9">
+                        <input type="email" ng-model="email" id="email" class="form-control" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password:</label>
+                    <div class="col-sm-9">
+                        <input type="password" ng-model="password" id="password" class="form-control" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="vPassword" class="col-sm-3 control-label">Verify Password:</label>
+                    <div class="col-sm-9">
+                        <input type="password" ng-model="vPassword" id="vPassword" class="form-control" placeholder="Verify Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dogname" class="col-sm-3 control-label">Dog Name:</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="dogname" id="dogname" class="form-control" placeholder="Dog Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="breed" class="col-sm-3 control-label">Breed:</label>
+                    <div class="col-sm-9">
+                        <input type="text" ng-model="breed" id="breed" class="form-control" placeholder="Breed">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="col-sm-3 control-label">Age (years):</label>
+                    <div class="col-sm-3">
+                        <input type="number" ng-model="age" id="age" min="0" class="form-control" placeholder="Age">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-success form-control" role="button">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-5">
+            <h3>Dog Walkers</h3>
+            <p>Do you love dogs and just can't get enough of them? Start an application with us, and if selected and approved, you can start walking and bonding with the dogs in your neighborhood!</p>
+            <a href="/project/client/application/application.view.html" type="submit" class="btn btn-success form-control" role="button">Start Application</a>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery & Bootstrap JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
