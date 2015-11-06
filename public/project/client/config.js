@@ -22,8 +22,17 @@
             .when("/profile", {
                 templateUrl: "profile/profile.view.html"
             })
-            .when("/walker", {
-                templateUrl: "profile/walker.view.html"
+            .when("/walkerprofile", {
+                templateUrl: "walkerprofile/walkerprofile.view.html"
+            })
+            .when("/readreviews", {
+                templateUrl: "walkerprofile/reviews.view.html"
+            })
+            .when("/readrequests", {
+                templateUrl: "walkerprofile/requests.view.html"
+            })
+            .when("/sendreport", {
+                templateUrl: "walkerprofile/reportcard.view.html"
             })
             .when("/walkers", {
                 templateUrl: "walkers/walkers.view.html"

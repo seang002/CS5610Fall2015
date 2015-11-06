@@ -1,0 +1,53 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div ng-include="'header/header2.view.html'"></div>
+</nav>
+
+<div class="container-fluid">
+    <h1 class="page-header">Profile</h1>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#/walkerprofile">Walker <span class="sr-only">(current)</span></a></li>
+        <li role="presentation"><a href="#/profile">Dog</a></li>
+    </ul>
+    <div class="row">
+        <div class="col-sm-3">
+            <p><img class="img-responsive img-rounded" src="http://s17.postimg.org/nozqpso4v/walker.png"></p>
+            <div class="rating">
+                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            </div>
+            <div class="list-group">
+                <a href="#/readreviews" class="list-group-item">Reviews <span class="badge">3</span></a>
+                <a href="#/readrequests" class="list-group-item">Requests <span class="badge">2</span></a>
+                <a href="#/sendreport" class="list-group-item">Send report card <span class="badge">0</span></a>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <h2>Verena C.</h2>
+            <h3 class="page-header">Reviews</h3>
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <td>Buddy</td>
+                    <td><div class="rating">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div></td>
+                    <td>She's great!</td>
+                </tr>
+                <tr>
+                    <td>Dash</td>
+                    <td><div class="rating">
+                        <span>☆</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div></td>
+                    <td>Always prompt, dog is always happy.</td>
+                </tr>
+                <tr>
+                    <td>Gizmo</td>
+                    <td><div class="rating">
+                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>★</span>
+                    </div></td>
+                    <td>Does not walk well with older dogs.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
