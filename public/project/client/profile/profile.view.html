@@ -1,55 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/project/client/css/jumbotron.css" />
-    <link rel="stylesheet" href="/project/client/css/style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Slab" type='text/css' />
-
-    <!-- Angular JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
-
-    <title>Happy Paws!</title>
-</head>
-
-<body>
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand"><span class="glyphicon glyphicon-heart-empty" aria-hidden=""true"></span> Hi Verena!</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/project/client/profile/profile.view.html">Profile</a></li>
-                <li><a href="/project/client/walkers/walkers.view.html">Find a Walker</a></li>
-                <li><a href="/project/client/appointments/appointments.view.html">Appointments</a></li>
-                <li><a href="/project/client/index.html">Log Out</a></li>
-            </ul>
-        </div>
-    </div>
+    <div ng-include="'header/header2.view.html'"></div>
 </nav>
 
 <div class="container-fluid">
     <h1 class="page-header">Profile</h1>
     <ul class="nav nav-tabs">
-        <li role="presentation"><a href="walker.view.html">Walker</a></li>
-        <li role="presentation" class="active"><a href="profile.view.html">Dog <span class="sr-only">(current)</span></a></li>
+        <li role="presentation"><a href="#/walker">Walker</a></li>
+        <li role="presentation" class="active"><a href="#/profile">Dog <span class="sr-only">(current)</span></a></li>
     </ul>
     <div class="row">
         <div class="col-sm-3">
             <p><img class="img-responsive img-rounded" src="http://s13.postimg.org/8a1mv32if/dog.png"></p>
-            <a href="walkers.html" class="btn btn-warning form-control" role="button">Walk Now!</a>
+            <a href="#/walkers" class="btn btn-warning form-control" role="button">Walk Now!</a>
         </div>
         <div class="col-sm-7">
             <h2>Kibbles</h2>
@@ -110,9 +72,3 @@
         </div>
     </div>
 </div>
-
-<!-- jQuery & Bootstrap JavaScript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</body>
-</html>
