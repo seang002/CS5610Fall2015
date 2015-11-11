@@ -7,25 +7,20 @@
 
     function ProfileController(UserService, $scope, $rootScope) {
         $scope.user = $rootScope.user;
-        console.log("Before:");
-        console.log($scope.user); //checking userObj before update
-
         $scope.update = update;
 
         function update() {
-            UserService.updateUser(
-                $scope.user.id,
-                $scope.user,
-                callback
-            );
-            console.log("Profile updated!");
-
-            console.log("After:")
-            console.log($scope.user); //checking userObj after update
-        }
-
-        function callback(user) {
-            $scope.user = user;
+            UserService.updateUser($scope.user.id, $scope.user)
+                .then(function(users) {
+                    console.log("Profile updated!");
+                    for (var i in users) {
+                        var user = users[i];
+                        if (user.id == $scope.user.id) {
+                            $scope.user = user;
+                            break;
+                        }
+                    }
+                });
         }
     }
 })();

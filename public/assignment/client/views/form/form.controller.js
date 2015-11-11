@@ -8,8 +8,10 @@
     function FormController(FormService, $scope, $rootScope) {
         var user = $rootScope.user;
         var userId = user.id;
-        console.log(userId);
-        FormService.findAllFormsForUser(userId, callbackUserForms);
+        FormService.findAllFormsForUser(userId)
+            .then(function(forms) {
+                $scope.forms = forms;
+            });
 
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;
@@ -17,37 +19,34 @@
         $scope.selectForm = selectForm;
 
         function addForm() {
-            var form = {name: $scope.name}
-            FormService.createFormForUser(userId, form, callbackForm);
+            var form = {title: $scope.title};
+            FormService.createFormForUser(userId, form)
+                .then(function(forms) {
+                    $scope.forms = forms;
+                })
         }
 
         function updateForm() {
-            var form = {name: $scope.name};
-            FormService.updateFormById(
-                $scope.selectedForm.id,
-                form,
-                callbackForm
-            );
+            var form = {title: $scope.title};
+            FormService.updateFormById($scope.selectedForm.id, form)
+                .then(function(forms) {
+                    $scope.forms = forms;
+                })
         }
 
         function deleteForm(index) {
             var formId = $scope.forms[index].id;
             console.log(formId); //checking formId
-            FormService.deleteFormById(formId, callbackUserForms);
+            FormService.deleteFormById(formId)
+                .then(function(forms) {
+                    $scope = forms;
+                })
         }
 
         function selectForm(index) {
             $scope.selectedForm = $scope.forms[index];
             console.log($scope.selectedForm); //checking selectedForm
-            $scope.name = $scope.forms[index].name;
-        }
-
-        function callbackUserForms(userForms) {
-            $scope.forms = userForms;
-        }
-
-        function callbackForm(form){
-            $scope.form = form;
+            $scope.title = $scope.forms[index].title;
         }
     }
 })();

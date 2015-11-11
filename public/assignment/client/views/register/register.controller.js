@@ -15,26 +15,20 @@
             } else if ($scope.password != $scope.vPassword) {
                 alert("Passwords do not match.");
             } else {
-                var newUser = {
-                    username: $scope.username,
-                    password: $scope.password,
-                    email: $scope.email
-                };
-                console.log(newUser); //checking user object
+                var newUser = {username: $scope.username, password: $scope.password, email: $scope.email};
 
-                UserService.createUser(newUser, callback);
-
-                console.log("New user created.");
-
-                $rootScope.user = $scope.user;
-                console.log($rootScope.user); //checking if rootScope.user is set
-
-                $location.url('/profile');
+                UserService.createUser(newUser)
+                    .then(function(users) {
+                        console.log("New user created.");
+                        for (var i in users) {
+                            var user = users[i];
+                            if (user.username == newUser.username && user.password == newUser.password) {
+                                $rootScope.user = user;
+                                $location.url('/profile');
+                            }
+                        }
+                    });
             }
-        }
-
-        function callback(user) {
-            $scope.user = user;
         }
     }
 })();
