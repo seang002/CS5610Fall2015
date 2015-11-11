@@ -5,17 +5,18 @@
         .module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController(UserService, $scope, $rootScope, $location) {
-        $scope.register = register;
+    function RegisterController(UserService, $rootScope, $location) {
+        var model = this;
+        model.register = register;
 
-        function register() {
-            if ($scope.username == undefined || $scope.password == undefined
-                    || $scope.email == undefined) {
+        function register(user) {
+            if (user.username == undefined || user.password == undefined
+                    || user.email == undefined) {
                 alert("Please fill out the missing fields.");
-            } else if ($scope.password != $scope.vPassword) {
+            } else if (user.password != user.vPassword) {
                 alert("Passwords do not match.");
             } else {
-                var newUser = {username: $scope.username, password: $scope.password, email: $scope.email};
+                var newUser = {username: user.username, password: user.password, email: user.email};
 
                 UserService.createUser(newUser)
                     .then(function(users) {

@@ -6,46 +6,46 @@
         .controller("FormController", FormController);
 
     function FormController(FormService, $scope, $rootScope) {
+        var model = this;
         var user = $rootScope.user;
         var userId = user.id;
         FormService.findAllFormsForUser(userId)
             .then(function(forms) {
-                $scope.forms = forms;
+                model.forms = forms;
             });
 
-        $scope.addForm = addForm;
-        $scope.updateForm = updateForm;
-        $scope.deleteForm = deleteForm;
-        $scope.selectForm = selectForm;
+        model.addForm = addForm;
+        model.updateForm = updateForm;
+        model.deleteForm = deleteForm;
+        model.selectForm = selectForm;
 
-        function addForm() {
-            var form = {title: $scope.title};
+        function addForm(title) {
+            var form = {title: title};
             FormService.createFormForUser(userId, form)
                 .then(function(forms) {
-                    $scope.forms = forms;
+                    model.forms = forms;
                 })
         }
 
-        function updateForm() {
-            var form = {title: $scope.title};
-            FormService.updateFormById($scope.selectedForm.id, form)
+        function updateForm(title) {
+            var form = {title: title};
+            FormService.updateFormById(model.selectedForm.id, form)
                 .then(function(forms) {
-                    $scope.forms = forms;
+                    model.forms = forms;
                 })
         }
 
         function deleteForm(index) {
-            var formId = $scope.forms[index].id;
+            var formId = model.forms[index].id;
             FormService.deleteFormById(formId)
                 .then(function(forms) {
-                    $scope.forms = forms;
+                    model.forms = forms;
                 })
         }
 
         function selectForm(index) {
-            $scope.selectedForm = $scope.forms[index];
-            console.log($scope.selectedForm); //checking selectedForm
-            $scope.title = $scope.forms[index].title;
+            model.selectedForm = model.forms[index];
+            $scope.title = model.forms[index].title;
         }
     }
 })();
