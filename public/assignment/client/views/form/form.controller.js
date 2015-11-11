@@ -36,10 +36,9 @@
 
         function deleteForm(index) {
             var formId = $scope.forms[index].id;
-            console.log(formId); //checking formId
             FormService.deleteFormById(formId)
                 .then(function(forms) {
-                    $scope = forms;
+                    $scope.forms = forms;
                 })
         }
 

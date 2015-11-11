@@ -35,7 +35,7 @@ module.exports = function(app) {
         for (var i in users) {
             var user = users[i];
             if (user.id == id) {
-                user = userObj;
+                users.splice(i, 1, userObj);
                 break; //to exit loop
             }
         }

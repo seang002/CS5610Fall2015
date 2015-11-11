@@ -20,6 +20,7 @@
                             break;
                         }
                     }
+                    console.log($scope.user);
                 });
         }
     }

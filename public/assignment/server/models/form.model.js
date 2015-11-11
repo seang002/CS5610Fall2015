@@ -37,14 +37,16 @@ module.exports = function(app) {
     }
 
     function updateForm(id, formObj) {
+        var userId;
         for (var i in forms) {
             var form = forms[i];
             if (form.id == id) {
-                form = formObj;
+                userId = form.userId;
+                form.title = formObj.title;
                 break; //to exit loop
             }
         }
-        return findAllUserForms(formObj.userId);
+        return findAllUserForms(userId);
     }
 
     function deleteForm(id) {
