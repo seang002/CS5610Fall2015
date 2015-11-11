@@ -15,16 +15,16 @@
     <script src="config.js"></script>
 
     <!-- AngularJS Controllers -->
-    <script src="header/header.controller.js"></script>
-    <script src="sidebar/sidebar.controller.js"></script>
-    <script src="login/login.controller.js"></script>
-    <script src="register/register.controller.js"></script>
-    <script src="profile/profile.controller.js"></script>
-    <script src="form/form.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
+    <script src="views/login/login.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/profile/profile.controller.js"></script>
+    <script src="views/form/form.controller.js"></script>
 
     <!-- Services -->
-    <script src="service/UserService.js"></script>
-    <script src="service/FormService.js"></script>
+    <script src="services/UserService.js"></script>
+    <script src="services/FormService.js"></script>
 
     <title>Form Maker</title>
 </head>
@@ -32,7 +32,7 @@
 <body>
     <!-- TOP NAV -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div ng-include="'header/header.view.html'"></div>
+        <div ng-include="'views/header/header.view.html'"></div>
     </nav>
 
     <!-- MAIN -->
@@ -41,7 +41,7 @@
 
             <!-- SIDEBAR -->
             <div class="col-sm-3 col-md-2 sidebar">
-                <div ng-include="'sidebar/sidebar.view.html'"></div>
+                <div ng-include="'views/sidebar/sidebar.view.html'"></div>
             </div>
 
             <!-- BODY -->
