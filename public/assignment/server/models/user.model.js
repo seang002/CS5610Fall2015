@@ -2,26 +2,26 @@ var users = require("./user.mock.json");
 
 module.exports = function(app) {
     var api = {
-        create : create,
-        findAll : findAll,
-        findById : findById,
-        update : update,
-        remove : remove,
-        findUserByUsername : findUserByUsername,
-        findUserByCredentials : findUserByCredentials
-    }
+        createUser: createUser,
+        findAllUsers: findAllUsers,
+        findUserById: findUserById,
+        updateUser: updateUser,
+        deleteUser: deleteUser,
+        findUserByUsername: findUserByUsername,
+        findUserByCredentials: findUserByCredentials
+    };
     return api;
 
-    function create(userObj) {
+    function createUser(userObj) {
         users.push(userObj);
         return users;
     }
 
-    function findAll() {
+    function findAllUsers() {
         return users;
     }
 
-    function findById(id) {
+    function findUserById(id) {
         for (var i in users) {
             var user = users[i];
             if (user.id == id) {
@@ -31,24 +31,26 @@ module.exports = function(app) {
         return null;
     }
 
-    function update(id, userObj) {
+    function updateUser(id, userObj) {
         for (var i in users) {
             var user = users[i];
             if (user.id == id) {
                 user = userObj;
-                return; //to exit early
+                break; //to exit loop
             }
         }
+        return users;
     }
 
-    function remove(id) {
+    function deleteUser(id) {
         for (var i in users) {
             var user = users[i];
             if (user.id == id) {
                 users.splice(i, 1)
-                return; //to exit early
+                break; //to exit loop
             }
         }
+        return users;
     }
 
     function findUserByUsername(username) {
