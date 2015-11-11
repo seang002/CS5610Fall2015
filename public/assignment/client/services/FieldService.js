@@ -3,62 +3,62 @@
 
     angular
         .module("FormBuilderApp")
-        .factory("UserService", UserService);
+        .factory("FieldService", FieldService);
 
-    function UserService($http, $q) {
+    function FieldService($http, $q) {
         var service = {
-            findUserByUsernameAndPassword: findUserByUsernameAndPassword,
-            findAllUsers: findAllUsers,
-            createUser: createUser,
-            deleteUserById: deleteUserById,
-            updateUser: updateUser
+            createFieldForForm: createFieldForForm,
+            getFieldsForForm: getFieldsForForm,
+            getFieldForForm: getFieldForForm,
+            deleteFieldFromForm: deleteFieldFromForm,
+            updateField: updateField
         };
         return service;
 
-        function findUserByUsernameAndPassword(username, password) {
+        function createFieldForForm(formId, field) {
             var deferred = $q.defer();
             $http
-                .get("/api/assignment/user?username=" + username + "&password=" + password)
+                .post("/api/assignment/form/" + formId + "/field", field)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;
         }
 
-        function findAllUsers() {
+        function getFieldsForForm(formId) {
             var deferred = $q.defer();
             $http
-                .get("/api/assignment/user")
+                .get("/api/assignment/form/" + formId + "/field")
                 .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;
         }
 
-        function createUser(userObj) {
+        function getFieldForForm(formId, fieldId) {
             var deferred = $q.defer();
             $http
-                .post("/api/assignment/user", userObj)
+                .get("/api/assignment/form/" + formId + "/field/" + fieldId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;
         }
 
-        function deleteUserById(userId) {
+        function deleteFieldFromForm(formId, fieldId) {
             var deferred = $q.defer();
             $http
-                .delete("/api/assignment/user/" + userId)
+                .delete("/api/assignment/form/" + formId + "/field/" + fieldId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;
         }
 
-        function updateUser(userId, userObj) {
+        function updateField(formId, fieldId, field) {
             var deferred = $q.defer();
             $http
-                .put("/api/assignment/user/" + userId, userObj)
+                .put("/api/assignment/form/" + formId + "/field/" + fieldId, field)
                 .success(function(response) {
                     deferred.resolve(response);
                 });

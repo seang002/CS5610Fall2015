@@ -134,13 +134,13 @@ module.exports = function(app) {
         return null;
     }
 
-    function updateField(id, fieldObj) {
+    function updateField(id, fieldId, fieldObj) {
         for (var i in forms) {
             var form = forms[i];
             if (form.id == id) {
                 for (var j in form.fields) {
                     var field = form.fields[j];
-                    if (field.id == fieldObj.id) {
+                    if (field.id == fieldId) {
                         field = fieldObj;
                         break;
                     }

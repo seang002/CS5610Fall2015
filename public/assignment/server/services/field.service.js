@@ -33,7 +33,8 @@ module.exports = function(app, model) {
 
     function updateField(req, res) {
         var formId = req.params.formId;
+        var fieldId = req.params.fieldId;
         var field = req.body;
-        res.json(updateField(formId, field));
+        res.json(updateField(formId, fieldId, field));
     }
 };
