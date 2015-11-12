@@ -5,10 +5,11 @@
         .module("FormBuilderApp")
         .controller("FormController", FormController);
 
-    function FormController(FormService, $scope, $rootScope) {
+    function FormController(FormService, $rootScope) {
         var model = this;
         var user = $rootScope.user;
         var userId = user.id;
+
         FormService.findAllFormsForUser(userId)
             .then(function(forms) {
                 model.forms = forms;
@@ -45,7 +46,7 @@
 
         function selectForm(index) {
             model.selectedForm = model.forms[index];
-            $scope.title = model.forms[index].title;
+            model.title = model.forms[index].title;
         }
     }
 })();
