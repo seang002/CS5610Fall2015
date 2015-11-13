@@ -8,7 +8,7 @@
     function Configure($routeProvider) {
         $routeProvider
             .when("/home", {
-                templateUrl: "views/home/home.view.html",
+                templateUrl: "views/home/home.view.html"
             })
             .when("/login", {
                 templateUrl: "views/login/login.view.html",
@@ -32,6 +32,10 @@
             .when("/user/:userId/form/:formId/fields", {
                 templateUrl: "views/field/field.view.html",
                 controller: "FieldController as model"
+            })
+            .when("/logout", {
+                templateUrl: "views/logout/logout.view.html",
+                controller: "LogoutController"
             })
             .otherwise({
                 redirectTo: "/home"
