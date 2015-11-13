@@ -7,7 +7,12 @@
 
     function ProfileController(UserService, $rootScope) {
         var model = this;
-        model.user = $rootScope.user;
+        if ($rootScope.user) {
+            model.user = $rootScope.user;
+        } else {
+            alert("User information not found. Log in first!");
+        }
+
         model.update = update;
 
         function update(user) {
