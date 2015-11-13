@@ -18,7 +18,9 @@ module.exports = function(app) {
     return api;
 
     function createForm(formObj) {
-        forms.push(formObj);
+        if (!findFormByTitle(formObj.title)) { //checks if form already exists
+            forms.push(formObj);
+        }
         return findAllUserForms(formObj.userId);
     }
 
@@ -37,16 +39,16 @@ module.exports = function(app) {
     }
 
     function updateForm(id, formObj) {
-        var userId;
-        for (var i in forms) {
-            var form = forms[i];
-            if (form.id == id) {
-                userId = form.userId;
-                form.title = formObj.title;
-                break; //to exit loop
+        if (!findFormByTitle(formObj.userId)) { //checks if title already exists
+            for (var i in forms) {
+                var form = forms[i];
+                if (form.id == id) {
+                    form.title = formObj.title;
+                    break; //to exit loop
+                }
             }
         }
-        return findAllUserForms(userId);
+        return findAllUserForms(formObj.userId);
     }
 
     function deleteForm(id) {

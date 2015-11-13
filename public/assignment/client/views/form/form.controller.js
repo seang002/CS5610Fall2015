@@ -8,12 +8,16 @@
     function FormController(FormService, $rootScope) {
         var model = this;
         var user = $rootScope.user;
-        var userId = user.id;
+        if (user) {
+            var userId = user.id;
 
-        FormService.findAllFormsForUser(userId)
-            .then(function(forms) {
-                model.forms = forms;
-            });
+            FormService.findAllFormsForUser(userId)
+                .then(function(forms) {
+                    model.forms = forms;
+                });
+        } else {
+            alert("User forms not found. Log in first!");
+        }
 
         model.addForm = addForm;
         model.updateForm = updateForm;
@@ -30,7 +34,7 @@
         }
 
         function updateForm(title) {
-            var form = {title: title};
+            var form = {title: title, userId: user.id};
             console.log("Form updated.");
             FormService.updateFormById(model.selectedForm.id, form)
                 .then(function(forms) {
