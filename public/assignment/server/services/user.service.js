@@ -18,16 +18,16 @@ module.exports = function(app, model) {
         var username = req.query.username;
         var password = req.query.password;
 
-        console.log(username); //checking values of username and
-        console.log(password); //password variables
+        console.log("Username: " + username); //checking values of username and
+        console.log("Password: " + password); //password variables
 
         //responds w/ single user w/ username and password props
-        if (username != null && password != null) {
+        if (username && password) {
             var cred = {username: username, password: password};
             res.json(model.findUserByCredentials(cred));
 
         //responds w/ single user w/ username prop
-        } else if (username != null) {
+        } else if (username) {
             res.json(model.findUserByUsername(username));
 
         //responds w/ array of users

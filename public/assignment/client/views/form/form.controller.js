@@ -11,7 +11,8 @@
         if (user) {
             var userId = user.id;
 
-            FormService.findAllFormsForUser(userId)
+            FormService
+                .findAllFormsForUser(userId)
                 .then(function(forms) {
                     model.forms = forms;
                 });
@@ -27,7 +28,8 @@
         function addForm(title) {
             var form = {title: title};
             console.log("New form created.");
-            FormService.createFormForUser(userId, form)
+            FormService
+                .createFormForUser(userId, form)
                 .then(function(forms) {
                     model.forms = forms;
                 })
@@ -36,7 +38,8 @@
         function updateForm(title) {
             var form = {title: title, userId: user.id};
             console.log("Form updated.");
-            FormService.updateFormById(model.selectedForm.id, form)
+            FormService
+                .updateFormById(model.selectedForm.id, form)
                 .then(function(forms) {
                     model.forms = forms;
                 })
@@ -45,7 +48,8 @@
         function deleteForm(index) {
             var formId = model.forms[index].id;
             console.log("Form deleted.");
-            FormService.deleteFormById(formId)
+            FormService
+                .deleteFormById(formId)
                 .then(function(forms) {
                     model.forms = forms;
                 })
