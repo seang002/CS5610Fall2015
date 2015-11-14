@@ -16,7 +16,8 @@
         model.update = update;
 
         function update(user) {
-            UserService.updateUser(user.id, user)
+            UserService
+                .updateUser(user.id, user)
                 .then(function(users) {
                     console.log("Profile updated!");
                     for (var i in users) {

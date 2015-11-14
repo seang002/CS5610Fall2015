@@ -10,7 +10,8 @@
         model.login = login;
 
         function login(username, password) {
-            UserService.findUserByUsernameAndPassword(username, password)
+            UserService
+                .findUserByUsernameAndPassword(username, password)
                 .then(function(user) {
                     if (user != null) {
                         $rootScope.user = user;

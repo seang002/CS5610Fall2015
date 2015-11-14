@@ -18,7 +18,8 @@
             } else {
                 var newUser = {username: user.username, password: user.password, email: user.email};
 
-                UserService.createUser(newUser)
+                UserService
+                    .createUser(newUser)
                     .then(function(users) {
                         console.log("New user created.");
                         for (var i in users) {
