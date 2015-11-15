@@ -1,40 +1,83 @@
-<h1 class="page-header">Forms:  Form</h1>
+<h1 class="page-header">Forms: {{model.form.title}} Form</h1>
 <ul class="nav nav-tabs">
 	<li role="presentation" ng-class="{'active' : $location.url().indexOf('form') != -1}"><a href="#/form">Forms</a></li>
 	<li role="presentation" class="disabled"><a href="#">Fields</a></li>
 </ul>
-<div class="form-group">
-	<label for="input-fname" class="control-label">First Name:</label>
+
+<div ng-repeat="field in model.fields" ng-switch on="field.type" class="form-group">
+	<label for="{{field.label}}" class="control-label">{{field.label}}</label>
 	<div class="row">
 		<div class="col-md-5">
-			<input type="text" class="form-control" placeholder="First Name">
+			<!-- text -->
+			<div ng-switch-when="TEXT">
+				<input type="text" class="form-control" placeholder="{{field.label}}">
+			</div>
+
+			<!-- textarea -->
+			<div ng-switch-when="TEXTAREA">
+				<textarea class="form-control" placeholder="{{field.label}}"></textarea>
+			</div>
+
+			<!-- date -->
+			<div ng-switch-when="DATE">
+				<input type="date" class="form-control">
+			</div>
+
+			<!-- dropdown/options -->
+			<div ng-switch-when="DROPDOWN">
+				<select class="form-control">
+					<option ng-repeat="option in field.options" value="{{option.value}}">{{option.label}}</option>
+				</select>
+			</div>
+
+			<!-- checkboxes -->
+			<div ng-switch-when="CHECKBOX">
+				<div ng-repeat="option in field.options" class="checkbox">
+					<label>
+						<input type="checkbox" name="default" value="{{option.value}}">{{option.label}}
+					</label>
+				</div>
+			</div>
+
+			<!-- radio buttons -->
+			<div ng-switch-when="RADIO">
+				<div ng-repeat="option in field.options" class="radio">
+					<label>
+						<input type="radio" name="default" value="{{option.value}}">{{option.label}}
+					</label>
+				</div>
+			</div>
+
+			<!-- email -->
+			<div ng-switch-when="EMAIL">
+				<input type="email" class="form-control" placeholder="{{field.label}}">
+			</div>
 		</div>
 		<div class="col-sm-5 btn-group btn-group-sm" role="group" aria-label="Field options">
-			<a href="#" class="btn wood glyphicon glyphicon-pencil" role="button" title="Edit"><span class="sr-only">Edit field</span></a>
-			<a href="#" class="btn earth glyphicon glyphicon-plus" role="button" title="Clone"><span class="sr-only">Clone field</span></a>
-			<a href="#" class="btn fire glyphicon glyphicon-remove" role="button" title="Delete"><span class="sr-only">Delete field</span></a>
-			<a href="#" class="btn water glyphicon glyphicon-align-justify" role="button" title="Reorder"><span class="sr-only">>Reorder field</span></a>
+			<button ng-click="model.editField(field)" class="btn wood glyphicon glyphicon-pencil" title="Edit"></button>
+			<button ng-click="model.copyField(field)" class="btn earth glyphicon glyphicon-plus" title="Clone"></button>
+			<button ng-click="model.deleteField(field)" class="btn fire glyphicon glyphicon-remove" title="Delete"></button>
+			<button class="btn water glyphicon glyphicon-align-justify" title="Reorder"></button>
 		</div>
 	</div>
 </div>
+
 <h1 class="page-header"></h1>
 <div class="form-group">
-	<label for="input-newfield" class="control-label">Add New Field:</label>
+	<label for="newField" class="control-label">Add New Field:</label>
 	<div class="row">
 		<div class="col-md-5">
-			<select ng-model="model.fieldType" ng-options="field for field in model.fields" class="form-control">
+			<select ng-model="newField" class="form-control">
+				<option value="TEXT">Single Line Text Field</option>
+				<option value="TEXTAREA">Multi Line Text Field</option>
+				<option value="DATE">Date Field</option>
+				<option value="DROPDOWN">Dropdown Field</option>
+				<option value="CHECKBOX">Checkboxes Field</option>
+				<option value="RADIO">Radio Buttons Field</option>
 			</select>
-			<div ng-switch on="model.fieldType">
-				<div ng-switch-when="text">Single Line Text Field</div>
-				<div ng-switch-when="textarea">Multi Line Text Field</div>
-				<div ng-switch-when="date">Date Field</div>
-				<div ng-switch-when="dropdown">Dropdown Field</div>
-				<div ng-switch-when="check">Checkboxes Field</div>
-				<div ng-switch-when="rad">Radio Buttons Field</div>
-			</div>
 		</div>
 		<div class="col-sm-3">
-			<button ng-click="addField(model.fieldType)" class="btn btn-sm earth glyphicon glyphicon-plus" title="Add">
+			<button ng-click="model.addField(newField)" class="btn btn-sm earth glyphicon glyphicon-plus" title="Add">
 				<span class="sr-only">Add field</span>
 			</button>
 		</div>

@@ -10,12 +10,7 @@
         var user = $rootScope.user;
         if (user) {
             var userId = user.id;
-
-            FormService
-                .findAllFormsForUser(userId)
-                .then(function(forms) {
-                    model.forms = forms;
-                });
+            init();
         } else {
             alert("User forms not found. Log in first!");
         }
@@ -24,6 +19,14 @@
         model.updateForm = updateForm;
         model.deleteForm = deleteForm;
         model.selectForm = selectForm;
+
+        function init() {
+            FormService
+                .findAllFormsForUser(userId)
+                .then(function(forms) {
+                    model.forms = forms;
+                });
+        }
 
         function addForm(title) {
             var form = {title: title};
@@ -36,7 +39,7 @@
                         console.log("New form created.");
                         model.forms = forms;
                     }
-                })
+                });
         }
 
         function updateForm(title) {
@@ -50,7 +53,7 @@
                         console.log("Form updated.");
                         model.forms = forms;
                     }
-                })
+                });
         }
 
         function deleteForm(index) {
@@ -60,7 +63,7 @@
                 .deleteFormById(formId)
                 .then(function(forms) {
                     model.forms = forms;
-                })
+                });
         }
 
         function selectForm(index) {

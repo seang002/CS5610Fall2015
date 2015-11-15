@@ -90,6 +90,9 @@ module.exports = function(app) {
         for (var i in forms) {
             var form = forms[i];
             if (form.id == id) {
+                if (!form.fields) { // create empty list if null
+                    form.fields = [];
+                }
                 return form.fields;
             }
         }
@@ -122,10 +125,10 @@ module.exports = function(app) {
                         break;
                     }
                 }
-                return form.fields;
+                break;
             }
         }
-        return null;
+        return form.fields;
     }
 
     function createField(id, fieldObj) {
@@ -146,13 +149,12 @@ module.exports = function(app) {
                 for (var j in form.fields) {
                     var field = form.fields[j];
                     if (field.id == fieldId) {
-                        field = fieldObj;
-                        break;
+                        form.fields.splice(j, 1, fieldObj);
+                        return form.fields;
                     }
                 }
-                return form.fields;
             }
         }
         return null;
     }
-}
+};

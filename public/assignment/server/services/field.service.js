@@ -28,13 +28,13 @@ module.exports = function(app, model) {
         var formId = req.params.formId;
         var field = req.body;
         field.id = uuid.v4();
-        res.json(createField(formId, field));
+        res.json(model.createField(formId, field));
     }
 
     function updateField(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        res.json(updateField(formId, fieldId, field));
+        res.json(model.updateField(formId, fieldId, field));
     }
 };
