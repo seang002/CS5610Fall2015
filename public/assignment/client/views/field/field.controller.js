@@ -86,7 +86,7 @@
                 .then(function(fields) {
                     console.log("Copied field.");
                     model.fields = fields;
-                })
+                });
         }
     }
 })();

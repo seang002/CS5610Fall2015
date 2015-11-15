@@ -22,7 +22,7 @@
 
                         $location.url('/profile');
                     }
-                })
+                });
         }
     }
 })();
