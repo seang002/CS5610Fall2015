@@ -27,21 +27,29 @@
 
         function addForm(title) {
             var form = {title: title};
-            console.log("New form created.");
             FormService
                 .createFormForUser(userId, form)
                 .then(function(forms) {
-                    model.forms = forms;
+                    if (!forms) {
+                        alert("Form title already exists.");
+                    } else {
+                        console.log("New form created.");
+                        model.forms = forms;
+                    }
                 })
         }
 
         function updateForm(title) {
             var form = {title: title, userId: user.id};
-            console.log("Form updated.");
             FormService
                 .updateFormById(model.selectedForm.id, form)
                 .then(function(forms) {
-                    model.forms = forms;
+                    if (!forms) {
+                        alert("Form title already exists.");
+                    } else {
+                        console.log("Form updated.");
+                        model.forms = forms;
+                    }
                 })
         }
 

@@ -13,14 +13,14 @@
             UserService
                 .findUserByUsernameAndPassword(username, password)
                 .then(function(user) {
-                    if (user != null) {
+                    if (!user) {
+                        alert("Username and/or password is not correct.");
+                    } else {
                         $rootScope.user = user;
                         console.log("rootScope user:"); //checking if rootScope.usr is set
                         console.log($rootScope.user);
 
                         $location.url('/profile');
-                    } else {
-                        alert("Username and/or password is not correct.");
                     }
                 })
         }

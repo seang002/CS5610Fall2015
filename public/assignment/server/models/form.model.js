@@ -20,8 +20,9 @@ module.exports = function(app) {
     function createForm(formObj) {
         if (!findFormByTitle(formObj.title)) { //checks if form already exists
             forms.push(formObj);
+            return findAllUserForms(formObj.userId);
         }
-        return findAllUserForms(formObj.userId);
+        return null;
     }
 
     function findAllForms() {
@@ -39,16 +40,16 @@ module.exports = function(app) {
     }
 
     function updateForm(id, formObj) {
-        if (!findFormByTitle(formObj.userId)) { //checks if title already exists
+        if (!findFormByTitle(formObj.title)) { //checks if title already exists
             for (var i in forms) {
                 var form = forms[i];
                 if (form.id == id) {
                     form.title = formObj.title;
-                    break; //to exit loop
+                    return findAllUserForms(formObj.userId);
                 }
             }
         }
-        return findAllUserForms(formObj.userId);
+        return null;
     }
 
     function deleteForm(id) {

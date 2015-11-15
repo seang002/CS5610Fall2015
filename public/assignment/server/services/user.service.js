@@ -26,10 +26,6 @@ module.exports = function(app, model) {
             var cred = {username: username, password: password};
             res.json(model.findUserByCredentials(cred));
 
-        //responds w/ single user w/ username prop
-        } else if (username) {
-            res.json(model.findUserByUsername(username));
-
         //responds w/ array of users
         } else {
             res.json(model.findAllUsers());

@@ -10,8 +10,7 @@
         model.register = register;
 
         function register(user) {
-            if (user.username == undefined || user.password == undefined
-                    || user.email == undefined) {
+            if (user.username == undefined || user.password == undefined) {
                 alert("Please fill out the missing fields.");
             } else if (user.password != user.vPassword) {
                 alert("Passwords do not match.");
@@ -21,12 +20,16 @@
                 UserService
                     .createUser(newUser)
                     .then(function(users) {
-                        console.log("New user created.");
-                        for (var i in users) {
-                            var user = users[i];
-                            if (user.username == newUser.username && user.password == newUser.password) {
-                                $rootScope.user = user;
-                                $location.url('/profile');
+                        if (!users) {
+                            alert("Username already exists. Please choose another.")
+                        } else {
+                            console.log("New user created.");
+                            for (var i in users) {
+                                var user = users[i];
+                                if (user.username == newUser.username && user.password == newUser.password) {
+                                    $rootScope.user = user;
+                                    $location.url('/profile');
+                                }
                             }
                         }
                     });

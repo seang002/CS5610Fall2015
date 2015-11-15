@@ -13,8 +13,12 @@ module.exports = function(app) {
     return api;
 
     function createUser(userObj) {
-        users.push(userObj);
-        return users;
+        if (!findUserByUsername(userObj.username)) { //checks if username already exists
+            users.push(userObj);
+            return users;
+        } else {
+            return null;
+        }
     }
 
     function findAllUsers() {
@@ -35,11 +39,13 @@ module.exports = function(app) {
         for (var i in users) {
             var user = users[i];
             if (user.id == id) {
-                users.splice(i, 1, userObj);
-                break; //to exit loop
+                if (user.username == userObj.username || !findUserByUsername(userObj.username)) {
+                    users.splice(i, 1, userObj);
+                    return users;
+                }
             }
         }
-        return users;
+        return null;
     }
 
     function deleteUser(id) {
