@@ -18,7 +18,7 @@ module.exports = function(app) {
     return api;
 
     function createForm(formObj) {
-        if (!findFormByTitle(formObj.title)) { //checks if form already exists
+        if (!findFormByTitle(formObj.userId, formObj.title)) { //checks if form already exists
             forms.push(formObj);
             return findAllUserForms(formObj.userId);
         }
@@ -40,7 +40,7 @@ module.exports = function(app) {
     }
 
     function updateForm(id, formObj) {
-        if (!findFormByTitle(formObj.title)) { //checks if title already exists
+        if (!findFormByTitle(formObj.userId, formObj.title)) { //checks if title already exists
             for (var i in forms) {
                 var form = forms[i];
                 if (form.id == id) {
@@ -65,10 +65,10 @@ module.exports = function(app) {
         return findAllUserForms(userId);
     }
 
-    function findFormByTitle(title) {
+    function findFormByTitle(userId, title) {
         for (var i in forms) {
             var form = forms[i];
-            if (form.title == title) {
+            if (form.title == title && form.userId == userId) {
                 return form;
             }
         }
