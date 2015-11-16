@@ -1,7 +1,7 @@
 <h1 class="page-header">Forms: {{model.form.title}} Form</h1>
 <ul class="nav nav-tabs">
-	<li role="presentation" ng-class="{'active' : $location.url().indexOf('form') != -1}"><a href="#/form">Forms</a></li>
-	<li role="presentation" class="disabled"><a href="#">Fields</a></li>
+	<li role="presentation"><a href="#/form">Forms</a></li>
+	<li role="presentation" class="active"><a>Fields</a></li>
 </ul>
 
 <div ng-repeat="field in model.fields" ng-switch on="field.type" class="form-group">
@@ -9,50 +9,37 @@
 	<div class="row">
 		<div class="col-md-5">
 			<!-- text -->
-			<div ng-switch-when="TEXT">
-				<input type="text" class="form-control" placeholder="{{field.label}}">
-			</div>
+			<input ng-switch-when="TEXT" type="text" class="form-control" placeholder="{{field.label}}">
 
 			<!-- textarea -->
-			<div ng-switch-when="TEXTAREA">
-				<textarea class="form-control" placeholder="{{field.label}}"></textarea>
-			</div>
+			<textarea ng-switch-when="TEXTAREA" class="form-control" placeholder="{{field.label}}"></textarea>
 
 			<!-- date -->
-			<div ng-switch-when="DATE">
-				<input type="date" class="form-control">
-			</div>
+			<input ng-switch-when="DATE" type="date" class="form-control">
 
 			<!-- dropdown/options -->
-			<div ng-switch-when="DROPDOWN">
-				<select class="form-control">
-					<option ng-repeat="option in field.options" value="{{option.value}}">{{option.label}}</option>
-				</select>
-			</div>
+			<select ng-switch-when="DROPDOWN" class="form-control">
+				<option ng-repeat="option in field.options" value="{{option.value}}">{{option.label}}</option>
+			</select>
 
 			<!-- checkboxes -->
-			<div ng-switch-when="CHECKBOX">
-				<div ng-repeat="option in field.options" class="checkbox">
-					<label>
-						<input type="checkbox" name="default" value="{{option.value}}">{{option.label}}
-					</label>
-				</div>
+			<div ng-switch-when="CHECKBOX" ng-repeat="option in field.options" class="checkbox">
+				<label>
+					<input type="checkbox" name="default" value="{{option.value}}">{{option.label}}
+				</label>
 			</div>
 
 			<!-- radio buttons -->
-			<div ng-switch-when="RADIO">
-				<div ng-repeat="option in field.options" class="radio">
-					<label>
-						<input type="radio" name="default" value="{{option.value}}">{{option.label}}
-					</label>
-				</div>
+			<div ng-switch-when="RADIO" ng-repeat="option in field.options" class="radio">
+				<label>
+					<input type="radio" name="default" value="{{option.value}}">{{option.label}}
+				</label>
 			</div>
 
 			<!-- email -->
-			<div ng-switch-when="EMAIL">
-				<input type="email" class="form-control" placeholder="{{field.label}}">
-			</div>
+			<input ng-switch-when="EMAIL" type="email" class="form-control" placeholder="{{field.label}}">
 		</div>
+
 		<div class="col-sm-5 btn-group btn-group-sm" role="group" aria-label="Field options">
 			<button ng-click="model.editField(field)" class="btn wood glyphicon glyphicon-pencil" title="Edit"></button>
 			<button ng-click="model.copyField(field)" class="btn earth glyphicon glyphicon-plus" title="Clone"></button>

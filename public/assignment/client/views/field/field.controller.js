@@ -82,8 +82,9 @@
 
         function copyField(field) {
             FieldService
-                .getFieldForForm(formId, field.id)
+                .createFieldForForm(formId, field)
                 .then(function(fields) {
+                    console.log(fields);
                     console.log("Copied field.");
                     model.fields = fields;
                 });
