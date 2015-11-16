@@ -10,10 +10,9 @@
         model.register = register;
 
         function register(user) {
-            if (user.username == undefined || user.password == undefined) {
-                alert("Please fill out the missing fields.");
-            } else if (user.password != user.vPassword) {
-                alert("Passwords do not match.");
+            if (user.password != user.vPassword) {
+                model.error = true;
+                model.message = "Passwords do not match. Please re-enter.";
             } else {
                 var newUser = {username: user.username, password: user.password, email: user.email};
 
@@ -21,7 +20,8 @@
                     .createUser(newUser)
                     .then(function(users) {
                         if (!users) {
-                            alert("Username already exists. Please choose another.")
+                            model.error = true;
+                            model.message = "Username is already taken!";
                         } else {
                             console.log("New user created.");
                             for (var i in users) {

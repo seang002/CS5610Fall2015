@@ -12,7 +12,8 @@
             var userId = user.id;
             init();
         } else {
-            alert("User forms not found. Log in first!");
+            model.error = true;
+            model.message = "User forms not found. Please log in or register.";
         }
 
         model.addForm = addForm;
@@ -34,7 +35,8 @@
                 .createFormForUser(userId, form)
                 .then(function(forms) {
                     if (!forms) {
-                        alert("Form title already exists.");
+                        model.error = true;
+                        model.message = "Form title already exists. Choose a different title.";
                     } else {
                         console.log("New form created.");
                         model.forms = forms;
@@ -48,7 +50,8 @@
                 .updateFormById(model.selectedForm.id, form)
                 .then(function(forms) {
                     if (!forms) {
-                        alert("Form title already exists.");
+                        model.error = true;
+                        model.message = "Form title already exists. Choose a different title.";
                     } else {
                         console.log("Form updated.");
                         model.forms = forms;

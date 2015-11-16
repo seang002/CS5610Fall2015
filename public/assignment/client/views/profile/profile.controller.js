@@ -10,7 +10,8 @@
         if ($rootScope.user) {
             model.user = $rootScope.user;
         } else {
-            alert("User information not found. Log in first!");
+            model.error = true;
+            model.message = "User information not found. Please log in or register.";
         }
 
         model.update = update;
@@ -20,7 +21,8 @@
                 .updateUser(user.id, user)
                 .then(function(users) {
                     if (!users) {
-                        alert("Username already exists. Please choose another.")
+                        model.error = true;
+                        model.message = "Username is already taken!";
                     } else {
                         console.log("Profile updated!");
                         for (var i in users) {

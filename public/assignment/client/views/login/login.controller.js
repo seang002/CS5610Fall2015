@@ -14,7 +14,8 @@
                 .findUserByUsernameAndPassword(username, password)
                 .then(function(user) {
                     if (!user) {
-                        alert("Username and/or password is not correct.");
+                        model.error = true;
+                        model.message = "Username or password is not correct.";
                     } else {
                         $rootScope.user = user;
                         console.log("rootScope user:"); //checking if rootScope.usr is set
