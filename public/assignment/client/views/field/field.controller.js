@@ -71,9 +71,9 @@
                 });
         }
 
-        function editField(field) {
+        function editField(id, field) {
             FieldService
-                .updateField(formId, field.id, field)
+                .updateField(formId, id, field)
                 .then(function(fields) {
                     console.log("Updated field.");
                     model.fields = fields;
@@ -84,7 +84,6 @@
             FieldService
                 .createFieldForForm(formId, field)
                 .then(function(fields) {
-                    console.log(fields);
                     console.log("Copied field.");
                     model.fields = fields;
                 });

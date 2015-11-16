@@ -149,7 +149,8 @@ module.exports = function(app) {
                 for (var j in form.fields) {
                     var field = form.fields[j];
                     if (field.id == fieldId) {
-                        form.fields.splice(j, 1, fieldObj);
+                        field.label = fieldObj.label;
+                        field.placeholder = fieldObj.placeholder;
                         return form.fields;
                     }
                 }
