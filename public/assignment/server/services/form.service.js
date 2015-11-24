@@ -1,5 +1,3 @@
-var uuid = require("node-uuid"); //generates random id
-
 module.exports = function(app, model) {
     app.get("/api/assignment/user/:userId/form", findFormsByUserId);
     app.get("/api/assignment/form/:formId", findFormById);
@@ -9,30 +7,49 @@ module.exports = function(app, model) {
 
     function findFormsByUserId(req, res) {
         var userId = req.params.userId;
-        res.json(model.findAllUserForms(userId));
+        model
+            .findAllUserForms(userId)
+            .then(function(forms) {
+                res.json(forms);
+            })
     }
 
     function findFormById(req, res) {
         var formId = req.params.formId;
-        res.json(model.findFormById(formId));
+        model
+            .findFormById(formId)
+            .then(function(form) {
+                res.json(form);
+            })
     }
 
     function deleteForm(req, res) {
         var formId = req.params.formId;
-        res.json(model.deleteForm(formId));
+        model
+            .deleteForm(formId)
+            .then(function(forms) {
+                res.json(forms);
+            })
     }
 
     function createNewForm(req, res) {
         var userId = req.params.userId;
         var form = req.body;
         form.userId = userId;
-        form.id = uuid.v4();
-        res.json(model.createForm(form));
+        model
+            .createForm(form)
+            .then(function(forms) {
+                res.json(forms);
+            })
     }
 
     function updateForm(req, res) {
         var formId = req.params.formId;
         var form = req.body;
-        res.json(model.updateForm(formId, form));
+        model
+            .updateForm(formId, form)
+            .then(function(forms) {
+                res.json(forms);
+            })
     }
 };

@@ -1,5 +1,3 @@
-var uuid = require("node-uuid"); //generates random id
-
 module.exports = function(app, model) {
     app.post("/api/assignment/user", createNewUser);
     app.get("/api/assignment/user", findUser);
@@ -9,9 +7,12 @@ module.exports = function(app, model) {
 
     function createNewUser(req, res) {
         var user = req.body;
-        user.id = uuid.v4();
-        console.log(user); //checking if user variable is correct
-        res.json(model.createUser(user));
+        console.log("New user: " + user); //checking if user variable is correct
+        model
+            .createUser(user)
+            .then(function(users) {
+                res.json(users);
+            })
     }
 
     function findUser(req, res) {
@@ -21,30 +22,47 @@ module.exports = function(app, model) {
         console.log("Username: " + username); //checking values of username and
         console.log("Password: " + password); //password variables
 
-        //responds w/ single user w/ username and password props
         if (username && password) {
             var cred = {username: username, password: password};
-            res.json(model.findUserByCredentials(cred));
-
-        //responds w/ array of users
+            model
+                .findUserByCredentials(cred)
+                .then(function(user) {
+                    res.json(user);
+                })
         } else {
-            res.json(model.findAllUsers());
+            model
+                .findAllUsers()
+                .then(function(users) {
+                    res.json(users);
+                })
         }
     }
 
     function findUserById(req, res) {
         var id = req.params.id;
-        res.json(model.findUserById(id));
+        model
+            .findUserById(id)
+            .then(function(user) {
+                res.json(user);
+            })
     }
 
     function updateUser(req, res) {
         var id = req.params.id;
         var user = req.body;
-        res.json(model.updateUser(id, user));
+        model
+            .updateUser(id, user)
+            .then(function(users) {
+                res.json(users);
+            })
     }
 
     function deleteUser(req, res) {
         var id = req.params.id;
-        res.json(model.deleteUser(id));
+        model
+            .deleteUser(id)
+            .then(function(users) {
+                res.json(users);
+            })
     }
 };

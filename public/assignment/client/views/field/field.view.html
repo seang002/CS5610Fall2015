@@ -49,24 +49,27 @@
 	</div>
 
 	<!-- toggles editor -->
-	<div class="row" ng-show="needEdit">
-		<div class="col-xs-offset-1 col-md-5 alert alert-success">
-			<h4 class="page-header">Edit field:</h4>
-			<div class="form-group">
-				<label for="{{field.label}}" class="control-label">Label:</label>
-				<input ng-model="updatedField.label" class="form-control" placeholder="{{field.label}}">
-			</div>
-			<div class="form-group">
-				<label for="{{field.placeholder}}" class="control-label">Placeholder:</label>
-				<input ng-model="updatedField.placeholder" class="form-control" placeholder="{{field.placeholder}}">
-			</div>
-			<div class="form-group">
-				<label for="{{field.type}}" class="control-label">Type:</label>
-				<span ng-model="updatedField.type" class="form-control" disabled>{{field.type}}</span>
-			</div>
-			<button ng-click="model.editField(field.id, updatedField)" class="btn fire" title="Edit">Save</button>
+	<form name="fieldForm" class="form-horizontal row" ng-show="needEdit">
+		<div class="col-sm-7 alert alert-success">
+            <h4 class="page-header">Edit field:</h4>
+            <div class="form-group">
+                <label for="{{field.label}}" class="col-sm-3 control-label">Label:</label>
+                <div class="col-sm-9">
+                    <input ng-model="updatedField.label" type="text" class="form-control" placeholder="New label name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="{{field.placeholder}}" class="col-sm-3 control-label">Placeholder (optional):</label>
+                <div class="col-sm-9">
+                    <input ng-model="updatedField.placeholder" type="text" class="form-control" placeholder="New placeholder">
+                    <span ng-switch-when="DATE" class="help-block"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Date fields do not use placeholders.</span>
+                </div>
+            </div>
+
+            <button ng-click="model.editField(field.id, updatedField)" ng-disabled="fieldForm.$invalid" class="btn fire" title="Edit">Save</button>
+            <button ng-click="needEdit = !needEdit" class="btn metal" title="Edit">Cancel</button>
 		</div>
-	</div>
+	</form>
 </div>
 
 <h1 class="page-header"></h1>

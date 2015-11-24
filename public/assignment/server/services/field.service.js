@@ -1,5 +1,3 @@
-var uuid = require("node-uuid"); //generates random id
-
 module.exports = function(app, model) {
     app.get("/api/assignment/form/:formId/field", findAllFields);
     app.get("/api/assignment/form/:formId/field/:fieldId", findFieldById);
@@ -9,32 +7,51 @@ module.exports = function(app, model) {
 
     function findAllFields(req, res) {
         var formId = req.params.formId;
-        res.json(model.findAllFields(formId));
+        model
+            .findAllFields(formId)
+            .then(function(fields) {
+                res.json(fields);
+            })
     }
 
     function findFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        res.json(model.findFieldById(formId, fieldId));
+        model
+            .findFieldById(formId, fieldId)
+            .then(function(field) {
+                res.json(field);
+            })
     }
 
     function deleteField(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        res.json(model.deleteField(formId, fieldId));
+        model
+            .deleteField(formId, fieldId)
+            .then(function(fields) {
+                res.json(fields);
+            })
     }
 
     function createField(req, res) {
         var formId = req.params.formId;
         var field = req.body;
-        field.id = uuid.v4();
-        res.json(model.createField(formId, field));
+        model
+            .createField(formId, field)
+            .then(function(fields) {
+                res.json(fields);
+            })
     }
 
     function updateField(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        res.json(model.updateField(formId, fieldId, field));
+        model
+            .updateField(formId, fieldId, field)
+            .then(function(fields) {
+                res.json(fields);
+            })
     }
 };

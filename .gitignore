@@ -1,2 +1,4 @@
 node_modules
 .idea
+deplist.txt
+mongodb-osx-x86_64-3.0.7
