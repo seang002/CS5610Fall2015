@@ -9,7 +9,7 @@
         var model = this;
         var user = $rootScope.user;
         if (user) {
-            var userId = user.id;
+            var userId = user._id;
             init();
         } else {
             model.error = true;
@@ -45,9 +45,9 @@
         }
 
         function updateForm(title) {
-            var form = {title: title, userId: user.id};
+            var form = {title: title, userId: userId};
             FormService
-                .updateFormById(model.selectedForm.id, form)
+                .updateFormById(model.selectedForm._id, form)
                 .then(function(forms) {
                     if (!forms) {
                         model.error = true;
@@ -60,7 +60,7 @@
         }
 
         function deleteForm(index) {
-            var formId = model.forms[index].id;
+            var formId = model.forms[index]._id;
             console.log("Form deleted.");
             FormService
                 .deleteFormById(formId)

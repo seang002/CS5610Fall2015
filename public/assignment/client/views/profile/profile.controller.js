@@ -18,13 +18,15 @@
 
         function update(user) {
             UserService
-                .updateUser(user.id, user)
+                .updateUser(user._id, user)
                 .then(function(users) {
                     if (!users) {
                         model.error = true;
                         model.message = "Username is already taken!";
                     } else {
                         console.log("Profile updated!");
+                        model.success = true;
+                        model.message = "Profile upated!";
                         for (var i in users) {
                             var user = users[i];
                             if (user.id == model.user.id) {

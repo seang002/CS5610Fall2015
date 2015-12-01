@@ -7,11 +7,11 @@ module.exports = function(app, model) {
 
     function createNewUser(req, res) {
         var user = req.body;
-        console.log("New user: " + user); //checking if user variable is correct
+        console.log("New user: " + user.username); //checking if user variable is correct
         model
             .createUser(user)
-            .then(function(users) {
-                res.json(users);
+            .then(function(user) {
+                res.json(user);
             })
     }
 

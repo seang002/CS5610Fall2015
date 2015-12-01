@@ -18,19 +18,14 @@
 
                 UserService
                     .createUser(newUser)
-                    .then(function(users) {
-                        if (!users) {
+                    .then(function(user) {
+                        if (!user) {
                             model.error = true;
                             model.message = "Username is already taken!";
                         } else {
                             console.log("New user created.");
-                            for (var i in users) {
-                                var user = users[i];
-                                if (user.username == newUser.username && user.password == newUser.password) {
-                                    $rootScope.user = user;
-                                    $location.url('/profile');
-                                }
-                            }
+                            $rootScope.user = user;
+                            $location.url('/profile');
                         }
                     });
             }
