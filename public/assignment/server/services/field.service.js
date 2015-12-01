@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function(app, model) {
     app.get("/api/assignment/form/:formId/field", findAllFields);
     app.get("/api/assignment/form/:formId/field/:fieldId", findFieldById);

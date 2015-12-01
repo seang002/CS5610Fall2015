@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function(app, model) {
     app.get("/api/assignment/user/:userId/form", findFormsByUserId);
     app.get("/api/assignment/form/:formId", findFormById);

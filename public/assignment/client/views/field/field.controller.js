@@ -32,7 +32,7 @@
                 newField.placeholder = "New Field";
             } else if (fieldType == "DATE") {
                 newField.label = "New Date Field";
-            } else if (fieldType == "DROPDOWN") {
+            } else if (fieldType == "SELECT") {
                 newField.label = "New Dropdown";
                 newField.options = [
                     {"label": "Option 1", "value": "OPTION_1"},
