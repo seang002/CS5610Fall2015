@@ -149,13 +149,16 @@ module.exports = function(mongoose, db) {
         var deferred = q.defer();
         FormModel
             .findById(id, function(err, form) {
-                FormModel
-                    .findById(fieldId, function(err, field) {
-                        field = fieldObj;
-                    });
-                form.save(function(err, form) {
-                    deferred.resolve(form);
-                });
+                var fields = form.fields;
+                for (var i in fields) {
+                    if (fields[i].id == fieldId) {
+                        fields[i].label = fieldObj.label;
+                        fields[i].placeholder = fieldObj.placeholder;
+                        form.save(function(err, form) {
+                            deferred.resolve(form);
+                        });
+                    }
+                }
             });
         return deferred.promise;
     }

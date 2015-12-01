@@ -25,7 +25,7 @@
         }
 
         function addField(fieldType) {
-            var newField = {"id": null, "type": fieldType};
+            var newField = {"type": fieldType};
 
             if (fieldType == "TEXT" || fieldType == "TEXTAREA") {
                 newField.label = "New Text Field";
@@ -57,17 +57,26 @@
 
             FieldService
                 .createFieldForForm(formId, newField)
-                .then(function(fields) {
-                    model.fields = fields;
+                .then(function(field) {
+                    FieldService
+                        .getFieldsForForm(formId)
+                        .then(function(fields){
+                            console.log("Created field.");
+                            model.fields = fields;
+                        });
                 });
         }
 
         function deleteField(field) {
             FieldService
-                .deleteFieldFromForm(formId, field.id)
-                .then(function(fields) {
-                    console.log("Deleted field.");
-                    model.fields = fields;
+                .deleteFieldFromForm(formId, field._id)
+                .then(function(field) {
+                    FieldService
+                        .getFieldsForForm(formId)
+                        .then(function(fields){
+                            console.log("Deleted field.");
+                            model.fields = fields;
+                        });
                 });
         }
 
@@ -75,8 +84,12 @@
             FieldService
                 .updateField(formId, id, field)
                 .then(function(fields) {
-                    console.log("Updated field.");
-                    model.fields = fields;
+                    FieldService
+                        .getFieldsForForm(formId)
+                        .then(function(fields){
+                            console.log("Updated field.");
+                            model.fields = fields;
+                        });
                 });
         }
 
@@ -84,8 +97,12 @@
             FieldService
                 .createFieldForForm(formId, field)
                 .then(function(fields) {
-                    console.log("Copied field.");
-                    model.fields = fields;
+                    FieldService
+                        .getFieldsForForm(formId)
+                        .then(function(fields){
+                            console.log("Copied field.");
+                            model.fields = fields;
+                        });
                 });
         }
     }

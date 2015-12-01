@@ -38,8 +38,12 @@
                         model.error = true;
                         model.message = "Form title already exists. Choose a different title.";
                     } else {
-                        console.log("New form created.");
-                        model.forms = forms;
+                        FormService
+                            .findAllFormsForUser(userId)
+                            .then(function(forms) {
+                                console.log("New form created.");
+                                model.forms = forms;
+                            })
                     }
                 });
         }
@@ -53,8 +57,12 @@
                         model.error = true;
                         model.message = "Form title already exists. Choose a different title.";
                     } else {
-                        console.log("Form updated.");
-                        model.forms = forms;
+                        FormService
+                            .findAllFormsForUser(userId)
+                            .then(function(forms) {
+                                console.log("Form updated.");
+                                model.forms = forms;
+                            })
                     }
                 });
         }
@@ -65,7 +73,12 @@
             FormService
                 .deleteFormById(formId)
                 .then(function(forms) {
-                    model.forms = forms;
+                    FormService
+                        .findAllFormsForUser(userId)
+                        .then(function(forms) {
+                            console.log("Form deleted.");
+                            model.forms = forms;
+                        })
                 });
         }
 

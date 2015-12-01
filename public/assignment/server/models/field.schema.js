@@ -9,7 +9,7 @@ module.exports = function(mongoose) {
             label: String,
             value: String
         }],
-        placeholder: String
+        placeholder: {type: String, default: " "}
     });
 
     return fieldSchema;
