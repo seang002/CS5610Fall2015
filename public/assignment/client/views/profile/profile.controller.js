@@ -26,10 +26,11 @@
                     } else {
                         console.log("Profile updated!");
                         model.success = true;
-                        model.message = "Profile upated!";
+                        model.message = "Profile updated!";
+                        console.log(model.user._id);
                         for (var i in users) {
                             var user = users[i];
-                            if (user.id == model.user.id) {
+                            if (user._id == model.user.id) {
                                 model.user = user;
                                 break;
                             }
