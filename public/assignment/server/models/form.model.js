@@ -75,8 +75,10 @@ module.exports = function(mongoose, db) {
 
     function updateForm(id, formObj) {
         var deferred = q.defer();
+        delete formObj._id;
+
         FormModel
-            .update({_id: id}, {$set: {title: formObj.title}}, function(err, form) {
+            .update({_id: id}, {$set: formObj}, function(err, form) {
                 if (err) {
                     deferred.reject(err);
                 } else {
@@ -136,6 +138,8 @@ module.exports = function(mongoose, db) {
 
     function createField(id, fieldObj) {
         var deferred = q.defer();
+        delete fieldObj._id; // for when field is copied
+
         FormModel
             .findById(id, function(err, form) {
                 form.fields.push(fieldObj);
@@ -148,13 +152,14 @@ module.exports = function(mongoose, db) {
 
     function updateField(id, fieldId, fieldObj) {
         var deferred = q.defer();
+        delete fieldObj._id;
+
         FormModel
             .findById(id, function(err, form) {
                 var fields = form.fields;
                 for (var i in fields) {
                     if (fields[i].id == fieldId) {
-                        fields[i].label = fieldObj.label;
-                        fields[i].placeholder = fieldObj.placeholder;
+                        fields[i] = fieldObj;
                         form.save(function(err, form) {
                             deferred.resolve(form);
                         });

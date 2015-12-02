@@ -57,14 +57,10 @@ module.exports = function(mongoose, db) {
 
     function updateUser(id, userObj) {
         var deferred = q.defer();
+        delete userObj._id;
+
         UserModel
-            .update({_id: id}, {$set: {
-                firstName: userObj.firstName,
-                lastName: userObj.lastName,
-                username: userObj.username,
-                password: userObj.password,
-                email: userObj.email
-            }}, function(err, user) {
+            .update({_id: id}, {$set: userObj}, function(err, user) {
                 UserModel.find(function(err, user) {
                     if (err) {
                         deferred.reject(err);
