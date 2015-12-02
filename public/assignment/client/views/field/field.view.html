@@ -1,8 +1,11 @@
-<h1 class="page-header">Form Fields</h1>
+<h1 class="page-header">Form: {{model.form.title}}</h1>
 <ul class="nav nav-tabs">
 	<li role="presentation"><a href="#/form">Forms</a></li>
 	<li role="presentation" class="active"><a>Fields</a></li>
 </ul>
+<div>
+    <p>You can edit your form here by adding, editing, and deleting fields. You can also copy fields.</p>
+</div>
 
 <div ng-repeat="field in model.fields" ng-switch on="field.type" class="form-group">
 	<label for="{{field.label}}" class="control-label">{{field.label}}</label>
@@ -12,7 +15,7 @@
 			<input ng-switch-when="TEXT" type="text" class="form-control" placeholder="{{field.placeholder}}">
 
 			<!-- textarea -->
-			<textarea ng-switch-when="TEXTAREA" class="form-control" placeholder="{{field.placeholder}}"></textarea>
+			<textarea ng-switch-when="TEXTAREA" class="form-control" rows="3" placeholder="{{field.placeholder}}"></textarea>
 
 			<!-- date -->
 			<input ng-switch-when="DATE" type="date" class="form-control">
@@ -53,16 +56,26 @@
 		<div class="col-sm-7 alert alert-success">
             <h4 class="page-header">Edit field:</h4>
             <div class="form-group">
-                <label for="{{field.label}}" class="col-sm-3 control-label">Label:</label>
+                <label for="label" class="col-sm-3 control-label">Label:</label>
                 <div class="col-sm-9">
-                    <input ng-model="updatedField.label" type="text" class="form-control" placeholder="New label name" required>
+                    <input ng-model="updatedField.label" type="text" id="label" class="form-control" placeholder="New label name" required>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="{{field.placeholder}}" class="col-sm-3 control-label">Placeholder (optional):</label>
+
+            <!-- placeholder -->
+            <div ng-if="field.type == 'TEXT' || field.type == 'TEXTAREA'" class="form-group">
+                <label for="placeholder" class="col-sm-3 control-label">Placeholder (optional):</label>
                 <div class="col-sm-9">
-                    <input ng-model="updatedField.placeholder" type="text" class="form-control" placeholder="New placeholder">
-                    <span ng-switch-when="DATE" class="help-block"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Date fields do not use placeholders.</span>
+                    <input ng-model="updatedField.placeholder" type="text" id="placeholder" class="form-control" placeholder="New placeholder">
+                </div>
+            </div>
+
+            <!-- options -->
+            <div ng-if="field.type == 'RADIO' || field.type == 'CHECKBOX' || field.type == 'SELECT'" class="form-group">
+                <label for="options" class="col-sm-3 control-label">Options:</label>
+                <div class="col-sm-9">
+                    <textarea ng-model="updatedField.options" id="options" class="form-control" rows="3" placeholder="One option per line"></textarea>
+                    <span class="help-block"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Write the option label first followed by a comma then the option value, i.e. Washington, WA</span>
                 </div>
             </div>
 

@@ -5,7 +5,7 @@
         .module("FormBuilderApp")
         .controller("FieldController", FieldController);
 
-    function FieldController(FieldService, $routeParams) {
+    function FieldController(FieldService, FormService, $routeParams) {
         var model = this;
         var userId = $routeParams["userId"];
         var formId = $routeParams["formId"];
@@ -22,6 +22,12 @@
                 .then(function(fields) {
                     model.fields = fields;
                 });
+
+            FormService
+                .findFormById(formId)
+                .then(function(form) {
+                    model.form = form;
+                })
         }
 
         function addField(fieldType) {
