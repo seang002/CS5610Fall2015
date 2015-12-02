@@ -9,6 +9,7 @@
         var model = this;
         if ($rootScope.user) {
             model.user = $rootScope.user;
+            model.loggedOn = true;
         } else {
             model.error = true;
             model.message = "User information not found. Please log in or register.";

@@ -10,6 +10,7 @@
         var user = $rootScope.user;
         if (user) {
             var userId = user._id;
+            model.loggedOn = true;
             init();
         } else {
             model.error = true;
@@ -26,6 +27,9 @@
                 .findAllFormsForUser(userId)
                 .then(function(forms) {
                     model.forms = forms;
+                    if (model.forms.length > 0) {
+                        model.hasForms = true;
+                    }
                 });
         }
 
@@ -43,6 +47,9 @@
                             .then(function(forms) {
                                 console.log("New form created.");
                                 model.forms = forms;
+                                if (model.forms.length > 0) {
+                                    model.hasForms = true;
+                                }
                             })
                     }
                 });
@@ -78,6 +85,9 @@
                         .then(function(forms) {
                             console.log("Form deleted.");
                             model.forms = forms;
+                            if (model.forms.length == 0) {
+                                model.hasForms = false;
+                            }
                         })
                 });
         }

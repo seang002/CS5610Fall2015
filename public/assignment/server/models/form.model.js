@@ -139,6 +139,11 @@ module.exports = function(mongoose, db) {
     function createField(id, fieldObj) {
         var deferred = q.defer();
         delete fieldObj._id; // for when field is copied
+        if (fieldObj.options) {
+            for (var i in fieldObj.options) {
+                delete fieldObj.options[i]._id;
+            }
+        }
 
         FormModel
             .findById(id, function(err, form) {
