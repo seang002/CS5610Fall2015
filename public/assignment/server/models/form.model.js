@@ -152,14 +152,25 @@ module.exports = function(mongoose, db) {
 
     function updateField(id, fieldId, fieldObj) {
         var deferred = q.defer();
-        delete fieldObj._id;
+        if (fieldObj.options) {
+            var options = fieldObj.options.split("\n");
+            var newOptions = [];
+            for (var i in options) {
+                var label = options[i].split(",")[0];
+                var value = options[i].split(",")[1];
+                newOptions.push({label: label, value: value});
+            }
+            console.log(newOptions);
+        }
 
         FormModel
             .findById(id, function(err, form) {
                 var fields = form.fields;
                 for (var i in fields) {
                     if (fields[i].id == fieldId) {
-                        fields[i] = fieldObj;
+                        fields[i].label = fieldObj.label;
+                        fields[i].placeholder = fieldObj.placeholder;
+                        fields[i].options = newOptions;
                         form.save(function(err, form) {
                             deferred.resolve(form);
                         });
