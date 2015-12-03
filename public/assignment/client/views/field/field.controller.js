@@ -11,6 +11,15 @@
         var formId = $routeParams["formId"];
         init();
 
+        model.fieldTypes = [
+            {value: "TEXT", text: "Single Line Text Field"},
+            {value: "TEXTAREA", text: "Multi Line Text Field"},
+            {value: "DATE", text: "Date Field"},
+            {value: "SELECT", text: "Dropdown Field"},
+            {value: "CHECKBOX", text: "Checkboxes Field"},
+            {value: "RADIO", text: "Radio Buttons Field"}
+        ];
+
         model.addField = addField;
         model.deleteField = deleteField;
         model.editField = editField;
@@ -32,6 +41,7 @@
 
         function addField(fieldType) {
             var newField = {"type": fieldType};
+            console.log(newField);
 
             if (fieldType == "TEXT" || fieldType == "TEXTAREA") {
                 newField.label = "New Text Field";
