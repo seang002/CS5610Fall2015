@@ -21,39 +21,29 @@
                 <label class="sr-only">Roles</label><input type="text" class="form-control" placeholder="Role1, Role2">
             </th>
             <th>
-                <a class="btn btn-sm earth glyphicon glyphicon-plus" role="button" title="Add"><span class="sr-only">Add user</span></a>
-                <a class="btn btn-sm water glyphicon glyphicon-ok" role="button" title="Update"><span class="sr-only">Update user</span></a>
+                <button class="btn btn-sm earth glyphicon glyphicon-plus" title="Add" disabled>
+                    <span class="sr-only">Add user</span>
+                </button>
+                <button class="btn btn-sm water glyphicon glyphicon-ok" title="Update" disabled>
+                    <span class="sr-only">Update user</span>
+                </button>
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>alice</td>
-            <td></td>
-            <td>student</td>
-            <td>
-                <a class="btn btn-sm fire glyphicon glyphicon-remove" role="button" title="Remove"><span class="sr-only">Remove user</span></a>
-                <a class="btn btn-sm wood glyphicon glyphicon-pencil" role="button" title="Edit"><span class="sr-only">Edit user</span></a>
-            </td>
-        </tr>
-        <tr>
-            <td>bob</td>
-            <td></td>
-            <td>faculty | admin</td>
-            <td>
-                <a class="btn btn-sm fire glyphicon glyphicon-remove" role="button" title="Remove"><span class="sr-only">Remove user</span></a>
-                <a class="btn btn-sm wood glyphicon glyphicon-pencil" role="button" title="Edit"><span class="sr-only">Edit user</span></a>
-            </td>
-        </tr>
-        <tr>
-            <td>charlie</td>
-            <td></td>
-            <td></td>
-            <td>
-                <a class="btn btn-sm fire glyphicon glyphicon-remove" role="button" title="Remove"><span class="sr-only">Remove user</span></a>
-                <a class="btn btn-sm wood glyphicon glyphicon-pencil" role="button" title="Edit"><span class="sr-only">Edit user</span></a>
-            </td>
-        </tr>
+            <tr ng-repeat="user in model.users">
+                <td>{{user.username}}</td>
+                <td></td>
+                <td>{{user.roles}}</td>
+                <td>
+                    <button ng-click="model.deleteUser($index)" class="btn btn-sm fire glyphicon glyphicon-remove" title="Remove">
+                        <span class="sr-only">Remove user</span>
+                    </button>
+                    <button class="btn btn-sm wood glyphicon glyphicon-pencil" title="Remove" disabled>
+                        <span class="sr-only">Remove user</span>
+                    </button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

@@ -9,20 +9,27 @@ module.exports = function(app, model) {
 
     function createNewUser(req, res) {
         var user = req.body;
-        console.log("New user: " + user.username); //checking if user variable is correct
+        console.log("Registering '" + user.username + "'...");
         model
-            .createUser(user)
-            .then(function(user) {
-                res.json(user);
-            })
+            .findUserByUsername(user.username)
+            .then(function(isUser) {
+                if (!isUser) {
+                    model
+                        .createUser(user)
+                        .then(function(user) {
+                            console.log("Registration successful!");
+                            res.json(user);
+                        })
+                } else {
+                    console.log("Registration failed, gg.");
+                    res.json(null);
+                }
+            });
     }
 
     function findUser(req, res) {
         var username = req.query.username;
         var password = req.query.password;
-
-        console.log("Username: " + username); //checking values of username and
-        console.log("Password: " + password); //password variables
 
         if (username && password) {
             var cred = {username: username, password: password};

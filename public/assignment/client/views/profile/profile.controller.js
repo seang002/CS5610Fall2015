@@ -5,7 +5,7 @@
         .module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController(UserService, $rootScope) {
+    function ProfileController(UserService, $rootScope, $timeout) {
         var model = this;
         if ($rootScope.user) {
             model.user = $rootScope.user;
@@ -28,14 +28,10 @@
                         console.log("Profile updated!");
                         model.success = true;
                         model.message = "Profile updated!";
-                        console.log(model.user._id);
-                        for (var i in users) {
-                            var user = users[i];
-                            if (user._id == model.user.id) {
-                                model.user = user;
-                                break;
-                            }
-                        }
+                        $timeout(function() {
+                            model.success = false;
+                        }, 2500);
+                        model.user = user;
                         console.log(model.user);
                     }
                 });
