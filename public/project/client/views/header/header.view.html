@@ -1,4 +1,4 @@
-<div class="container-fluid" ng-controller="HeaderController">
+<div class="container-fluid" ng-controller="HeaderController as model">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -10,28 +10,33 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-            <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('about') != -1}"><a ng-href="##about">About</a></li>
-            <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('team') != -1}"><a href="##team">Our Team</a></li>
-            <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('connect') != -1}"><a ng-href="##connect">Connect</a></li>
+            <li ng-hide="model.isUser" ng-class="{'active' : $location.url().indexOf('about') != -1}"><a ng-href="##about">About</a></li>
+            <li ng-hide="model.isUser" ng-class="{'active' : $location.url().indexOf('team') != -1}"><a href="##team">Our Team</a></li>
+            <li ng-hide="model.isUser" ng-class="{'active' : $location.url().indexOf('connect') != -1}"><a ng-href="##connect">Connect</a></li>
             <li ng-class="{'active' : $location.url().indexOf('walkers') != -1}"><a ng-href="#/walkers">Find a Walker!</a></li>
-            <li class="dropdown" ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}">
+            <li class="dropdown" ng-hide="model.isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     LOG IN <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu log">
                     <li>
-                        <div ng-show="error" class="alert alert-danger">Email or password is not correct.</div>
+                        <div ng-show="model.error" class="alert alert-danger">Email or password is not correct.</div>
                         <form name="loginForm">
                             <div class="form-group">
                                 <label for="email" class="control-label">Email:</label>
-                                <input ng-model="email" class="form-control" id="email" type="email" placeholder="Email" required>
+                                <input ng-model="model.email" class="form-control" id="email" type="email" placeholder="Email" required>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="control-label">Password:</label>
-                                <input ng-model="password" class="form-control" id="password" type="password" placeholder="Password" required>
+                                <input ng-model="model.password" class="form-control" id="password" type="password" placeholder="Password" required>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input ng-model="model.isWalker" type="checkbox"> Check here if you're a returning walker.
+                                </label>
                             </div>
                             <div class="form-group">
-                                <button ng-click="login(email, password)" ng-disabled="loginForm.$invalid" class="btn btn-primary btn-block">Sign In</button>
+                                <button ng-click="model.login()" ng-disabled="loginForm.$invalid" class="btn btn-primary btn-block">Sign In</button>
                             </div>
                         </form>
                         <div class="bottom text-center">
@@ -40,16 +45,16 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown" ng-show="isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}">
+            <li class="dropdown" ng-show="model.isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    {{user.email}} <span class="caret"></span>
+                    {{user.dogName}} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu log">
                     <li class="list">
-                        <a href="#/profile"><i class="fa fa-user"></i>&nbsp; Profile</a>
+                        <a href="#/profile/{{model.user._id}}"><i class="fa fa-user"></i>&nbsp; Profile</a>
                     </li>
                     <li class="list">
-                        <a href="#/appointments"><i class="fa fa-calendar"></i>&nbsp; Appointments</a>
+                        <a href="#/appointments/{{model.user._id}}"><i class="fa fa-calendar"></i>&nbsp; Appointments</a>
                     </li>
                     <li class="list">
                         <a href="#/appointments"><i class="fa fa-star-o"></i>&nbsp; Reviews</a>
@@ -58,10 +63,10 @@
                         <a href="#/appointments"><i class="fa fa-newspaper-o"></i>&nbsp; Reports</a>
                     </li>
                     <li class="list-top">
-                        <a ng-click="deleteAcct()" href=""><span class="text-danger"><i class="fa fa-times"></i>&nbsp; Delete account</span></a>
+                        <a ng-click="model.deleteAcct()" href=""><span class="text-danger"><i class="fa fa-times"></i>&nbsp; Delete account</span></a>
                     </li>
                     <li class="list-top">
-                        <a ng-click="logout()" href=""><i class="fa fa-sign-out"></i>&nbsp; Logout</a>
+                        <a ng-click="model.logout()" href=""><i class="fa fa-sign-out"></i>&nbsp; Logout</a>
                     </li>
                 </ul>
             </li>

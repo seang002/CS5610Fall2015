@@ -5,43 +5,58 @@
         .module("DogWalkingApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController(UserService, $scope, $rootScope, $location) {
+    function HeaderController(OwnerService, WalkerService, $scope, $rootScope, $location) {
+        var model = this;
         $scope.$location = $location;
-        $scope.login = login;
-        $scope.logout = logout;
-        $scope.deleteAcct = deleteAcct;
 
-        function login(email, password) {
-            UserService
-                .findUserByEmailAndPassword(email, password)
+        model.login = login;
+        model.logout = logout;
+        model.deleteAcct = deleteAcct;
+
+        function login() {
+            var service;
+            if (model.isWalker) {
+                console.log("walker login");
+                service = WalkerService;
+            } else {
+                console.log("owner login");
+                service = OwnerService;
+            }
+            service
+                .findUserByEmailAndPassword(model.email, model.password)
                 .then(function(user) {
                     if (!user) {
-                        $scope.error = true;
+                        model.error = true;
                     } else {
-                        $scope.isUser = true;
-                        $rootScope.user = $scope.user = user;
+                        model.isUser = true;
+                        $rootScope.user = model.user = user;
                         console.log("rootScope user:");
                         console.log($rootScope.user);
 
-                        $location.url("/profile");
+                        $location.url("/profile/" + $rootScope.user._id);
                     }
-                })
+                });
         }
 
         function logout() {
             delete $rootScope.user;
-            $scope.email = $scope.password = "";
-            $scope.isUser = false;
-            $scope.error = false;
+            model.email = model.password = "";
+            model.isUser = model.error = model.isWalker = false;
             $location.url("/home");
         }
 
         function deleteAcct() {
-            UserService
-                .deleteUserById($rootScope.user.id)
+            var service;
+            if (model.isWalker) {
+                service = WalkerService;
+            } else {
+                service = OwnerService;
+            }
+            service
+                .deleteUserById($rootScope.user._id)
                 .then(function(response) {
                     logout();
-                })
+                });
         }
     }
 })();

@@ -1,38 +1,61 @@
 "use strict";
-var uuid = require("node-uuid");
 
 module.exports = function(app, model) {
-    app.post("/api/project/user", createUser);
-    app.get("/api/project/user", findUser);
-    app.put("/api/project/user/:id", updateUser);
-    app.delete("/api/project/user/:id", deleteUser);
+    app.post("/api/project/owner", createOwner);
+    app.get("/api/project/owner", findOwner);
+    app.put("/api/project/owner/:id", updateOwner);
+    app.delete("/api/project/owner/:id", deleteOwner);
 
-    function createUser(req, res) {
-        var user = req.body;
-        user.id = uuid.v4();
-        console.log(user);
-        res.json(model.createUser(user));
+    function createOwner(req, res) {
+        var owner = req.body;
+        console.log("Registering");
+        model
+            .findOwnerByEmail(owner.email)
+            .then(function(isOwner) {
+                if (!isOwner) {
+                    model
+                        .createOwner(owner)
+                        .then(function(owner) {
+                            console.log("Registration success!");
+                            res.json(owner);
+                        })
+                } else {
+                    console.log("Error in registration.");
+                    res.json(null);
+                }
+            })
     }
 
-    function findUser(req, res) {
+    function findOwner(req, res) {
         var email = req.query.email;
         var password = req.query.password;
         if (email && password) {
-            var cred = {email: email, password: password};
-            res.json(model.findUserByCred(cred));
+            model
+                .findOwnerByCred({email: email, password: password})
+                .then(function(owner) {
+                    res.json(owner);
+                })
         } else {
-            res.json(model.findAllUsers());
+            res.json(null);
         }
     }
 
-    function updateUser(req, res) {
+    function updateOwner(req, res) {
         var id = req.params.id;
-        var user = req.body;
-        res.json(model.updateUser(id, user));
+        var owner = req.body;
+        model
+            .updateOwner(id, owner)
+            .then(function(owners) {
+                res.json(owners[0])
+            })
     }
 
-    function deleteUser(req, res) {
+    function deleteOwner(req, res) {
         var id = req.params.id;
-        res.json(model.deleteUser(id));
+        model
+            .deleteOwner(id)
+            .then(function(owners) {
+                res.json(owners);
+            })
     }
 };

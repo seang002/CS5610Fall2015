@@ -2,91 +2,91 @@
 var q = require("q");
 
 module.exports = function(mongoose, db) {
-    var OwnerSchema = require("./owner.schema.js")(mongoose);
-    var OwnerModel = mongoose.model("OwnerModel", OwnerSchema);
+    var WalkerSchema = require("./walker.schema.js")(mongoose);
+    var WalkerModel = mongoose.model("WalkerModel", WalkerSchema);
 
     var api = {
-        createOwner: createOwner,
-        findAllOwners: findAllOwners,
-        findOwnerByEmail: findOwnerByEmail,
-        findOwnerByCred: findOwnerByCred,
-        updateOwner: updateOwner,
-        deleteOwner: deleteOwner
+        createWalker: createWalker,
+        findAllWalkers: findAllWalkers,
+        findWalkerByEmail: findWalkerByEmail,
+        findWalkerByCred: findWalkerByCred,
+        updateWalker: updateWalker,
+        deleteWalker: deleteWalker
     };
     return api;
 
-    function createOwner(owner) {
+    function createWalker(walker) {
         var deferred = q.defer();
-        OwnerModel
-            .create(owner, function(err, owner) {
+        WalkerModel
+            .create(walker, function(err, walker) {
                 if (err) {
                     deferred.reject(err);
                 } else {
-                    deferred.resolve(owner);
+                    deferred.resolve(walker);
                 }
             });
         return deferred.promise;
     }
 
-    function findAllOwners() {
+    function findAllWalkers() {
         var deferred = q.defer();
-        OwnerModel
-            .find(function(err, owners) {
+        WalkerModel
+            .find(function(err, walkers) {
                 if (err) {
                     deferred.reject(err);
                 } else {
-                    deferred.resolve(owners);
+                    deferred.resolve(walkers);
                 }
             });
         return deferred.promise;
     }
 
-    function findOwnerByEmail(email) {
+    function findWalkerByEmail(email) {
         var deferred = q.defer();
-        OwnerModel
-            .findOne({email: email}, function(err, owner) {
+        WalkerModel
+            .findOne({email: email}, function(err, walker) {
                 if (err) {
                     deferred.reject(err);
                 } else {
-                    deferred.resolve(owner);
+                    deferred.resolve(walker);
                 }
             });
         return deferred.promise;
     }
 
-    function findOwnerByCred(cred) {
+    function findWalkerByCred(cred) {
         var deferred = q.defer();
-        OwnerModel
-            .findOne({email: cred.email, password: cred.password}, function(err, owner) {
+        WalkerModel
+            .findOne({email: cred.email, password: cred.password}, function(err, walker) {
                 if (err) {
                     deferred.reject(err);
                 } else {
-                    deferred.resolve(owner);
+                    deferred.resolve(walker);
                 }
             });
         return deferred.promise;
     }
 
-    function updateOwner(id, owner) {
+    function updateWalker(id, walker) {
         var deferred = q.defer();
-        delete owner._id;
+        delete walker._id;
 
-        OwnerModel
-            .update({_id: id}, {$set: owner}, function(err, owner) {
-                OwnerModel.find(function(err, owner) {
+        WalkerModel
+            .update({_id: id}, {$set: owner}, function(err, walker) {
+                WalkerModel.find(function(err, walker) {
                     if (err) {
                         deferred.reject(err);
                     } else {
-                        deferred.resolve(owner);
+                        deferred.resolve(walker);
                     }
                 })
             });
         return deferred.promise;
     }
 
-    function deleteOwner(id) {
+    function deleteWalker(id) {
         var deferred = q.defer();
-        OwnerModel
+        WalkerModel
             .remove({_id: id}, function(err, status) {
                 if (err) {
                     deferred.reject(err);

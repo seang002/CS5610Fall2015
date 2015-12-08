@@ -5,12 +5,13 @@
         .module("DogWalkingApp")
         .controller("AppController", AppController);
 
-    function AppController(UserService, $location) {
+    function AppController(WalkerService, $location) {
         var model = this;
         model.apply = apply;
 
         function apply(newWalker) {
-            UserService
+            console.log(newWalker);
+            WalkerService
                 .createUser(newWalker)
                 .then(function(user) {
                     console.log("Application was accepted.");

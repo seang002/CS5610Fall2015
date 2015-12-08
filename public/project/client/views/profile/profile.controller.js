@@ -5,11 +5,17 @@
         .module("DogWalkingApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController(UserService, $routeParams) {
+    function ProfileController(OwnerService, $routeParams, $rootScope, $location) {
         var model = this;
-        var userId = $routeParams.id;
+        var id = $routeParams["id"];
+        model.isWalker = $rootScope.isWalker;
+        model.isOwner = !model.isWalker;
 
-        init();
+        if ($rootScope.user) {
+            init();
+        } else {
+            $location.url("/home");
+        }
 
         model.updateUser = updateUser;
         model.functionEdit = functionEdit;
@@ -21,7 +27,7 @@
         model.functionEditIndex = -1;
 
         function init() {
-            model.owner = {dogName: "Kibbles", email: "verena@gmail.com", breed: "Mixed", age: 4, personality: "Timid", notes: "NA"};
+            model.owner = $rootScope.user;
         }
 
         function updateUser() {

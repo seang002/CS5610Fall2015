@@ -3,9 +3,9 @@
 
     angular
         .module("DogWalkingApp")
-        .factory("UserService", UserService);
+        .factory("WalkerService", WalkerService);
 
-    function UserService($http, $q) {
+    function WalkerService($http, $q) {
         var service = {
             createUser: createUser,
             findUserByEmailAndPassword: findUserByEmailAndPassword,
@@ -15,10 +15,10 @@
         };
         return service;
 
-        function createUser(newUser) {
+        function createUser(user) {
             var deferred = $q.defer();
             $http
-                .post("/api/project/user", newUser)
+                .post("/api/project/walker", user)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -28,7 +28,7 @@
         function findUserByEmailAndPassword(email, password) {
             var deferred = $q.defer();
             $http
-                .get("/api/project/user?email=" + email + "&password=" + password)
+                .get("/api/project/walker?email=" + email + "&password=" + password)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -38,7 +38,7 @@
         function findUserById(userId) {
             var deferred = $q.defer();
             $http
-                .get("/api/project/user/" + userId)
+                .get("/api/project/walker/" + userId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -48,7 +48,7 @@
         function updateUser(userId, user) {
             var deferred = $q.defer();
             $http
-                .put("/api/project/user/" + userId, user)
+                .put("/api/project/walker/" + userId, user)
                 .sucess(function(response) {
                     deferred.resolve(response);
                 });
@@ -58,7 +58,7 @@
         function deleteUserById(userId) {
             var deferred = $q.defer();
             $http
-                .delete("/api/project/user/" + userId)
+                .delete("/api/project/walker/" + userId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });

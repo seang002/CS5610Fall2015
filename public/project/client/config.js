@@ -10,7 +10,7 @@
             .when("/home", {
                 templateUrl: "views/home/home.view.html"
             })
-            .when("/appointments", {
+            .when("/appointments/:id", {
                 templateUrl: "views/appointments/appointments.view.html",
                 controller: "ApptController as model"
             })
@@ -18,7 +18,7 @@
                 templateUrl: "views/application/application.view.html",
                 controller: "AppController as model"
             })
-            .when("/profile", {
+            .when("/profile/:id", {
                 templateUrl: "views/profile/profile.view.html",
                 controller: "ProfileController as model"
             })

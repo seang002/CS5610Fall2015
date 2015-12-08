@@ -5,7 +5,7 @@
         .module("DogWalkingApp")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController(UserService, $rootScope, $location) {
+    function RegisterController(OwnerService, $rootScope, $location) {
         var model = this;
         model.register = register;
         model.apply = apply;
@@ -19,7 +19,7 @@
                     dogName: user.dogName, breed: user.breed, age: user.age
                 };
 
-                UserService
+                OwnerService
                     .createUser(newUser)
                     .then(function(user) {
                         if (!user) {
@@ -27,8 +27,9 @@
                             model.message = "Email is already taken; please choose another.";
                         } else {
                             console.log("New user created.");
-                            $rootScope.user = user;
-                            $location.url("/profile");
+                            model.error = false;
+                            model.success = true;
+                            model.message = "Registration successful! Feel free to log in any time.";
                         }
                     });
             }
