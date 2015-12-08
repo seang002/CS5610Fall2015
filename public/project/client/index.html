@@ -4,10 +4,12 @@
     <meta charset="utf-8">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/jumbotron.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Slab" type='text/css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kalam:400" type='text/css' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:700,400,300" type='text/css' />
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -16,17 +18,36 @@
     <script src="config.js"></script>
 
     <!-- AngularJS Controllers -->
-    <script src="header/header.controller.js"></script>
+    <script src="views/application/application.controller.js"></script>
+    <script src="views/appointments/appointments.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/profile/profile.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/walker/walker.controller.js"></script>
+    <script src="views/walkers/walkers.controller.js"></script>
+
+    <!-- Services -->
+    <script src="services/UserService.js"></script>
 
     <title>Happy Paws!</title>
 </head>
 
 <body>
-    <!-- MAIN -->
-    <div ng-view></div>
+    <div>
+        <nav class="navbar navbar-inverse navbar-fixed-top top">
+            <div ng-include="'views/header/header.view.html'"></div>
+        </nav>
+
+        <div ng-view autoscroll></div>
+
+        <footer class="info">
+            <div ng-include="'views/footer/footer.view.html'"></div>
+        </footer>
+    </div>
 
     <!-- jQuery & Bootstrap JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
 </body>
 </html>

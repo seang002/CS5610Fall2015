@@ -8,37 +8,34 @@
     function Configure($routeProvider) {
         $routeProvider
             .when("/home", {
-                templateUrl: "home/home.view.html"
-            })
-            .when("/register", {
-                templateUrl: "register/register.view.html"
-            })
-            .when("/application", {
-                templateUrl: "application/application.view.html"
-            })
-            .when("/thankyou", {
-                templateUrl: "thankyou/thankyou.view.html"
-            })
-            .when("/profile", {
-                templateUrl: "profile/profile.view.html"
-            })
-            .when("/walkerprofile", {
-                templateUrl: "walkerprofile/walkerprofile.view.html"
-            })
-            .when("/readreviews", {
-                templateUrl: "walkerprofile/reviews.view.html"
-            })
-            .when("/readrequests", {
-                templateUrl: "walkerprofile/requests.view.html"
-            })
-            .when("/sendreport", {
-                templateUrl: "walkerprofile/reportcard.view.html"
-            })
-            .when("/walkers", {
-                templateUrl: "walkers/walkers.view.html"
+                templateUrl: "views/home/home.view.html"
             })
             .when("/appointments", {
-                templateUrl: "appointments/appointments.view.html"
+                templateUrl: "views/appointments/appointments.view.html",
+                controller: "ApptController as model"
+            })
+            .when("/application", {
+                templateUrl: "views/application/application.view.html",
+                controller: "AppController as model"
+            })
+            .when("/profile", {
+                templateUrl: "views/profile/profile.view.html",
+                controller: "ProfileController as model"
+            })
+            .when("/register", {
+                templateUrl: "views/register/register.view.html",
+                controller: "RegisterController as model"
+            })
+            .when("/thankyou", {
+                templateUrl: "views/thankyou/thankyou.view.html"
+            })
+            .when("/walker", {
+                templateUrl: "views/walker/walker.view.html",
+                controller: "WalkerController as model"
+            })
+            .when("/walkers", {
+                templateUrl: "views/walkers/walkers.view.html",
+                controller: "WalkersController as model"
             })
             .otherwise({
                 redirectTo: "/home"

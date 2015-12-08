@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <h1 class="page-header">Find a Walker</h1>
+    <p>When does your dog need a walk?</p>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="days">Day: </label>
+            <select ng-model="criteria.day" class="form-control">
+                <option ng-repeat="day in model.days">{{day}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="times">Time: </label>
+            <select ng-model="criteria.time" class="form-control">
+                <option ng-repeat="time in model.times">{{time}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="freq">Frequency: </label>
+            <select ng-model="criteria.freq" class="form-control">
+                <option ng-repeat="freq in model.freqs">{{freq}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Start Date: </label>
+            <input ng-model="criteria.date" type="date" class="form-control"/>
+        </div>
+        <button ng-click="model.search(criteria)" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+</div>
+
+<div class="container">
+    <div ng-show="hasNoResults" class="alert alert-warning" role="alert"><i class="fa fa-frown-o"></i> Looks like we couldn't find a walker for you this time. Try searching with different options.</div>
+    <table class="table table-stripped" ng-show="hasResults">
+        <thead>
+        <tr>
+            <th>Walker</th>
+            <th>Rating</th>
+            <th>City</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="walker in model.walkers">
+            <td>{{walker.firstName}} {{walker.lastName}}</td>
+            <td>{{walker.rating}}</td>
+            <td>{{walker.city}}</td>
+            <td><a ng-click="moreInfo">More Info</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

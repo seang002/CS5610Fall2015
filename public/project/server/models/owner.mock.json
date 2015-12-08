@@ -1,0 +1,6 @@
+[
+  {"id": 123, "email": "verena@gmail.com", "password": "test", "dogName": "Kibs",
+    "breed": "Mixed", "age": 4, "personality": "Shy, timid", "notes": "Lap dog"},
+  {"id": 456, "email": "triet@gmail.com", "password": "test", "dogName": "Dash",
+    "breed": "Mixed", "age": 4, "personality": "Friendly, active", "notes": "Does not like small children"}
+]

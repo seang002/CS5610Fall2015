@@ -1,7 +1,3 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div ng-include="'header/header1.view.html'"></div>
-</nav>
-
 <div class="container-fluid">
     <h1 class="page-header">Register</h1>
     <div class="row">
@@ -9,46 +5,47 @@
             <h3>Dog Owners</h3>
             <p>Is life getting a bit ruff and you can't take your dog on walks as frequently as before? Register now and start looking for a walker in your area! All of our walkers are certified and background-checked to give your best friend the best time!</p>
             <p>NOTE: Your dog must be up-to-date with all its vaccinations.</p>
-            <form class="form-horizontal" role="form" action="#/profile">
+            <div ng-show="model.error" class="alert alert-danger">{{model.message}}</div>
+            <form class="form-horizontal" role="form">
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email:</label>
                     <div class="col-sm-9">
-                        <input type="email" ng-model="email" id="email" class="form-control" placeholder="Email">
+                        <input type="email" ng-model="owner.email" id="email" class="form-control" placeholder="Email" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Password:</label>
                     <div class="col-sm-9">
-                        <input type="password" ng-model="password" id="password" class="form-control" placeholder="Password">
+                        <input type="password" ng-model="owner.password" id="password" class="form-control" placeholder="Password" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="vPassword" class="col-sm-3 control-label">Verify Password:</label>
                     <div class="col-sm-9">
-                        <input type="password" ng-model="vPassword" id="vPassword" class="form-control" placeholder="Verify Password">
+                        <input type="password" ng-model="owner.vPassword" id="vPassword" class="form-control" placeholder="Verify Password" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="dogname" class="col-sm-3 control-label">Dog Name:</label>
+                    <label for="dogName" class="col-sm-3 control-label">Dog Name:</label>
                     <div class="col-sm-9">
-                        <input type="text" ng-model="dogname" id="dogname" class="form-control" placeholder="Dog Name">
+                        <input type="text" ng-model="owner.dogName" id="dogname" class="form-control" placeholder="Dog Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="breed" class="col-sm-3 control-label">Breed:</label>
                     <div class="col-sm-9">
-                        <input type="text" ng-model="breed" id="breed" class="form-control" placeholder="Breed">
+                        <input type="text" ng-model="owner.breed" id="breed" class="form-control" placeholder="Breed" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="age" class="col-sm-3 control-label">Age (years):</label>
                     <div class="col-sm-3">
-                        <input type="number" ng-model="age" id="age" min="0" class="form-control" placeholder="Age">
+                        <input type="number" ng-model="owner.age" id="age" min="0" class="form-control" placeholder="Age" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9">
-                        <button type="submit" class="btn btn-success form-control" role="button">Register</button>
+                        <button ng-click="model.register(owner)" class="btn btn-primary form-control" role="button">Register</button>
                     </div>
                 </div>
             </form>
@@ -56,7 +53,7 @@
         <div class="col-sm-5">
             <h3>Dog Walkers</h3>
             <p>Do you love dogs and just can't get enough of them? Start an application with us, and if selected and approved, you can start walking and bonding with the dogs in your neighborhood!</p>
-            <a href="#/application" type="submit" class="btn btn-success form-control" role="button">Start Application</a>
+            <button ng-click="model.apply()" class="btn btn-primary form-control">Start Application</button>
         </div>
     </div>
 </div>
