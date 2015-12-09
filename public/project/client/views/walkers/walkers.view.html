@@ -1,48 +1,50 @@
 <div class="container-fluid">
-    <h1 class="page-header">Find a Walker</h1>
-    <div class="content">
-        <p>When does your dog need a walk?</p>
-        <form name="searchForm" class="form-inline">
-            <div class="form-group">
-                <label for="days">Day: </label>
-                <select ng-model="criteria.day" class="form-control" required>
-                    <option ng-repeat="day in model.days">{{day}}</option>
-                </select>
+    <div class="row">
+        <h1 class="page-header">Find a Walker</h1>
+        <div class="content">
+            <p>When does your dog need a walk?</p>
+            <form name="searchForm" class="form-inline">
+                <div class="form-group">
+                    <label for="days">Day: </label>
+                    <select ng-model="criteria.day" class="form-control" required>
+                        <option ng-repeat="day in model.days">{{day}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="times">Time: </label>
+                    <select ng-model="criteria.time" class="form-control" required>
+                        <option ng-repeat="time in model.times">{{time}}</option>
+                    </select>
+                </div>
+                <button ng-click="model.search(criteria)" ng-disabled="searchForm.$invalid" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                or
+                <button ng-click="model.searchAll()" class="btn btn-primary">Search All Walkers</button>
+            </form>
+            <hr>
+            <div ng-show="model.hasNoResults" class="row">
+                <div class="alert alert-warning col-md-12"><i class="fa fa-frown-o"></i> Looks like we couldn't find a walker for you with these options. Try searching with a different day, time, or frequency.</div>
             </div>
-            <div class="form-group">
-                <label for="times">Time: </label>
-                <select ng-model="criteria.time" class="form-control" required>
-                    <option ng-repeat="time in model.times">{{time}}</option>
-                </select>
-            </div>
-            <button ng-click="model.search(criteria)" ng-disabled="searchForm.$invalid" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-            or
-            <button ng-click="model.searchAll()" class="btn btn-primary">Search All Walkers</button>
-        </form>
-        <hr>
-        <div ng-show="model.hasNoResults" class="row">
-            <div class="alert alert-warning col-sm-12"><i class="fa fa-frown-o"></i> Looks like we couldn't find a walker for you with these options. Try searching with a different day, time, or frequency.</div>
+            <table class="table table-stripped" ng-show="model.hasResults">
+                <thead>
+                <tr>
+                    <th>Walker</th>
+                    <th>Rating</th>
+                    <th>City</th>
+                    <th>More Info</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="walker in model.walkers">
+                    <td>{{walker.firstName}} {{walker.lastName}}</td>
+                    <td>{{walker.rating}}</td>
+                    <td>{{walker.city}}</td>
+                    <td><a ng-click="model.moreInfo()">
+                        <span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-paw fa-stack-1x"></i></span>
+                    </a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <table class="table table-stripped" ng-show="model.hasResults">
-            <thead>
-            <tr>
-                <th>Walker</th>
-                <th>Rating</th>
-                <th>City</th>
-                <th>More Info</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="walker in model.walkers">
-                <td>{{walker.firstName}} {{walker.lastName}}</td>
-                <td>{{walker.rating}}</td>
-                <td>{{walker.city}}</td>
-                <td><a ng-click="model.moreInfo()">
-                    <span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-paw fa-stack-1x"></i></span>
-                </a></td>
-            </tr>
-            </tbody>
-        </table>
     </div>
 </div>
 

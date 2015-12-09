@@ -3,32 +3,32 @@
     <div class="content">
         <form name="appForm" class="form-horizontal">
             <div class="form-group">
-                <label for="fname" class="col-sm-2 control-label">First Name:</label>
-                <div class="col-sm-3">
+                <label for="fname" class="col-md-2 control-label">First Name:</label>
+                <div class="col-md-3">
                     <input type="text" ng-model="app.firstName" id="fname" class="form-control" placeholder="First Name" required>
                 </div>
-                <label for="lname" class="col-sm-2 control-label">Last Name:</label>
-                <div class="col-sm-3">
+                <label for="lname" class="col-md-2 control-label">Last Name:</label>
+                <div class="col-md-3">
                     <input type="text" ng-model="app.lastName" id="lname" class="form-control" placeholder="Last Name" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="dob" class="col-sm-2 control-label">Date of Birth:</label>
-                <div class="col-sm-3">
+                <label for="dob" class="col-md-2 control-label">Date of Birth:</label>
+                <div class="col-md-3">
                     <input type="date" ng-model="app.dob" id="dob" class="form-control" required>
                 </div>
-                <label for="phone" class="col-sm-2 control-label">Phone:</label>
-                <div class="col-sm-3">
+                <label for="phone" class="col-md-2 control-label">Phone:</label>
+                <div class="col-md-3">
                     <input type="tel" ng-model="app.phone" id="phone" class="form-control" placeholder="xxx-xxx-xxxx" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="address" class="col-sm-2 control-label">Address:</label>
-                <div class="col-sm-4">
+                <label for="address" class="col-md-2 control-label">Address:</label>
+                <div class="col-md-4">
                     <input type="text" ng-model="app.address" id="address" class="form-control" placeholder="123 Happy Paws St" required>
                 </div>
-                <label for="city" class="col-sm-2 control-label">City:</label>
-                <div class="col-sm-2">
+                <label for="city" class="col-md-2 control-label">City:</label>
+                <div class="col-md-2">
                     <input type="text" ng-model="app.city" id="city" class="form-control" placeholder="Seattle" required>
                 </div>
             </div>
@@ -37,20 +37,20 @@
             </div>
             <div ng-show="model.error" class="alert alert-danger">{{model.message}}</div>
             <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email:</label>
-                <div class="col-sm-8">
+                <label for="email" class="col-md-2 control-label">Email:</label>
+                <div class="col-md-8">
                     <input type="email" ng-model="app.email" id="email" class="form-control" placeholder="dogwalker@happypaws.com" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">Password:</label>
-                <div class="col-sm-8">
+                <label for="password" class="col-md-2 control-label">Password:</label>
+                <div class="col-md-8">
                     <input type="password" ng-model="app.password" id="password" class="form-control" placeholder="Password" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="vPassword" class="col-sm-2 control-label">Verify Password:</label>
-                <div class="col-sm-8">
+                <label for="vPassword" class="col-md-2 control-label">Verify Password:</label>
+                <div class="col-md-8">
                     <input type="password" ng-model="app.vPassword" id="vPassword" class="form-control" placeholder="Verify Password" required>
                 </div>
             </div>
@@ -59,21 +59,21 @@
             </div>
             <div class="form-group">
                 <label for="exp" class="col-xs-offset-1 form-label">Give a brief description of your experience of working with dogs and other pet services.</label>
-                <div class="col-sm-8">
-                    <textarea ng-model="app.exp" id="exp" class="col-sm-offset-3 form-control" rows="4" placeholder="I am..." required></textarea>
+                <div class="col-md-8">
+                    <textarea ng-model="app.exp" id="exp" class="col-md-offset-3 form-control" rows="4" placeholder="I am..." required></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label for="about" class="col-xs-offset-1 form-label">Other than your love of dogs, why are you applying to Happy Paws?</label>
-                <div class="col-sm-8">
-                    <textarea ng-model="app.whyApply" id="about" class="col-sm-offset-3 form-control" rows="4" placeholder="I am..." required></textarea>
+                <div class="col-md-8">
+                    <textarea ng-model="app.whyApply" id="about" class="col-md-offset-3 form-control" rows="4" placeholder="I am..." required></textarea>
                 </div>
             </div>
             <div class="container">
                 <p>When I submit this application, I am certifying that all the information provided is accurate and up-to-date, and I am aware that a background check will be performed if I am selected. I also understand that Happy Paws receives hundreds of applications each day and I may not receive a response. Furthermore, I am aware of all the policies that are expected of me as a dog walker, such as treating each pup with love and care, picking up after their waste, and fully giving the dog under my care my full attention when out on walks.</p>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-8">
+                <div class="col-md-offset-2 col-md-8">
                     <button ng-click="model.apply(app)" ng-disabled="appForm.$invalid" class="btn btn-primary btn-block">Submit</button>
                 </div>
             </div>
