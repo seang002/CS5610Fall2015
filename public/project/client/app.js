@@ -2,5 +2,5 @@
     "use strict";
 
     angular
-        .module("DogWalkingApp", ["ngRoute"])
+        .module("DogWalkingApp", ["ngRoute", "ngDialog"])
 })();

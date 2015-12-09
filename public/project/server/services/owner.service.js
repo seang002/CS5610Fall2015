@@ -8,7 +8,6 @@ module.exports = function(app, model) {
 
     function createOwner(req, res) {
         var owner = req.body;
-        console.log("Registering");
         model
             .findOwnerByEmail(owner.email)
             .then(function(isOwner) {
@@ -45,8 +44,8 @@ module.exports = function(app, model) {
         var owner = req.body;
         model
             .updateOwner(id, owner)
-            .then(function(owners) {
-                res.json(owners[0])
+            .then(function(owner) {
+                res.json(owner)
             })
     }
 

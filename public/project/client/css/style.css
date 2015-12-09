@@ -4,6 +4,12 @@ body {
     line-height: 25px;
 }
 
+a {
+    -webkit-transition: all .5s ease-in;
+    -moz-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+}
+
 /* HEADER */
 .top {
     font-size: 18px;
@@ -28,33 +34,35 @@ body {
     padding: 15px;
 }
 
-.log .list-top a {
-    border-top: 1px solid #ddd;
-    padding: 15px;
-}
-
-.log .bottom {
+.log .list-top a, .log .bottom {
     border-top: 1px solid #ddd;
     padding: 15px;
 }
 
 /* HOME - FIRST ROW */
-.picture {
-    background-image: url("http://s23.postimg.org/rfdz9r3mj/DSC_9674.jpg");
+.main {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     text-align: center;
 }
 
-.picture-text {
+.main-image1 {
+    background-image: url("http://s23.postimg.org/rfdz9r3mj/DSC_9674.jpg");
+}
+
+.main-image2 {
+    background-image: url("http://s7.postimg.org/avvluxtjv/DSC_7709.jpg");
+}
+
+.main-text {
     color: #fff;
     position: relative;
     top: 50%;
     overflow: hidden;
 }
 
-.picture-text h1, h1 {
+.main-text h1, h1 {
     font-family: "Kalam";
     text-transform: uppercase;
 }
@@ -77,7 +85,7 @@ body {
 /* HOME - FOURTH ROW */
 .connect {
     color: #fff;
-    padding: 25px 50px;
+    padding: 50px;
     width: 100%;
     background-color: #2c3e50;
 }
@@ -117,20 +125,17 @@ body {
     background: #fff;
 }
 
-/* CONTENT - MAIN */
-.content {
-    margin: auto;
-    width: 95%;
-}
-
 /* FOOTER */
 .info {
-    position: fixed;
-    left: 0;
-    bottom: 0;
     padding: 15px 0;
     width : 100%;
     color: #fff;
     background-color: #233140;
     font-size: 12px;
+}
+
+/* CONTENT - MAIN */
+.content {
+    margin: auto;
+    width: 95%;
 }

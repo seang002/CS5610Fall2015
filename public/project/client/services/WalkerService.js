@@ -8,8 +8,9 @@
     function WalkerService($http, $q) {
         var service = {
             createUser: createUser,
+            findAllUsers: findAllUsers,
             findUserByEmailAndPassword: findUserByEmailAndPassword,
-            findUserById: findUserById,
+            findUsersByParams: findUsersByParams,
             updateUser: updateUser,
             deleteUserById: deleteUserById
         };
@@ -19,6 +20,16 @@
             var deferred = $q.defer();
             $http
                 .post("/api/project/walker", user)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findAllUsers() {
+            var deferred = $q.defer();
+            $http
+                .get("/api/project/walker")
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -35,10 +46,10 @@
             return deferred.promise;
         }
 
-        function findUserById(userId) {
+        function findUsersByParams(params) {
             var deferred = $q.defer();
             $http
-                .get("/api/project/walker/" + userId)
+                .get("/api/project/walker?day=" + params.day + "&time=" + params.time)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -49,7 +60,7 @@
             var deferred = $q.defer();
             $http
                 .put("/api/project/walker/" + userId, user)
-                .sucess(function(response) {
+                .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;

@@ -1,6 +1,9 @@
 "use strict";
 
 module.exports = function(mongoose) {
+    var ReportSchema = require("./report.schema.js")(mongoose);
+    var ReviewSchema = require("./review.schema.js")(mongoose);
+
     var walkerSchema = mongoose.Schema({
         email: String,
         password: String,
@@ -9,11 +12,13 @@ module.exports = function(mongoose) {
         city: String,
         days: [String],
         times: [String],
+        reports: [ReportSchema],
+        reviews: [ReviewSchema],
         hired: {type: String, default: "no", enum: ["yes", "no"]},
         dob: Date,
         phone: String,
         address: String,
-        desc: String,
+        exp: String,
         whyApply: String
     }, {collection: "cs5610.project.walker"});
 

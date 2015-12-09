@@ -10,8 +10,8 @@
             .when("/home", {
                 templateUrl: "views/home/home.view.html"
             })
-            .when("/appointments/:id", {
-                templateUrl: "views/appointments/appointments.view.html",
+            .when("/profile/:id/appointments", {
+                templateUrl: "views/profile/appointments.view.html",
                 controller: "ApptController as model"
             })
             .when("/application", {
@@ -26,12 +26,16 @@
                 templateUrl: "views/register/register.view.html",
                 controller: "RegisterController as model"
             })
+            .when("/profile/:id/reviews", {
+                templateUrl: "views/profile/reviews.view.html",
+                controller: "ReviewController as model"
+            })
+            .when("/profile/:id/reports", {
+                templateUrl: "views/profile/reports.view.html",
+                controller: "ReportController as model"
+            })
             .when("/thankyou", {
                 templateUrl: "views/thankyou/thankyou.view.html"
-            })
-            .when("/walker", {
-                templateUrl: "views/walker/walker.view.html",
-                controller: "WalkerController as model"
             })
             .when("/walkers", {
                 templateUrl: "views/walkers/walkers.view.html",

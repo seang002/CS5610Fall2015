@@ -2,30 +2,22 @@
     <h1 class="page-header">Find a Walker</h1>
     <div class="content">
         <p>When does your dog need a walk?</p>
-        <form class="form-inline">
+        <form name="searchForm" class="form-inline">
             <div class="form-group">
                 <label for="days">Day: </label>
-                <select ng-model="criteria.day" class="form-control">
+                <select ng-model="criteria.day" class="form-control" required>
                     <option ng-repeat="day in model.days">{{day}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="times">Time: </label>
-                <select ng-model="criteria.time" class="form-control">
+                <select ng-model="criteria.time" class="form-control" required>
                     <option ng-repeat="time in model.times">{{time}}</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="freq">Frequency: </label>
-                <select ng-model="criteria.freq" class="form-control">
-                    <option ng-repeat="freq in model.freqs">{{freq}}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="startDate">Start Date: </label>
-                <input ng-model="criteria.date" type="date" class="form-control"/>
-            </div>
-            <button ng-click="model.search(criteria)" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+            <button ng-click="model.search(criteria)" ng-disabled="searchForm.$invalid" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+            or
+            <button ng-click="model.searchAll()" class="btn btn-primary">Search All Walkers</button>
         </form>
         <hr>
         <div ng-show="model.hasNoResults" class="row">
@@ -37,7 +29,7 @@
                 <th>Walker</th>
                 <th>Rating</th>
                 <th>City</th>
-                <th></th>
+                <th>More Info</th>
             </tr>
             </thead>
             <tbody>
@@ -45,7 +37,9 @@
                 <td>{{walker.firstName}} {{walker.lastName}}</td>
                 <td>{{walker.rating}}</td>
                 <td>{{walker.city}}</td>
-                <td><a ng-click="moreInfo">More Info</a></td>
+                <td><a ng-click="model.moreInfo()">
+                    <span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-paw fa-stack-1x"></i></span>
+                </a></td>
             </tr>
             </tbody>
         </table>

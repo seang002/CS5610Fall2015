@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/jumbotron.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ngDialog.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kalam:400" type='text/css' />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:700,400,300" type='text/css' />
 
@@ -19,11 +20,12 @@
 
     <!-- AngularJS Controllers -->
     <script src="views/application/application.controller.js"></script>
-    <script src="views/appointments/appointments.controller.js"></script>
+    <script src="views/profile/appointments.controller.js"></script>
     <script src="views/header/header.controller.js"></script>
     <script src="views/profile/profile.controller.js"></script>
     <script src="views/register/register.controller.js"></script>
-    <script src="views/walker/walker.controller.js"></script>
+    <script src="views/profile/reports.controller.js"></script>
+    <script src="views/profile/reviews.controller.js"></script>
     <script src="views/walkers/walkers.controller.js"></script>
 
     <!-- Services -->
@@ -40,15 +42,12 @@
         </nav>
 
         <div ng-view autoscroll></div>
-
-        <footer class="info">
-            <div ng-include="'views/footer/footer.view.html'"></div>
-        </footer>
     </div>
 
     <!-- jQuery & Bootstrap JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="js/scrolling-nav.js"></script>
+    <script src="js/ngDialog.js"></script>
 </body>
 </html>

@@ -8,13 +8,12 @@ module.exports = function(app, model) {
 
     function createWalker(req, res) {
         var walker = req.body;
-        console.log("Registering");
         model
             .findWalkerByEmail(walker.email)
             .then(function(isWalker) {
                 if (!isWalker) {
                     model
-                        .createOwner(walker)
+                        .createWalker(walker)
                         .then(function(walker) {
                             console.log("Registration success!");
                             res.json(walker);
@@ -29,14 +28,26 @@ module.exports = function(app, model) {
     function findWalker(req, res) {
         var email = req.query.email;
         var password = req.query.password;
+        var day = req.query.day;
+        var time = req.query.time;
         if (email && password) {
             model
                 .findWalkerByCred({email: email, password: password})
                 .then(function(walker) {
                     res.json(walker);
                 })
+        } else if (day && time) {
+            model
+                .findwalkersByParams({day: day, time: time})
+                .then(function(walkers) {
+                    res.json(walkers);
+                })
         } else {
-            res.json(null);
+            model
+                .findAllWalkers()
+                .then(function(walkers) {
+                    res.json(walkers);
+                });
         }
     }
 
@@ -44,9 +55,9 @@ module.exports = function(app, model) {
         var id = req.params.id;
         var walker = req.body;
         model
-            .updateOwner(id, walker)
-            .then(function(walkers) {
-                res.json(walkers[0])
+            .updateWalker(id, walker)
+            .then(function(walker) {
+                res.json(walker)
             })
     }
 

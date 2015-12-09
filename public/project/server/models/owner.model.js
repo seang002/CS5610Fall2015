@@ -73,7 +73,7 @@ module.exports = function(mongoose, db) {
 
         OwnerModel
             .update({_id: id}, {$set: owner}, function(err, owner) {
-                OwnerModel.find(function(err, owner) {
+                OwnerModel.findById(id, function(err, owner) {
                     if (err) {
                         deferred.reject(err);
                     } else {

@@ -1,72 +1,116 @@
 <div class="container-fluid">
     <h1 class="page-header">Profile</h1>
+
     <div ng-if="model.isOwner" class="content">
-        <h2>{{model.owner.dogName}}</h2>
+        <h2 class="text-center">{{user.dogName}}</h2>
         <form class="form-horizontal">
             <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">Email:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.email" id="email" class="form-control-static">{{model.owner.email}}</p>
+                    <p ng-model="user.email" id="email" class="form-control-static">{{user.email}} &nbsp;<i class="fa fa-lock"></i></p>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-2 control-label">Password:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.password" id="password" class="form-control-static"><i class="fa fa-lock"></i></p>
+                    <input type="password" ng-model="user.password" id="password" class="form-control" placeholder="{{password}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="breed" class="col-sm-2 control-label">Breed:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.breed" id="breed" class="form-control-static">{{model.owner.breed}}</p>
+                    <input type="text" ng-model="user.breed" id="breed" class="form-control" placeholder="{{breed}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="age" class="col-sm-2 control-label">Age:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.age" id="age" class="form-control-static">{{model.owner.age}}</p>
+                    <input type="number" min="4" ng-model="user.age" id="age" class="form-control" placeholder="{{age}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="personality" class="col-sm-2 control-label">Personality:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.personality" id="personality" class="form-control-static">{{model.owner.personality}}</p>
+                    <textarea rows="4" ng-model="user.personality" id="personality" class="form-control" placeholder="{{personality}}"></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label for="notes" class="col-sm-2 control-label">Special Notes:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.notes" id="notes" class="form-control-static">{{model.owner.notes}}</p>
+                    <textarea rows="4" ng-model="user.notes" id="notes" class="form-control" placeholder="{{notes}}"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-9">
+                    <button ng-click="model.updateUser(user)" class="btn btn-primary btn-block">Update</button>
                 </div>
             </div>
         </form>
     </div>
 
     <div ng-if="model.isWalker" class="content">
-        <h2>{{model.walker.firstName}} {{model.walker.lastName}}</h2>
+        <h2 class="text-center">{{user.firstName}} {{user.lastName}}</h2>
         <form class="form-horizontal">
             <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email:</label>
+                <label class="col-sm-2 control-label">Status:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.email" id="email" class="form-control-static">{{model.user.email}}</p>
+                    <p ng-show="user.hired.indexOf('no') > -1" class="form-control-static text-danger"><i class="fa fa-circle-o"></i> Not hired.</p>
+                    <p ng-show="user.hired.indexOf('yes') > -1" class="form-control-static text-success"><i class="fa fa-check-circle-o"></i> Hired!</p>
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">Password:</label>
+                <label for="wemail" class="col-sm-2 control-label">Email:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.password" id="password" class="form-control-static"><i class="fa fa-lock"></i></p>
+                    <p ng-model="user.email" id="wemail" class="form-control-static">{{user.email}} &nbsp;<i class="fa fa-lock"></i></p>
                 </div>
             </div>
             <div class="form-group">
-                <label for="breed" class="col-sm-2 control-label">City:</label>
+                <label for="wpassword" class="col-sm-2 control-label">Password:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.breed" id="city" class="form-control-static">{{model.walker.city}}</p>
+                    <input type="password" ng-model="user.password" id="wpassword" class="form-control" placeholder="{{password}}">
                 </div>
             </div>
             <div class="form-group">
-                <label for="age" class="col-sm-2 control-label">Availability:</label>
+                <label for="firstName" class="col-sm-2 control-label">First Name:</label>
                 <div class="col-sm-9">
-                    <p ng-model="model.owner.age" id="age" class="form-control-static">{{model.walker.availability}}</p>
+                    <input type="text" ng-model="user.firstName" id="firstName" class="form-control" placeholder="{{firstName}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName" class="col-sm-2 control-label">Last Name:</label>
+                <div class="col-sm-9">
+                    <input type="text" ng-model="user.lastName" id="lastName" class="form-control" placeholder="{{lastName}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city" class="col-sm-2 control-label">City:</label>
+                <div class="col-sm-9">
+                    <input type="text" ng-model="user.city" id="city" class="form-control" placeholder="{{city}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="col-sm-2 control-label">Phone:</label>
+                <div class="col-sm-9">
+                    <input type="tel" ng-model="user.phone" id="phone" class="form-control" placeholder="{{phone}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="days" class="col-sm-2 control-label">Available Days:</label>
+                <div class="col-sm-9">
+                    <p>Enter the available days separated by commas. Use 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', and 'Saturday'.</p>
+                    <textarea rows="3" ng-model="user.days" id="days" class="form-control" placeholder="{{days}}"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="times" class="col-sm-2 control-label">Available Times:</label>
+                <div class="col-sm-9">
+                    <p>Enter the available times separated by commas. Use '6-9a', '9-12p', '12-3p', and '3-6p'.</p>
+                    <textarea rows="3" ng-model="user.times" id="times" class="form-control" placeholder="{{times}}"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-9">
+                    <button ng-click="model.updateUser(user)" class="btn btn-primary btn-block">Update</button>
                 </div>
             </div>
         </form>

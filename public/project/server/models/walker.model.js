@@ -10,6 +10,7 @@ module.exports = function(mongoose, db) {
         findAllWalkers: findAllWalkers,
         findWalkerByEmail: findWalkerByEmail,
         findWalkerByCred: findWalkerByCred,
+        findwalkersByParams: findWalkersByParams,
         updateWalker: updateWalker,
         deleteWalker: deleteWalker
     };
@@ -31,7 +32,7 @@ module.exports = function(mongoose, db) {
     function findAllWalkers() {
         var deferred = q.defer();
         WalkerModel
-            .find(function(err, walkers) {
+            .find({hired: "yes"}, function(err, walkers) {
                 if (err) {
                     deferred.reject(err);
                 } else {
@@ -67,13 +68,36 @@ module.exports = function(mongoose, db) {
         return deferred.promise;
     }
 
+    function findWalkersByParams(params) {
+        var deferred = q.defer();
+        WalkerModel
+            .find({days: params.day, times: params.time}, function(err, walker) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(walker);
+                }
+            });
+        return deferred.promise;
+    }
+
     function updateWalker(id, walker) {
         var deferred = q.defer();
         delete walker._id;
 
+        if (walker.days) {
+            var days = walker.days.toString().replace(/\s/g, "").split(",");
+            walker.days = days;
+        }
+
+        if (walker.times) {
+            var times = walker.times.toString().replace(/\s/g, "").split(",");
+            walker.times = times;
+        }
+
         WalkerModel
-            .update({_id: id}, {$set: owner}, function(err, walker) {
-                WalkerModel.find(function(err, walker) {
+            .update({_id: id}, {$set: walker}, function(err, walker) {
+                WalkerModel.findById(id, function(err, walker) {
                     if (err) {
                         deferred.reject(err);
                     } else {

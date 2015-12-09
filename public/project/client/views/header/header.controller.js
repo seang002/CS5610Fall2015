@@ -17,9 +17,11 @@
             var service;
             if (model.isWalker) {
                 console.log("walker login");
+                $rootScope.isWalker = true;
                 service = WalkerService;
             } else {
                 console.log("owner login");
+                $rootScope.isWalker = false;
                 service = OwnerService;
             }
             service
@@ -28,8 +30,8 @@
                     if (!user) {
                         model.error = true;
                     } else {
-                        model.isUser = true;
-                        $rootScope.user = model.user = user;
+                        $rootScope.isUser = true;
+                        $rootScope.user = user;
                         console.log("rootScope user:");
                         console.log($rootScope.user);
 
@@ -41,20 +43,25 @@
         function logout() {
             delete $rootScope.user;
             model.email = model.password = "";
-            model.isUser = model.error = model.isWalker = false;
+            $rootScope.isUser = model.isWalker = model.error = false;
             $location.url("/home");
         }
 
         function deleteAcct() {
             var service;
             if (model.isWalker) {
+                console.log("walker delete");
                 service = WalkerService;
             } else {
+                console.log("owner delete");
                 service = OwnerService;
             }
+
             service
                 .deleteUserById($rootScope.user._id)
                 .then(function(response) {
+                    console.log(response);
+                    console.log("User account deleted.");
                     logout();
                 });
         }

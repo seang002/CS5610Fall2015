@@ -49,7 +49,7 @@
             var deferred = $q.defer();
             $http
                 .put("/api/project/owner/" + userId, user)
-                .sucess(function(response) {
+                .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;
