@@ -1,0 +1,72 @@
+<div class="ngdialog-message">
+    <div class="text-center">
+        <h1>Appointment Request</h1>
+    </div>
+    <div ng-show="model.success" class="alert alert-success text-center">
+        <i class="fa fa-envelope-o fa-5x"></i><br>
+        Appointment request has been sent!
+    </div>
+    <form ng-hide="model.success" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Walker:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.walker.firstName}} {{model.walker.lastName}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Dog:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{user.dogName}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Select date:</label>
+            <div class="col-sm-8">
+                <input ng-model="appt.date" type="date" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Select time:</label>
+            <div class="col-sm-8">
+                <select ng-model="appt.time" class="form-control">
+                    <option ng-repeat="time in model.times">{{time}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Select frequency:</label>
+            <div class="col-sm-8">
+                <select ng-model="appt.freq" class="form-control">
+                    <option ng-repeat="freq in model.freqs">{{freq}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">If weekly, select day:</label>
+            <div class="col-sm-8">
+                <select ng-model="appt.day" class="form-control">
+                    <option ng-repeat="day in model.days">{{day}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Select walk "size":</label>
+            <div class="col-sm-8">
+                <select ng-model="appt.size" class="form-control">
+                    <option ng-repeat="size in model.sizes">{{size}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Message to Walker:</label>
+            <div class="col-sm-8">
+                <textarea ng-model="appt.notes" rows="3" class="form-control" placeholder="Is the dog allergic to anything? Do you need him home by 3? etc. Enter 'N/A' if nothing."></textarea>
+            </div>
+        </div>
+        <span id="helpBlock" class="help-block">**Note: Before submitting, make sure all fields are filled. Incomplete requests will be deleted.</span>
+        <div class="ngdialog-buttons">
+            <button ng-click="model.createAppt(appt, user._id)" class="ngdialog-button ngdialog-button-primary">Walk please! <i class="fa fa-paw"></i></button>
+            <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(1)">Cancel</button>
+        </div>
+    </form>
+</div>

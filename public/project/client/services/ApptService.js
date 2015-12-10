@@ -7,10 +7,11 @@
 
     function ApptService($http, $q) {
         var service = {
-            requestAppt: requestAppt
+            createAppt: createAppt
         };
+        return service;
 
-        function requestAppt(appt) {
+        function createAppt(appt) {
             var deferred = $q.defer();
             $http
                 .post("api/project/walker/appt", appt)

@@ -40,7 +40,10 @@
                         $rootScope.user = user;
                         console.log($rootScope.user);
 
-                        $location.url("/profile/" + $rootScope.user._id);
+                        // Nav to profile page if user not on walkers search page
+                        if ($location.url().indexOf('walkers') == -1) {
+                            $location.url("/profile/" + $rootScope.user._id);
+                        }
                     }
                 });
         }
@@ -55,11 +58,11 @@
             ngDialog.open({
                 template: '<h4>Are you sure you want to delete this account?</h4>\
                 <div class="ngdialog-buttons">\
-                    <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(1)">No</button>\
-                    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog(0); model.deleteAcct()">Yes</button>\
+                    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog(1)">No</button>\
+                    <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0); model.deleteAcct()">Yes</button>\
                 </div>',
                 plain: true,
-                controller: 'HeaderController as model',
+                controller: 'HeaderController as model'
             });
         }
 
