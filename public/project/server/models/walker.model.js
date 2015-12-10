@@ -11,11 +11,9 @@ module.exports = function(mongoose, db) {
         findWalkerById: findWalkerById,
         findWalkerByEmail: findWalkerByEmail,
         findWalkerByCred: findWalkerByCred,
-        findwalkersByParams: findWalkersByParams,
+        findWalkersByParams: findWalkersByParams,
         updateWalker: updateWalker,
-        deleteWalker: deleteWalker,
-
-        createReport: createReport
+        deleteWalker: deleteWalker
     };
     return api;
 
@@ -133,9 +131,5 @@ module.exports = function(mongoose, db) {
                 }
             });
         return deferred.promise;
-    }
-
-    function createReport(id, report) {
-
     }
 };

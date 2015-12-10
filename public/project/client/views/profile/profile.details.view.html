@@ -1,22 +1,61 @@
 <div class="ngdialog-message" controller="WalkersController">
-    <h1>Profile</h1>
     <div class="text-center">
-        <h2>{{model.info.firstName}} {{model.info.lastName}}</h2>
+        <h1>{{model.info.firstName}} {{model.info.lastName}}</h1>
         Rating: <span class="badge"><i class="fa fa-star"></i> {{model.info.rating}}</span>
     </div>
-    <h3>Availability:</h3>
-    <table class="table tabled-condensed">
-        <thead>
-        <tr>
-            <th class="col-sm-8">Days</th>
-            <th class="col-sm-4">Times</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>{{model.info.days}}</td>
-            <td>{{model.info.times}}</td>
-        </tr>
-        </tbody>
-    </table>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">City:</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{model.info.city}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Experience:</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{model.info.exp}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Availability:</label>
+            <div class="col-sm-10">
+                <table class="table tabled-condensed">
+                    <thead>
+                    <tr>
+                        <th class="col-sm-7">Days</th>
+                        <th class="col-sm-5">Times</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{model.info.days}}</td>
+                        <td>{{model.info.times}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Reviews:</label>
+            <div class="col-sm-10">
+                <table class="table tabled-condensed">
+                    <thead>
+                    <tr>
+                        <th class="col-sm-3">User</th>
+                        <th class="col-sm-2">Rating</th>
+                        <th class="col-sm-7">Review</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="review in model.info.reviews">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a ng-click="" class="pull-right">Read more reviews &raquo;</a>
+            </div>
+        </div>
+    </form>
 </div>

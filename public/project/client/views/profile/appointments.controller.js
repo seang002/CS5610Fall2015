@@ -12,6 +12,7 @@
         } else {
             init();
         }
+        model.message = "Looks like you don't have any appointments at this time!"
 
         model.deleteAppt = deleteAppt;
 

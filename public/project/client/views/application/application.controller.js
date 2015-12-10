@@ -14,7 +14,6 @@
                 model.error = true;
                 model.message = "Passwords do not match. Please re-enter.";
             } else {
-                delete newWalker.vPassword;
                 WalkerService
                     .createUser(newWalker)
                     .then(function(user) {

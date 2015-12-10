@@ -19,6 +19,7 @@
 
         function createUser(user) {
             var deferred = $q.defer();
+            delete user.vPassword;
             $http
                 .post("/api/project/walker", user)
                 .success(function(response) {

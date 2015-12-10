@@ -5,7 +5,7 @@
         .module("DogWalkingApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController(OwnerService, WalkerService, $scope, $rootScope, $location, ngDialog) {
+    function HeaderController(OwnerService, WalkerService, $scope, $rootScope, $location, $timeout, ngDialog) {
         var model = this;
         $scope.$location = $location;
 
@@ -28,11 +28,13 @@
             service
                 .findUserByEmailAndPassword(model.email, model.password)
                 .then(function(user) {
+                    model.email = model.password = "";
                     if (!user) {
                         model.error = true;
-                        model.password = "";
+                        $timeout(function() {
+                            model.error = false;
+                        }, 3000);
                     } else {
-                        model.email = model.password = "";
                         model.error = false;
                         $rootScope.isUser = true;
                         $rootScope.user = user;

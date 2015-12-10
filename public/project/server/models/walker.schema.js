@@ -14,7 +14,7 @@ module.exports = function(mongoose) {
         times: [String],
         reports: [ReportSchema],
         reviews: [ReviewSchema],
-        rating: {type: Number, min:1, max: 5, default: 0},
+        rating: {type: Number, min:1, max: 5},
         hired: {type: String, default: "no", enum: ["yes", "no"]},
         dob: Date,
         phone: String,

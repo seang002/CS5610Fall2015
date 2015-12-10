@@ -21,7 +21,7 @@ a {
 @media(min-width:767px) {
     .top {
         font-size: 18px;
-        padding: 15px 0;
+        padding: 10px 0;
         -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
         transition: background .5s ease-in-out,padding .5s ease-in-out;
@@ -53,7 +53,7 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 92vh;
     text-align: center;
 }
 
@@ -81,7 +81,7 @@ a {
 .about {
     margin: auto;
     width: 100%;
-    padding: 50px 50px 100px;
+    padding: 10px 50px 50px;
 }
 
 /* HOME - THIRD ROW */
@@ -89,7 +89,7 @@ a {
     background-color: #f7f7f7;
     margin: auto;
     width: 100%;
-    padding: 50px 50px 100px;
+    padding: 25px 50px 50px;
 }
 
 /* HOME - FOURTH ROW */
@@ -141,7 +141,7 @@ a {
     width : 100%;
     color: #fff;
     background-color: #233140;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 /* CONTENT - MAIN */

@@ -13,7 +13,7 @@
             <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('about') != -1}" class="page-scroll"><a ng-href="##about" class="page-scroll">About</a></li>
             <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('team') != -1}"><a href="##team" class="page-scroll">Our Team</a></li>
             <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('connect') != -1}"><a ng-href="##connect" class="page-scroll">Connect</a></li>
-            <li ng-class="{'active' : $location.url().indexOf('walkers') != -1}"><a ng-href="#/walkers">Find a Walker!</a></li>
+            <li ng-hide="isWalker" ng-class="{'active' : $location.url().indexOf('walkers') != -1}"><a ng-href="#/walkers">Find a Walker!</a></li>
 
             <!-- LINKS FOR GUEST -->
             <li class="dropdown" ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}">
@@ -25,12 +25,16 @@
                         <div ng-show="model.error" class="alert alert-danger">Email or password is not correct.</div>
                         <form name="loginForm">
                             <div class="form-group">
-                                <label for="email" class="control-label">Email:</label>
-                                <input ng-model="model.email" class="form-control" id="email" type="email" placeholder="Email" required>
+                                <div class="input-group margin-bottom-sm">
+                                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                                    <input ng-model="model.email" class="form-control" id="email" type="email" placeholder="Email" required>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="password" class="control-label">Password:</label>
-                                <input ng-model="model.password" class="form-control" id="password" type="password" placeholder="Password" required>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                                    <input ng-model="model.password" class="form-control" id="password" type="password" placeholder="Password" required>
+                                </div>
                             </div>
                             <div class="checkbox">
                                 <label>
@@ -51,7 +55,7 @@
             <!-- LINKS FOR USER -->
             <li class="dropdown" ng-show="isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-cog"></i> <span class="caret"></span>
+                    <i class="fa fa-tasks"></i> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu log">
                     <li class="list">
