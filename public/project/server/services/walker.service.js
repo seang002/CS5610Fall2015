@@ -39,7 +39,7 @@ module.exports = function(app, model) {
                 })
         } else if (day && time) {
             model
-                .findwalkersByParams({day: day, time: time})
+                .findWalkersByParams({day: day, time: time})
                 .then(function(walkers) {
                     res.json(walkers);
                 })
