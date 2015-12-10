@@ -46,9 +46,12 @@
                 });
         }
 
-        function moreInfo() {
+        function moreInfo(id) {
             ngDialog.open({
-
+                template: './views/profile/profile.details.view.html',
+                controller: 'ProfileDetailsController',
+                controllerAs: 'model',
+                data: {id: id}
             })
         }
     }

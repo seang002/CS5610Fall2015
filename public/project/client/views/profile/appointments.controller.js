@@ -5,19 +5,18 @@
         .module("DogWalkingApp")
         .controller("ApptController", ApptController);
 
-    function ApptController() {
+    function ApptController($rootScope, $location) {
         var model = this;
-        init();
+        if (!$rootScope.user) {
+            $location.url("/home");
+        } else {
+            init();
+        }
 
         model.deleteAppt = deleteAppt;
 
         function init() {
-            model.appts = [
-                {dogName: "Kibbles", walker: "Jane", date: "12/11/15", time: "6a", freq: "Daily", size: "Small"}
-            ];
-            if (model.appts.length > 0) {
-                model.hasAppts = true;
-            }
+
         }
 
         function deleteAppt(index) {

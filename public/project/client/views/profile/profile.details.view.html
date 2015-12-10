@@ -1,0 +1,22 @@
+<div class="ngdialog-message" controller="WalkersController">
+    <h1>Profile</h1>
+    <div class="text-center">
+        <h2>{{model.info.firstName}} {{model.info.lastName}}</h2>
+        Rating: <span class="badge"><i class="fa fa-star"></i> {{model.info.rating}}</span>
+    </div>
+    <h3>Availability:</h3>
+    <table class="table tabled-condensed">
+        <thead>
+        <tr>
+            <th class="col-sm-8">Days</th>
+            <th class="col-sm-4">Times</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{model.info.days}}</td>
+            <td>{{model.info.times}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

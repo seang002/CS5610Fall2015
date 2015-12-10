@@ -9,6 +9,7 @@
         var service = {
             createUser: createUser,
             findAllUsers: findAllUsers,
+            findUserById: findUserById,
             findUserByEmailAndPassword: findUserByEmailAndPassword,
             findUsersByParams: findUsersByParams,
             updateUser: updateUser,
@@ -30,6 +31,16 @@
             var deferred = $q.defer();
             $http
                 .get("/api/project/walker")
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findUserById(id) {
+            var deferred = $q.defer();
+            $http
+                .get("/api/project/walker/" + id)
                 .success(function(response) {
                     deferred.resolve(response);
                 });

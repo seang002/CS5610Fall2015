@@ -1,120 +1,128 @@
 <div class="container-fluid">
-    <div class="row">
-        <h1 class="page-header">Profile</h1>
+    <h1 class="page-header">Profile</h1>
+    <div ng-show="model.success" class="alert alert-success">Profile updated!</div>
 
-        <div ng-if="model.isOwner" class="content">
-            <h2 class="text-center">{{user.dogName}}</h2>
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label for="email" class="col-md-2 control-label">Email:</label>
-                    <div class="col-md-9">
-                        <p ng-model="user.email" id="email" class="form-control-static">{{user.email}} &nbsp;<i class="fa fa-lock"></i></p>
-                    </div>
+    <!-- PROFILE FOR OWNERS -->
+    <div ng-show="!isWalker" class="content">
+        <h2 class="text-center">{{user.dogName}}</h2>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="email" class="col-md-2 control-label">Email:</label>
+                <div class="col-md-9">
+                    <p ng-model="user.email" id="email" class="form-control-static">{{user.email}} &nbsp;<i class="fa fa-lock"></i></p>
                 </div>
-                <div class="form-group">
-                    <label for="password" class="col-md-2 control-label">Password:</label>
-                    <div class="col-md-9">
-                        <input type="password" ng-model="user.password" id="password" class="form-control" placeholder="{{password}}">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-md-2 control-label">Password:</label>
+                <div class="col-md-9">
+                    <input type="password" ng-model="user.password" id="password" class="form-control" placeholder="{{password}}">
                 </div>
-                <div class="form-group">
-                    <label for="breed" class="col-md-2 control-label">Breed:</label>
-                    <div class="col-md-9">
-                        <input type="text" ng-model="user.breed" id="breed" class="form-control" placeholder="{{breed}}">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="dogName" class="col-md-2 control-label">Dog Name:</label>
+                <div class="col-md-9">
+                    <input type="text" ng-model="user.dogName" id="dogName" class="form-control" placeholder="{{dogName}}">
                 </div>
-                <div class="form-group">
-                    <label for="age" class="col-md-2 control-label">Age:</label>
-                    <div class="col-md-9">
-                        <input type="number" min="4" ng-model="user.age" id="age" class="form-control" placeholder="{{age}}">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="breed" class="col-md-2 control-label">Breed:</label>
+                <div class="col-md-9">
+                    <input type="text" ng-model="user.breed" id="breed" class="form-control" placeholder="{{breed}}">
                 </div>
-                <div class="form-group">
-                    <label for="personality" class="col-md-2 control-label">Personality:</label>
-                    <div class="col-md-9">
-                        <textarea rows="4" ng-model="user.personality" id="personality" class="form-control" placeholder="{{personality}}"></textarea>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="age" class="col-md-2 control-label">Age:</label>
+                <div class="col-md-9">
+                    <input type="number" min="4" ng-model="user.age" id="age" class="form-control" placeholder="{{age}}">
                 </div>
-                <div class="form-group">
-                    <label for="notes" class="col-md-2 control-label">Special Notes:</label>
-                    <div class="col-md-9">
-                        <textarea rows="4" ng-model="user.notes" id="notes" class="form-control" placeholder="{{notes}}"></textarea>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="personality" class="col-md-2 control-label">Personality:</label>
+                <div class="col-md-9">
+                    <textarea rows="4" ng-model="user.personality" id="personality" class="form-control" placeholder="{{personality}}"></textarea>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-9">
-                        <button ng-click="model.updateUser(user)" class="btn btn-primary btn-block">Update</button>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="notes" class="col-md-2 control-label">Special Notes:</label>
+                <div class="col-md-9">
+                    <textarea rows="4" ng-model="user.notes" id="notes" class="form-control" placeholder="{{notes}}"></textarea>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-9">
+                    <button ng-click="model.updateUser(user)" class="btn btn-primary btn-block">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        <div ng-if="model.isWalker" class="content">
-            <h2 class="text-center">{{user.firstName}} {{user.lastName}}</h2>
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-md-2 control-label">Status:</label>
-                    <div class="col-md-9">
-                        <p ng-show="user.hired.indexOf('no') > -1" class="form-control-static text-danger"><i class="fa fa-circle-o"></i> Not hired.</p>
-                        <p ng-show="user.hired.indexOf('yes') > -1" class="form-control-static text-success"><i class="fa fa-check-circle-o"></i> Hired!</p>
-                    </div>
+    <!-- PROFILE FOR WALKERS -->
+    <div ng-show="isWalker" class="content">
+        <h2 class="text-center">{{user.firstName}} {{user.lastName}}
+        <small><span class="badge"><i class="fa fa-star"></i> {{user.rating}}</span></small></h2>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Status:</label>
+                <div class="col-md-9">
+                    <p ng-show="user.hired.indexOf('no') > -1" class="form-control-static text-danger"><i class="fa fa-circle-o"></i> Not hired.</p>
+                    <p ng-show="user.hired.indexOf('yes') > -1" class="form-control-static text-success"><i class="fa fa-check-circle-o"></i> Hired!</p>
                 </div>
-                <div class="form-group">
-                    <label for="wemail" class="col-md-2 control-label">Email:</label>
-                    <div class="col-md-9">
-                        <p ng-model="user.email" id="wemail" class="form-control-static">{{user.email}} &nbsp;<i class="fa fa-lock"></i></p>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="wemail" class="col-md-2 control-label">Email:</label>
+                <div class="col-md-9">
+                    <p ng-model="user.email" id="wemail" class="form-control-static">{{user.email}} &nbsp;<i class="fa fa-lock"></i></p>
                 </div>
-                <div class="form-group">
-                    <label for="wpassword" class="col-md-2 control-label">Password:</label>
-                    <div class="col-md-9">
-                        <input type="password" ng-model="user.password" id="wpassword" class="form-control" placeholder="{{password}}">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="wpassword" class="col-md-2 control-label">Password:</label>
+                <div class="col-md-9">
+                    <input type="password" ng-model="user.password" id="wpassword" class="form-control" placeholder="{{password}}">
                 </div>
-                <div class="form-group">
-                    <label for="firstName" class="col-md-2 control-label">First Name:</label>
-                    <div class="col-md-9">
-                        <input type="text" ng-model="user.firstName" id="firstName" class="form-control" placeholder="{{firstName}}">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-md-2 control-label">First Name:</label>
+                <div class="col-md-9">
+                    <input type="text" ng-model="user.firstName" id="firstName" class="form-control" placeholder="{{firstName}}">
                 </div>
-                <div class="form-group">
-                    <label for="lastName" class="col-md-2 control-label">Last Name:</label>
-                    <div class="col-md-9">
-                        <input type="text" ng-model="user.lastName" id="lastName" class="form-control" placeholder="{{lastName}}">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName" class="col-md-2 control-label">Last Name:</label>
+                <div class="col-md-9">
+                    <input type="text" ng-model="user.lastName" id="lastName" class="form-control" placeholder="{{lastName}}">
                 </div>
-                <div class="form-group">
-                    <label for="city" class="col-md-2 control-label">City:</label>
-                    <div class="col-md-9">
-                        <input type="text" ng-model="user.city" id="city" class="form-control" placeholder="{{city}}">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="city" class="col-md-2 control-label">City:</label>
+                <div class="col-md-9">
+                    <input type="text" ng-model="user.city" id="city" class="form-control" placeholder="{{city}}">
                 </div>
-                <div class="form-group">
-                    <label for="phone" class="col-md-2 control-label">Phone:</label>
-                    <div class="col-md-9">
-                        <input type="tel" ng-model="user.phone" id="phone" class="form-control" placeholder="{{phone}}">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="col-md-2 control-label">Phone:</label>
+                <div class="col-md-9">
+                    <input type="tel" ng-model="user.phone" id="phone" class="form-control" placeholder="{{phone}}">
                 </div>
-                <div class="form-group">
-                    <label for="days" class="col-md-2 control-label">Available Days:</label>
-                    <div class="col-md-9">
-                        <p>Enter the available days separated by commas. Use 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', and 'Saturday'.</p>
-                        <textarea rows="3" ng-model="user.days" id="days" class="form-control" placeholder="{{days}}"></textarea>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="days" class="col-md-2 control-label">Available Days:</label>
+                <div class="col-md-9">
+                    <p>Enter the available days separated by commas. Use 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', and 'Saturday'.</p>
+                    <textarea rows="3" ng-model="user.days" id="days" class="form-control" placeholder="{{days}}"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="times" class="col-md-2 control-label">Available Times:</label>
-                    <div class="col-md-9">
-                        <p>Enter the available times separated by commas. Use '6-9a', '9-12p', '12-3p', and '3-6p'.</p>
-                        <textarea rows="3" ng-model="user.times" id="times" class="form-control" placeholder="{{times}}"></textarea>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="times" class="col-md-2 control-label">Available Times:</label>
+                <div class="col-md-9">
+                    <p>Enter the available times separated by commas. Use '6-9a', '9-12p', '12-3p', and '3-6p'.</p>
+                    <textarea rows="3" ng-model="user.times" id="times" class="form-control" placeholder="{{times}}"></textarea>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-9">
-                        <button ng-click="model.updateUser(user)" class="btn btn-primary btn-block">Update</button>
-                    </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-9">
+                    <button ng-click="model.updateUser(user)" class="btn btn-primary btn-block">Update</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>

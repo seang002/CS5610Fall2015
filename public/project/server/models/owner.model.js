@@ -7,7 +7,6 @@ module.exports = function(mongoose, db) {
 
     var api = {
         createOwner: createOwner,
-        findAllOwners: findAllOwners,
         findOwnerByEmail: findOwnerByEmail,
         findOwnerByCred: findOwnerByCred,
         updateOwner: updateOwner,
@@ -23,19 +22,6 @@ module.exports = function(mongoose, db) {
                     deferred.reject(err);
                 } else {
                     deferred.resolve(owner);
-                }
-            });
-        return deferred.promise;
-    }
-
-    function findAllOwners() {
-        var deferred = q.defer();
-        OwnerModel
-            .find(function(err, owners) {
-                if (err) {
-                    deferred.reject(err);
-                } else {
-                    deferred.resolve(owners);
                 }
             });
         return deferred.promise;
@@ -73,13 +59,11 @@ module.exports = function(mongoose, db) {
 
         OwnerModel
             .update({_id: id}, {$set: owner}, function(err, owner) {
-                OwnerModel.findById(id, function(err, owner) {
-                    if (err) {
-                        deferred.reject(err);
-                    } else {
-                        deferred.resolve(owner);
-                    }
-                })
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(owner);
+                }
             });
         return deferred.promise;
     }

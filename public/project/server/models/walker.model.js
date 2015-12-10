@@ -8,11 +8,14 @@ module.exports = function(mongoose, db) {
     var api = {
         createWalker: createWalker,
         findAllWalkers: findAllWalkers,
+        findWalkerById: findWalkerById,
         findWalkerByEmail: findWalkerByEmail,
         findWalkerByCred: findWalkerByCred,
         findwalkersByParams: findWalkersByParams,
         updateWalker: updateWalker,
-        deleteWalker: deleteWalker
+        deleteWalker: deleteWalker,
+
+        createReport: createReport
     };
     return api;
 
@@ -37,6 +40,19 @@ module.exports = function(mongoose, db) {
                     deferred.reject(err);
                 } else {
                     deferred.resolve(walkers);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findWalkerById(id) {
+        var deferred = q.defer();
+        WalkerModel
+            .findById(id, function(err, walker) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(walker);
                 }
             });
         return deferred.promise;
@@ -97,13 +113,11 @@ module.exports = function(mongoose, db) {
 
         WalkerModel
             .update({_id: id}, {$set: walker}, function(err, walker) {
-                WalkerModel.findById(id, function(err, walker) {
-                    if (err) {
-                        deferred.reject(err);
-                    } else {
-                        deferred.resolve(walker);
-                    }
-                })
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(walker);
+                }
             });
         return deferred.promise;
     }
@@ -119,5 +133,9 @@ module.exports = function(mongoose, db) {
                 }
             });
         return deferred.promise;
+    }
+
+    function createReport(id, report) {
+
     }
 };

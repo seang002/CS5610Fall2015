@@ -3,6 +3,7 @@
 module.exports = function(app, model) {
     app.post("/api/project/walker", createWalker);
     app.get("/api/project/walker", findWalker);
+    app.get("/api/project/walker/:id", findWalkerById);
     app.put("/api/project/walker/:id", updateWalker);
     app.delete("/api/project/walker/:id", deleteWalker);
 
@@ -49,6 +50,15 @@ module.exports = function(app, model) {
                     res.json(walkers);
                 });
         }
+    }
+
+    function findWalkerById(req, res) {
+        var id = req.params.id;
+        model
+            .findWalkerById(id)
+            .then(function(walker) {
+                res.json(walker)
+            })
     }
 
     function updateWalker(req, res) {

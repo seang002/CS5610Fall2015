@@ -5,7 +5,7 @@
         .module("DogWalkingApp")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController(OwnerService, $rootScope, $location) {
+    function RegisterController(OwnerService, $location) {
         var model = this;
         model.register = register;
         model.apply = apply;

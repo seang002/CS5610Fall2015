@@ -5,12 +5,13 @@
         .module("DogWalkingApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController(OwnerService, WalkerService, $scope, $rootScope, $location) {
+    function HeaderController(OwnerService, WalkerService, $scope, $rootScope, $location, ngDialog) {
         var model = this;
         $scope.$location = $location;
 
         model.login = login;
         model.logout = logout;
+        model.confirmDelete = confirmDelete;
         model.deleteAcct = deleteAcct;
 
         function login() {
@@ -29,10 +30,12 @@
                 .then(function(user) {
                     if (!user) {
                         model.error = true;
+                        model.password = "";
                     } else {
+                        model.email = model.password = "";
+                        model.error = false;
                         $rootScope.isUser = true;
                         $rootScope.user = user;
-                        console.log("rootScope user:");
                         console.log($rootScope.user);
 
                         $location.url("/profile/" + $rootScope.user._id);
@@ -42,14 +45,25 @@
 
         function logout() {
             delete $rootScope.user;
-            model.email = model.password = "";
-            $rootScope.isUser = model.isWalker = model.error = false;
+            $rootScope.isUser = $rootScope.isWalker = false;
             $location.url("/home");
+        }
+
+        function confirmDelete() {
+            ngDialog.open({
+                template: '<h4>Are you sure you want to delete this account?</h4>\
+                <div class="ngdialog-buttons">\
+                    <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(1)">No</button>\
+                    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog(0); model.deleteAcct()">Yes</button>\
+                </div>',
+                plain: true,
+                controller: 'HeaderController as model',
+            });
         }
 
         function deleteAcct() {
             var service;
-            if (model.isWalker) {
+            if ($rootScope.isWalker) {
                 console.log("walker delete");
                 service = WalkerService;
             } else {
