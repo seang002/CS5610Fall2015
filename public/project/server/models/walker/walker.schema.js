@@ -1,8 +1,8 @@
 "use strict";
 
 module.exports = function(mongoose) {
-    var ReportSchema = require("./report.schema.js")(mongoose);
-    var ReviewSchema = require("./review.schema.js")(mongoose);
+    var ReportSchema = require("./../report.schema.js")(mongoose);
+    var ReviewSchema = require("./../review.schema.js")(mongoose);
 
     var walkerSchema = mongoose.Schema({
         email: String,

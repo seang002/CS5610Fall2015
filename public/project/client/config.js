@@ -11,7 +11,7 @@
                 templateUrl: "views/home/home.view.html"
             })
             .when("/profile/:id/appointments", {
-                templateUrl: "views/profile/appointments.view.html",
+                templateUrl: "views/profile/appointments/appointments.view.html",
                 controller: "ApptController as model"
             })
             .when("/application", {
@@ -19,7 +19,7 @@
                 controller: "AppController as model"
             })
             .when("/profile/:id", {
-                templateUrl: "views/profile/profile.view.html",
+                templateUrl: "views/profile/profilePage/profile.view.html",
                 controller: "ProfileController as model"
             })
             .when("/register", {
@@ -27,11 +27,11 @@
                 controller: "RegisterController as model"
             })
             .when("/profile/:id/reviews", {
-                templateUrl: "views/profile/reviews.view.html",
+                templateUrl: "views/profile/reviews/reviews.view.html",
                 controller: "ReviewController as model"
             })
             .when("/profile/:id/reports", {
-                templateUrl: "views/profile/reports.view.html",
+                templateUrl: "views/profile/reports/reports.view.html",
                 controller: "ReportController as model"
             })
             .when("/thankyou", {
