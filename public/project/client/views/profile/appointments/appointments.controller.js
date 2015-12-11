@@ -71,7 +71,7 @@
 
         function openProfile(userId) {
             ngDialog.open({
-                template: './views/profile/profile.details.view.html',
+                template: './views/profile/profilePage/profile.details.view.html',
                 controller: 'ProfileDetailController as model',
                 data: {id: userId}
             })

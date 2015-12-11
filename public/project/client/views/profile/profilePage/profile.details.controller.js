@@ -33,7 +33,7 @@
                 })
             } else {
                 ngDialog.open({
-                    template: './views/profile/appt.request.view.html',
+                    template: './views/profile/appointments/appt.request.view.html',
                     controller: 'RequestController as model',
                     data: {id: id}
                 })
