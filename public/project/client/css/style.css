@@ -12,7 +12,7 @@ html {
     height: 100%;
 }
 
-a {
+a, button:hover {
     -webkit-transition: all .5s ease-in;
     -moz-transition: all .5s ease-in;
     transition: all .5s ease-in;

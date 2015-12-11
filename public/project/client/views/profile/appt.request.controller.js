@@ -23,10 +23,21 @@
                 });
         }
 
-        function createAppt(appt, ownerId) {
-            console.log(appt);
-            console.log(ownerId);
+        function createAppt(appt, owner) {
             model.success = true;
+            appt.ownerId = owner._id;
+            appt.dogName = owner.dogName
+            appt.walkerId = model.walker._id;
+            appt.walker = model.walker.firstName;
+            ApptService
+                .createAppt(appt)
+                .then(function(status) {
+                    console.log(status);
+                })
+        }
+
+        function updateAppt(appt) {
+
         }
     }
 })();

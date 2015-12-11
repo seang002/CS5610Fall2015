@@ -4,6 +4,8 @@ module.exports = function(mongoose) {
     var apptSchema = mongoose.Schema ({
         ownerId: String,
         walkerId: String,
+        dogName: String,
+        walker: String,
         date: Date,
         day: String,
         time: String,
