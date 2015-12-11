@@ -49,9 +49,9 @@
 
         function moreInfo(id) {
             ngDialog.open({
-                template: './views/profile/profilePage/profile.details.view.html',
-                controller: 'ProfileDetailsController as model',
-                data: {id: id}
+                template: './views/profile/profilePage/walker.profilePage.view.html',
+                controller: 'ProfilePageController as model',
+                data: {walkerId: id}
             })
         }
 
@@ -68,7 +68,7 @@
                 ngDialog.open({
                     template: './views/profile/appointments/appt.request.view.html',
                     controller: 'RequestController as model',
-                    data: {id: id}
+                    data: {walkerId: id}
                 })
             }
         }

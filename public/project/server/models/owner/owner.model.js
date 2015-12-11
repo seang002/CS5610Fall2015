@@ -7,6 +7,7 @@ module.exports = function(mongoose, db) {
 
     var api = {
         createOwner: createOwner,
+        findOwnerById: findOwnerById,
         findOwnerByEmail: findOwnerByEmail,
         findOwnerByCred: findOwnerByCred,
         updateOwner: updateOwner,
@@ -18,6 +19,19 @@ module.exports = function(mongoose, db) {
         var deferred = q.defer();
         OwnerModel
             .create(owner, function(err, owner) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(owner);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findOwnerById(id) {
+        var deferred = q.defer();
+        OwnerModel
+            .findById(id, function(err, owner) {
                 if (err) {
                     deferred.reject(err);
                 } else {

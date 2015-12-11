@@ -5,7 +5,8 @@
 
     function RequestController($scope, WalkerService, ApptService) {
         var model = this;
-        var id = $scope.ngDialogData.id;
+        var walkerId = $scope.ngDialogData.walkerId;
+        model.appt = $scope.ngDialogData.appt;
         init();
 
         model.times = ["6-9a", "9-12p", "12-3p", "3-6p"];
@@ -17,7 +18,7 @@
 
         function init() {
             WalkerService
-                .findUserById(id)
+                .findUserById(walkerId)
                 .then(function(walker) {
                     model.walker = walker;
                 });
@@ -26,7 +27,7 @@
         function createAppt(appt, owner) {
             model.success = true;
             appt.ownerId = owner._id;
-            appt.dogName = owner.dogName
+            appt.dogName = owner.dogName;
             appt.walkerId = model.walker._id;
             appt.walker = model.walker.firstName;
             ApptService
@@ -34,10 +35,6 @@
                 .then(function(status) {
                     console.log(status);
                 })
-        }
-
-        function updateAppt(appt) {
-
         }
     }
 })();

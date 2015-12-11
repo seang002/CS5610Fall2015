@@ -19,7 +19,7 @@
                 controller: "AppController as model"
             })
             .when("/profile/:id", {
-                templateUrl: "views/profile/profilePage/profile.view.html",
+                templateUrl: "views/profile/profile.view.html",
                 controller: "ProfileController as model"
             })
             .when("/register", {

@@ -1,0 +1,51 @@
+<div class="ngdialog-message">
+    <div class="text-center">
+        <h1>Appointment Details</h1>
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Dog:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.appt.dogName}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Walker:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.appt.walker}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Start Date:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.appt.date | date: 'shortDate'}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Time:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.appt.time}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Frequency:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.appt.freq}}
+                    <span ng-show="model.appt.freq.indexOf('Weekly') > -1">({{model.appt.day}})</span>
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Walk "Size":</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.appt.size}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Message:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.appt.notes}}</p>
+            </div>
+        </div>
+    </form>
+</div>

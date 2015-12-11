@@ -24,7 +24,9 @@
 
         model.deleteAppt = deleteAppt;
         model.acceptAppt = acceptAppt;
-        model.openProfile = openProfile;
+        model.openWalker = openWalker;
+        model.openOwner = openOwner;
+        model.openRequest = openRequest;
 
         function init() {
             ApptService
@@ -69,11 +71,27 @@
                 });
         }
 
-        function openProfile(userId) {
+        function openWalker(userId) {
             ngDialog.open({
-                template: './views/profile/profilePage/profile.details.view.html',
-                controller: 'ProfileDetailController as model',
-                data: {id: userId}
+                template: './views/profile/profilePage/walker.profilePage.view.html',
+                controller: 'ProfilePageController as model',
+                data: {walkerId: userId}
+            })
+        }
+
+        function openOwner(userId) {
+            ngDialog.open({
+                template: './views/profile/profilePage/owner.profilePage.view.html',
+                controller: 'ProfilePageController as model',
+                data: {ownerId: userId}
+            })
+        }
+
+        function openRequest(appt) {
+            ngDialog.open({
+                template: './views/profile/appointments/appt.details.html',
+                controller: 'RequestController as model',
+                data: {appt: appt}
             })
         }
     }

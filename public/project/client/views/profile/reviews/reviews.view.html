@@ -1,1 +1,25 @@
-<h1>Reviews</h1>
+<div class="container-fluid">
+    <h1 class="page-header">Reviews</h1>
+    <div class="content">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th ng-show="isWalker" class="col-sm-3">Dog</th>
+                <th ng-hide="isWalker" class="col-sm-3">Walker</th>
+                <th class="col-sm-1">Rating</th>
+                <th class="col-sm-5">Review</th>
+                <th class="col-sm-2"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="review in model.reviews">
+                <td ng-show="isWalker">{{review.dogName}}</td>
+                <td ng-hide="isWalker">{{review.walker}}</td>
+                <td>{{review.rating}}</td>
+                <td>{{review.notes}}</td>
+                <td>testing</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

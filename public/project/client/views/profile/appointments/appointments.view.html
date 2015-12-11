@@ -1,35 +1,30 @@
 <div class="container-fluid">
     <h1 class="page-header">Appointments</h1>
     <div class="content">
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped">
             <thead>
             <tr>
-                <th class="col-md-1">Accepted?</th>
-                <th class="col-md-2">Dog</th>
-                <th class="col-md-2">Walker</th>
-                <th class="col-md-1">Start Date</th>
-                <th class="col-md-1">Time</th>
-                <th class="col-md-2">Frequency</th>
-                <th class="col-md-1">"Size"</th>
-                <th class="col-md-2 text-center">Action</th>
+                <th class="col-md-2">Accepted?</th>
+                <th class="col-md-2">Start Date</th>
+                <th ng-show="isWalker" class="col-md-2">Dog</th>
+                <th ng-hide="isWalker" class="col-md-2">Walker</th>
+                <th class="col-md-3">Appt Details</th>
+                <th class="col-md-3 text-center"></th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="appt in model.appts">
                 <td>{{appt.accepted}}</td>
-                <td><a ng-click="openProfile(appt.ownerId)">{{appt.dogName}}</a></td>
-                <td><a ng-click="openProfile(appt.walkerId)">{{appt.walker}}</a></td>
                 <td>{{appt.date | date: 'shortDate'}}</td>
-                <td>{{appt.time}}</td>
-                <td>{{appt.freq}}</td>
-                <td>{{appt.size}}</td>
+                <td ng-show="isWalker"><a ng-click="model.openOwner(appt.ownerId)">{{appt.dogName}}</a></td>
+                <td ng-hide="isWalker"><a ng-click="model.openWalker(appt.walkerId)">{{appt.walker}}</a></td>
+                <td><a ng-click="model.openRequest(appt)">See more &raquo;</a></td>
                 <td ng-show="!isWalker" class="text-center">
-                    <button class="btn btn-warning btn-sm" ng-click="" title="Delete">Edit</button>
-                    <button class="btn btn-default btn-sm" ng-click="model.deleteAppt($index)" title="Delete">Cancel</button>
+                    <button class="btn btn-default btn-sm" ng-click="model.deleteAppt($index)" title="Delete">Cancel Appointment</button>
                 </td>
                 <td ng-show="isWalker" class="text-center">
-                    <button class="btn btn-success btn-sm" ng-click="model.acceptAppt($index, 'Yes')" title="Delete">Accept</button>
-                    <button class="btn btn-danger btn-sm" ng-click="model.acceptAppt($index, 'No')" title="Delete">Decline</button>
+                    <button class="btn btn-success btn-sm" ng-click="model.acceptAppt($index, 'Yes')" title="Accept">Accept</button>
+                    <button class="btn btn-danger btn-sm" ng-click="model.acceptAppt($index, 'No')" title="Decline">Decline</button>
                 </td>
             </tr>
             </tbody>

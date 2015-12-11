@@ -5,20 +5,20 @@
     </div>
     <form class="form-horizontal">
         <div class="form-group">
-            <label class="col-sm-2 control-label">City:</label>
-            <div class="col-sm-10">
+            <label class="col-sm-3 control-label">City:</label>
+            <div class="col-sm-9">
                 <p class="form-control-static">{{model.walkerInfo.city}}</p>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Experience:</label>
-            <div class="col-sm-10">
+            <label class="col-sm-3 control-label">Experience:</label>
+            <div class="col-sm-9">
                 <p class="form-control-static">{{model.walkerInfo.exp}}</p>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Availability:</label>
-            <div class="col-sm-10">
+            <label class="col-sm-3 control-label">Availability:</label>
+            <div class="col-sm-9">
                 <table class="table tabled-condensed">
                     <thead>
                     <tr>
@@ -36,8 +36,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Reviews:</label>
-            <div class="col-sm-10">
+            <label class="col-sm-3 control-label">Reviews:</label>
+            <div class="col-sm-9">
                 <table class="table tabled-condensed">
                     <thead>
                     <tr>
@@ -56,9 +56,6 @@
                 </table>
                 <a ng-click="" class="pull-right">Read more reviews &raquo;</a>
             </div>
-        </div>
-        <div ng-hide="isWalker" class="ngdialog-buttons">
-            <button ng-click="closeThisDialog(); model.requestAppt(model.walkerInfo._id)" class="ngdialog-button ngdialog-button-primary"><i class="fa fa-check"></i> Book!</button>
         </div>
     </form>
 </div>

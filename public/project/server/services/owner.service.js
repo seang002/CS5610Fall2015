@@ -3,6 +3,7 @@
 module.exports = function(app, model) {
     app.post("/api/project/owner", createOwner);
     app.get("/api/project/owner", findOwner);
+    app.get("/api/project/owner/:id", findOwnerById);
     app.put("/api/project/owner/:id", updateOwner);
     app.delete("/api/project/owner/:id", deleteOwner);
 
@@ -37,6 +38,15 @@ module.exports = function(app, model) {
         } else {
             res.json(null);
         }
+    }
+
+    function findOwnerById(req, res) {
+        var id = req.params.id;
+        model
+            .findOwnerById(id)
+            .then(function(owner) {
+                res.json(owner)
+            })
     }
 
     function updateOwner(req, res) {

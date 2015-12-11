@@ -1,1 +1,23 @@
-<h1>Reports</h1>
+<div class="container-fluid">
+    <h1 class="page-header">Report Cards</h1>
+    <div class="content">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="col-sm-2">Date</th>
+                <th ng-show="isWalker" class="col-sm-4">Dog</th>
+                <th ng-hide="isWalker" class="col-sm-4">Walker</th>
+                <th class="col-sm-6">Report Card</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="report in model.reports">
+                <td>{{report.date}}</td>
+                <td ng-show="isWalker">{{report.dogName}}</td>
+                <td ng-hide="isWalker">{{report.walker}}</td>
+                <td><a>Read now</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
