@@ -33,7 +33,7 @@ a, button:hover {
     }
 }
 
-/* LOGIN DROPDOWN */
+/* DROPDOWN */
 .log {
     min-width: 300px;
     padding: 14px 14px 0;
@@ -149,4 +149,12 @@ a, button:hover {
 .content {
     margin: auto;
     width: 95%;
+}
+
+/* LOGIN */
+.login {
+    margin: auto;
+    width: 450px;
+    border: 1px solid #ddd;
+    padding: 50px 25px;
 }

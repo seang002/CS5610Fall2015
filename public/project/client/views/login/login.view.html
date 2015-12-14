@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <h1 class="page-header">Login</h1>
+    <div class="content login">
+        <div ng-show="model.error" class="alert alert-danger">Email or password is not correct.</div>
+        <form name="loginForm">
+            <div class="form-group">
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                    <input ng-model="model.email" class="form-control" id="email" type="email" placeholder="Email" required>
+                </div>
+                                <span id="defaultE" class="help-block">Default owner: test@gmail.com<br/>
+                                    Default walker: verena@gmail.com</span>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <input ng-model="model.password" class="form-control" id="password" type="password" placeholder="Password" required>
+                </div>
+                <span id="defaultP" class="help-block">Default password for both: test</span>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input ng-model="model.isWalker" type="checkbox"> Check here if you're a returning walker.
+                </label>
+            </div>
+            <div class="form-group">
+                <button ng-click="model.login()" ng-disabled="loginForm.$invalid" class="btn btn-primary btn-block">Sign In</button>
+            </div>
+        </form>
+        <div class="bottom text-center">
+            New user? <a href="#/register">Register here!</a>
+        </div>
+    </div>
+</div>

@@ -5,48 +5,13 @@
         .module("DogWalkingApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController(OwnerService, WalkerService, $scope, $rootScope, $location, $timeout, ngDialog) {
+    function HeaderController(OwnerService, WalkerService, $scope, $rootScope, $location, ngDialog) {
         var model = this;
         $scope.$location = $location;
 
-        model.login = login;
         model.logout = logout;
         model.confirmDelete = confirmDelete;
         model.deleteAcct = deleteAcct;
-
-        function login() {
-            var service;
-            if (model.isWalker) {
-                console.log("walker login");
-                $rootScope.isWalker = true;
-                service = WalkerService;
-            } else {
-                console.log("owner login");
-                $rootScope.isWalker = false;
-                service = OwnerService;
-            }
-            service
-                .findUserByEmailAndPassword(model.email, model.password)
-                .then(function(user) {
-                    model.email = model.password = "";
-                    if (!user) {
-                        model.error = true;
-                        $timeout(function() {
-                            model.error = false;
-                        }, 3000);
-                    } else {
-                        model.error = false;
-                        $rootScope.isUser = true;
-                        $rootScope.user = user;
-                        console.log($rootScope.user);
-
-                        // Nav to profile page if user not on walkers search page
-                        if ($location.url().indexOf('walkers') == -1) {
-                            $location.url("/profile/" + $rootScope.user._id);
-                        }
-                    }
-                });
-        }
 
         function logout() {
             delete $rootScope.user;

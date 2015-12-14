@@ -10,6 +10,10 @@
             .when("/home", {
                 templateUrl: "views/home/home.view.html"
             })
+            .when("/login", {
+                templateUrl: "views/login/login.view.html",
+                controller: "LoginController as model"
+            })
             .when("/profile/:id/appointments", {
                 templateUrl: "views/profile/appointments/appointments.view.html",
                 controller: "ApptController as model"

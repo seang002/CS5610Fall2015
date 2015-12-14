@@ -15,13 +15,13 @@
                     <option ng-repeat="time in model.times">{{time}}</option>
                 </select>
             </div>
-            <button ng-click="model.search(criteria)" ng-disabled="searchForm.$invalid" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-            or
+            <button ng-click="model.search(criteria)" ng-disabled="searchForm.$invalid" class="btn btn-primary">Search</button>
+             or
             <button ng-click="model.searchAll()" class="btn btn-primary">Search All Walkers</button>
         </form>
         <hr>
         <div ng-show="model.hasNoResults" class="row">
-            <div class="alert alert-warning col-md-12"><i class="fa fa-frown-o"></i> Looks like we couldn't find a walker for you with these options. Try searching with a different day, time, or frequency.</div>
+            <div class="alert alert-warning col-md-12"><i class="fa fa-frown-o"></i> Looks like we couldn't find a walker for you with these options. Try searching with a different day or time.</div>
         </div>
         <table class="table table-hover" ng-show="model.hasResults">
             <thead>
@@ -38,8 +38,8 @@
                 <td><span class="badge"><i class="fa fa-star"></i> {{walker.rating}}</span></td>
                 <td>{{walker.city}}</td>
                 <td>
-                    <a ng-click="model.moreInfo(walker._id)" class="btn btn-primary btn-sm"><i class="fa fa-paw"></i> More info</a>
-                    <a ng-click="model.requestAppt(walker._id)" ng-hide="isWalker" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Book!</a>
+                    <a ng-click="model.moreInfo(walker._id)" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span><span class="hidden-xs hidden-sm"> Profile</span></a>
+                    <a ng-click="model.requestAppt(walker._id)" ng-hide="isWalker" class="btn btn-success btn-sm"><i class="fa fa-check"></i><span class="hidden-xs hidden-sm"> Book!</span></a>
                 </td>
             </tr>
             </tbody>

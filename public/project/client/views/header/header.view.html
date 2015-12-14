@@ -10,52 +10,23 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-            <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('about') != -1}"><a ng-href="##about">About</a></li>
-            <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('team') != -1}"><a href="##team">Our Team</a></li>
-            <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('connect') != -1}"><a ng-href="##connect">Connect</a></li>
-            <li ng-hide="isWalker" ng-class="{'active' : $location.url().indexOf('walkers') != -1}"><a ng-href="#/walkers">Find a Walker!</a></li>
+            <li><a href="https://docs.google.com/a/husky.neu.edu/document/d/1slg0RuKzA66u1Bs0eY7vsQmLtlFvG4aO75U97_NggVE/edit?usp=sharing">Documentation</a></li>
 
             <!-- LINKS FOR GUEST -->
-            <li class="dropdown" ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}">
+            <li class="dropdown" ng-hide="isUser">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    LOG IN <span class="caret"></span>
+                    About <span class="caret"></span>
                 </a>
-                <ul class="dropdown-menu log">
-                    <li>
-                        <div ng-show="model.error" class="alert alert-danger">Email or password is not correct.</div>
-                        <form name="loginForm">
-                            <div class="form-group">
-                                <div class="input-group margin-bottom-sm">
-                                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-                                    <input ng-model="model.email" class="form-control" id="email" type="email" placeholder="Email" required>
-                                </div>
-                                <span id="defaultE" class="help-block">Default owner: test@gmail.com<br/>
-                                    Default walker: verena@gmail.com</span>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                                    <input ng-model="model.password" class="form-control" id="password" type="password" placeholder="Password" required>
-                                </div>
-                                <span id="defaultP" class="help-block">Default password for both: test</span>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input ng-model="model.isWalker" type="checkbox"> Check here if you're a returning walker.
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <button ng-click="model.login()" ng-disabled="loginForm.$invalid" class="btn btn-primary btn-block">Sign In</button>
-                            </div>
-                        </form>
-                        <div class="bottom text-center">
-                            New user? <a href="#/register">Register here!</a>
-                        </div>
-                    </li>
+                <ul class="dropdown-menu">
+                    <li><a ng-href="##about">Our Mission</a></li>
+                    <li><a href="##team">Our Team</a></li>
+                    <li><a ng-href="##connect">Connect</a></li>
                 </ul>
             </li>
+            <li ng-hide="isWalker" ng-class="{'active' : $location.url().indexOf('walkers') != -1}"><a href="#/walkers">Find a Walker!</a></li>
 
             <!-- LINKS FOR USER -->
+            <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="#/login">LOG IN</a></li>
             <li class="dropdown" ng-show="isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-tasks"></i> <span class="caret"></span>
