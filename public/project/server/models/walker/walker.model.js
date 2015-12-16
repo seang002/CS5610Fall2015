@@ -13,7 +13,12 @@ module.exports = function(mongoose, db) {
         findWalkerByCred: findWalkerByCred,
         findWalkersByParams: findWalkersByParams,
         updateWalker: updateWalker,
-        deleteWalker: deleteWalker
+        deleteWalker: deleteWalker,
+
+        findAllWalkerReviews: findAllWalkerReviews,
+        createReview: createReview,
+        deleteReview: deleteReview,
+        updateReview: updateReview
     };
     return api;
 
@@ -128,6 +133,67 @@ module.exports = function(mongoose, db) {
                     deferred.reject(err);
                 } else {
                     deferred.resolve(status);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findAllWalkerReviews(id) {
+        var deferred = q.defer();
+        WalkerModel
+            .findById(id, function(err, walker) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(walker.reviews);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function createReview(id, review) {
+        var deferred = q.defer();
+
+        WalkerModel
+            .findById(id, function(err, walker) {
+                walker.reviews.push(review);
+                walker.save(function(err, review) {
+                    deferred.resolve(review);
+                });
+            });
+        return deferred.promise;
+    }
+
+    function deleteReview(id, ownerId) {
+        var deferred = q.defer();
+        WalkerModel
+            .findById(id, function(err, walker) {
+                var reviews = walker.reviews;
+                for (var i in reviews) {
+                    if (reviews[i].ownerId == ownerId) {
+                        reviews.splice(i, 1);
+                        walker.save(function(err, walker) {
+                            deferred.resolve(walker);
+                        });
+                    }
+                }
+            });
+        return deferred.promise;
+    }
+
+    function updateReview(id, ownerId, review) {
+        var deferred = q.defer();
+        WalkerModel
+            .findById(id, function (err, walker) {
+                var reviews = walker.reviews;
+                for (var i in reviews) {
+                    if (reviews[i].ownerId == ownerId) {
+                        reviews[i].rating = review.rating;
+                        reviews[i].note = review.note;
+                        walker.save(function (err, walker) {
+                            deferred.resolve(walker);
+                        });
+                    }
                 }
             });
         return deferred.promise;

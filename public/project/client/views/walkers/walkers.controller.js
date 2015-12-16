@@ -15,6 +15,7 @@
         model.searchAll = searchAll;
         model.moreInfo = moreInfo;
         model.requestAppt = requestAppt;
+        model.writeReview = writeReview;
         model.walkers = [];
 
         function search(criteria) {
@@ -44,6 +45,19 @@
                     if (model.walkers.length > 0) {
                         model.hasResults = true;
                     }
+
+                    //overall walker rating
+                    for (var i in model.walkers) {
+                        var walker = model.walkers[i];
+                        var totalRatings = 0;
+                        for (var j in walker.reviews) {
+                            totalRatings += walker.reviews[j].rating;
+                        }
+                        walker.rating = totalRatings / walker.reviews.length;
+                        if (!walker.rating) {
+                            walker.rating = 0;
+                        }
+                    }
                 });
         }
 
@@ -68,6 +82,24 @@
                 ngDialog.open({
                     template: './views/profile/appointments/appt.request.view.html',
                     controller: 'RequestController as model',
+                    data: {walkerId: id}
+                })
+            }
+        }
+
+        function writeReview(id) {
+            if (!$rootScope.isUser) {
+                ngDialog.open({
+                    template: '<div class="alert alert-warning text-center">\
+                                <i class="fa fa-exclamation-triangle fa-5x"></i><br\>\
+                                    Oops! You need to log in first.\
+                                </div>',
+                    plain: true
+                })
+            } else {
+                ngDialog.open({
+                    template: './views/profile/reviews/createReview.view.html',
+                    controller: 'createReviewController as model',
                     data: {walkerId: id}
                 })
             }

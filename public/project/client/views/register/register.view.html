@@ -1,8 +1,9 @@
 <div class="container-fluid">
     <h1 class="page-header">Register</h1>
     <div class="content">
+        <div class="alert alert-warning">NOTE: At this time, we do not support users that are both a dog walker and a dog owner. You must register separately for each user account type. You may use the same email.</div>
         <div class="row">
-            <div class="col-md-6 signup">
+            <div class="col-md-6 login">
                 <h3>Dog Owners</h3>
                 <p>Is life getting a bit ruff and you can't take your dog on walks as frequently as before? Register now and start looking for a walker in your area! All of our walkers are certified and background-checked to give your best friend the best time!</p>
                 <p>NOTE: Your dog must be up-to-date with all its vaccinations.</p>
@@ -52,7 +53,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 login">
                 <h3>Dog Walkers</h3>
                 <p>Do you love dogs and just can't get enough of them? Start an application with us, and if selected and approved, you can start walking and bonding with the dogs in your neighborhood!</p>
                 <button ng-click="model.apply()" class="btn btn-primary form-control">Start Application</button>

@@ -8,4 +8,5 @@ module.exports = function(app, mongoose, db) {
     require("./services/owner.service.js")(app, ownerModel);
     require("./services/walker.service.js")(app, walkerModel);
     require("./services/appt.service.js")(app, apptModel);
+    require("./services/review.service.js")(app, walkerModel, ownerModel);
 };

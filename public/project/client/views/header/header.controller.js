@@ -5,7 +5,7 @@
         .module("DogWalkingApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController(OwnerService, WalkerService, $scope, $rootScope, $location, ngDialog) {
+    function HeaderController(OwnerService, WalkerService, ApptService, $scope, $rootScope, $location, ngDialog) {
         var model = this;
         $scope.$location = $location;
 
@@ -33,12 +33,15 @@
 
         function deleteAcct() {
             var service;
+            var userType;
             if ($rootScope.isWalker) {
                 console.log("walker delete");
                 service = WalkerService;
+                userType = "walker";
             } else {
                 console.log("owner delete");
                 service = OwnerService;
+                userType = "owner";
             }
 
             service
@@ -46,6 +49,21 @@
                 .then(function(response) {
                     console.log(response);
                     console.log("User account deleted.");
+
+                    // delete user appts
+                    if (userType == "walker") {
+                        ApptService
+                            .deleteApptByWalkerId($rootScope.user._id)
+                            .then(function(response) {
+                                console.log(response);
+                            });
+                    } else {
+                        ApptService
+                            .deleteApptByOwnerId($rootScope.user._id)
+                            .then(function(response) {
+                                console.log(response);
+                            });
+                    }
                     logout();
                 });
         }

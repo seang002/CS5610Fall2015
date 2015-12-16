@@ -9,27 +9,38 @@
         var model = this;
         $scope.location = $location;
 
-        model.login = login;
+        model.ownerLogin = ownerLogin;
+        model.walkerLogin = walkerLogin;
 
-        function login() {
-            var service;
-            if (model.isWalker) {
-                console.log("walker login");
-                $rootScope.isWalker = true;
-                service = WalkerService;
-            } else {
-                console.log("owner login");
-                $rootScope.isWalker = false;
-                service = OwnerService;
-            }
-            service
-                .findUserByEmailAndPassword(model.email, model.password)
+        function ownerLogin(user) {
+            console.log("owner login");
+            $rootScope.isWalker = false;
+            OwnerService
+                .findUserByEmailAndPassword(user.email, user.password)
                 .then(function(user) {
                     if (!user) {
-                        model.error = true;
-                        model.password = "";
+                        model.errorO = true;
                     } else {
-                        model.error = false;
+                        model.errorO = false;
+                        $rootScope.isUser = true;
+                        $rootScope.user = user;
+                        console.log($rootScope.user);
+
+                        $location.url("/walkers");
+                    }
+                });
+        }
+
+        function walkerLogin(user) {
+            console.log("walker login");
+            $rootScope.isWalker = true;
+            WalkerService
+                .findUserByEmailAndPassword(user.email, user.password)
+                .then(function(user) {
+                    if (!user) {
+                        model.errorW = true;
+                    } else {
+                        model.errorW = false;
                         $rootScope.isUser = true;
                         $rootScope.user = user;
                         console.log($rootScope.user);

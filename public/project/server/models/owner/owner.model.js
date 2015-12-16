@@ -11,7 +11,12 @@ module.exports = function(mongoose, db) {
         findOwnerByEmail: findOwnerByEmail,
         findOwnerByCred: findOwnerByCred,
         updateOwner: updateOwner,
-        deleteOwner: deleteOwner
+        deleteOwner: deleteOwner,
+
+        findAllOwnerReviews: findAllOwnerReviews,
+        createReview: createReview,
+        deleteReview: deleteReview,
+        updateReview: updateReview
     };
     return api;
 
@@ -90,6 +95,66 @@ module.exports = function(mongoose, db) {
                     deferred.reject(err);
                 } else {
                     deferred.resolve(status);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findAllOwnerReviews(id) {
+        var deferred = q.defer();
+        OwnerModel
+            .findById(id, function(err, owner) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(owner.reviews);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function createReview(id, review) {
+        var deferred = q.defer();
+        OwnerModel
+            .findById(id, function(err, owner) {
+                owner.reviews.push(review);
+                owner.save(function(err, review) {
+                    deferred.resolve(review);
+                });
+            });
+        return deferred.promise;
+    }
+
+    function deleteReview(id, reviewId) {
+        var deferred = q.defer();
+        OwnerModel
+            .findById(id, function(err, owner) {
+                var reviews = owner.reviews;
+                for (var i in reviews) {
+                    if (reviews[i].id == reviewId) {
+                        reviews.splice(i, 1);
+                        owner.save(function(err, owner) {
+                            deferred.resolve(owner);
+                        });
+                    }
+                }
+            });
+        return deferred.promise;
+    }
+
+    function updateReview(id, walkerId, review) {
+        var deferred = q.defer();
+        OwnerModel
+            .findById(id, function(err, owner) {
+                var reviews = owner.reviews;
+                for (var i in reviews) {
+                    if (reviews[i].walkerId == walkerId) {
+                        reviews[i].rating = review.rating;
+                        reviews[i].note = review.note;
+                        owner.save(function(err, owner) {
+                            deferred.resolve(owner);
+                        });
+                    }
                 }
             });
         return deferred.promise;

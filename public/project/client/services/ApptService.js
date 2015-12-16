@@ -10,7 +10,9 @@
             createAppt: createAppt,
             findApptsByUserId: findApptsByUserId,
             deleteApptById: deleteApptById,
-            acceptApptById: acceptApptById
+            acceptApptById: acceptApptById,
+            deleteApptByWalkerId: deleteApptByWalkerId,
+            deleteApptByOwnerId: deleteApptByOwnerId
         };
         return service;
 
@@ -48,6 +50,26 @@
             var deferred = $q.defer();
             $http
                 .put("/api/project/appt/" + apptId, appt)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function deleteApptByWalkerId(walkerId) {
+            var deferred = $q.defer();
+            $http
+                .delete("/api/project/walker/" + walkerId + "/appt")
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function deleteApptByOwnerId(ownerId) {
+            var deferred = $q.defer();
+            $http
+                .delete("/api/project/owner/" + ownerId + "/appt")
                 .success(function(response) {
                     deferred.resolve(response);
                 });

@@ -15,9 +15,12 @@
             <tr ng-repeat="review in model.reviews">
                 <td ng-show="isWalker">{{review.dogName}}</td>
                 <td ng-hide="isWalker">{{review.walker}}</td>
-                <td>{{review.rating}}</td>
-                <td>{{review.notes}}</td>
-                <td>testing</td>
+                <td><span class="badge"><i class="fa fa-star"></i> {{review.rating}}</span></td>
+                <td>{{review.note}}</td>
+                <td>
+                    <button ng-show="canEdit" class="btn btn-warning btn-sm" ng-click="" title="Edit"><i class="fa fa-pencil"></i> <span class="hidden-sm hidden-xs">Edit</span></button>
+                    <button ng-show="model.canEdit" class="btn btn-danger btn-sm" ng-click="model.deleteReview($index)" title="Delete"><i class="fa fa-times"></i> <span class="hidden-sm hidden-xs">Delete</span></button>
+                </td>
             </tr>
             </tbody>
         </table>

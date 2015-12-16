@@ -20,11 +20,11 @@
                 <td ng-hide="isWalker"><a ng-click="model.openWalker(appt.walkerId)">{{appt.walker}}</a></td>
                 <td><a ng-click="model.openRequest(appt)">See more &raquo;</a></td>
                 <td ng-show="!isWalker" class="text-center">
-                    <button class="btn btn-default btn-sm" ng-click="model.deleteAppt($index)" title="Delete"><i class="fa fa-times"></i> <span class="hidden-sm hidden-xs">Cancel</span></button>
+                    <button class="btn btn-danger btn-sm" ng-click="model.deleteAppt($index)" title="Delete"><i class="fa fa-times"></i> <span class="hidden-sm hidden-xs">Cancel</span></button>
                 </td>
                 <td ng-show="isWalker" class="text-center">
-                    <button class="btn btn-success btn-sm" ng-click="model.acceptAppt($index, 'Yes')" title="Accept"><i class="fa fa-check"></i> <span class="hidden-sm hidden-xs">Accept</span></button>
-                    <button class="btn btn-danger btn-sm" ng-click="model.acceptAppt($index, 'No')" title="Decline"><i class="fa fa-times"></i> <span class="hidden-sm hidden-xs">Decline</span></button>
+                    <button class="btn btn-success btn-sm" ng-click="model.acceptAppt($index, 'Yes')" title="Accept"><i class="fa fa-check"></i><span class="hidden-sm hidden-xs"> Accept</span></button>
+                    <button class="btn btn-danger btn-sm" ng-click="model.acceptAppt($index, 'No')" title="Decline"><i class="fa fa-times"></i><span class="hidden-sm hidden-xs"> Decline</span></button>
                 </td>
             </tr>
             </tbody>

@@ -48,13 +48,13 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat="review in model.walkerInfo.reviews">
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{review.dogName}}</td>
+                        <td><span class="badge"><i class="fa fa-star"></i> {{review.rating}}</span></td>
+                        <td>{{review.note}}</td>
                     </tr>
                     </tbody>
                 </table>
-                <a ng-click="" class="pull-right">Read more reviews &raquo;</a>
+                <a ng-click="model.toReviews(); closeThisDialog()" class="pull-right">Read more reviews &raquo;</a>
             </div>
         </div>
     </form>

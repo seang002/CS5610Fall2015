@@ -17,3 +17,10 @@ $(function() {
         event.preventDefault();
     });
 });
+
+//jQuery for datepicker
+$(function () {
+    $('#datepicker').datepicker({
+        format: 'mm/dd/yyyy'
+    })
+});

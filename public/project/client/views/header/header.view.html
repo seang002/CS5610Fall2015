@@ -26,6 +26,7 @@
             <li ng-hide="isWalker" ng-class="{'active' : $location.url().indexOf('walkers') != -1}"><a href="#/walkers">Find a Walker!</a></li>
 
             <!-- LINKS FOR USER -->
+            <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('register') != -1}"><a href="#/register">Register</a></li>
             <li ng-hide="isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="#/login">LOG IN</a></li>
             <li class="dropdown" ng-show="isUser" ng-class="{'active' : $location.url().indexOf('login') != -1}">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

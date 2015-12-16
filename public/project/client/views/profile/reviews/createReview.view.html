@@ -1,0 +1,38 @@
+<div class="ngdialog-message">
+    <div class="text-center">
+        <h1 ng-hide="model.oldReview">Create Review</h1>
+        <h1 ng-show="model.oldReview">Update Review</h1>
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Dog:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{user.dogName}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Walker:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.walker.firstName}} {{model.walker.lastName}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Rating:</label>
+            <div class="col-sm-8">
+                <input ng-model="review.rating" type="number" min="1" max="5" class="form-control" placeholder="{{model.olderReview.rating}}">
+                <span class="help-block">1 (lowest) - 5 (highest)</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Review:</label>
+            <div class="col-sm-8">
+                <textarea rows="4" ng-model="review.note" class="form-control" placeholder="{{model.olderReview.note}}"></textarea>
+            </div>
+        </div>
+        <div class="ngdialog-buttons">
+            <button ng-show="model.oldReview" ng-click="model.editReview(review, user); closeThisDialog(1)" class="ngdialog-button ngdialog-button-primary">Update</button>
+            <button ng-hide="model.oldReview" ng-click="model.createReview(review, user); closeThisDialog(1)" class="ngdialog-button ngdialog-button-primary">Review</button>
+            <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(1)">Cancel</button>
+        </div>
+    </form>
+</div>

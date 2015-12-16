@@ -9,6 +9,8 @@ module.exports = function(mongoose, db) {
         createAppt: createAppt,
         findApptsByUserId: findApptsByUserId,
         deleteAppt: deleteAppt,
+        deleteApptsByWalkerId: deleteApptsByWalkerId,
+        deleteApptsByOwnerId: deleteApptsByOwnerId,
         acceptAppt: acceptAppt
     };
     return api;
@@ -54,6 +56,32 @@ module.exports = function(mongoose, db) {
         var deferred = q.defer();
         ApptModel
             .remove({_id: id}, function(err, appt) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(appt);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function deleteApptsByWalkerId(id) {
+        var deferred = q.defer();
+        ApptModel
+            .remove({walkerId: id}, function(err, appt) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(appt);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function deleteApptsByOwnerId(id) {
+        var deferred = q.defer();
+        ApptModel
+            .remove({ownerId: id}, function(err, appt) {
                 if (err) {
                     deferred.reject(err);
                 } else {
