@@ -5,7 +5,7 @@
         .module("DogWalkingApp")
         .controller("LoginController", LoginController);
 
-    function LoginController(OwnerService, WalkerService, $scope, $rootScope, $location) {
+    function LoginController(OwnerService, WalkerService, $scope, $rootScope, $location, $cookies) {
         var model = this;
         $scope.location = $location;
 
@@ -27,6 +27,7 @@
                         console.log($rootScope.user);
 
                         $location.url("/walkers");
+                        $cookies.put("loggedin", true);
                     }
                 });
         }

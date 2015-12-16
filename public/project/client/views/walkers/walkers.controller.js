@@ -12,7 +12,7 @@
         model.freqs = ["Once", "Daily", "Weekly"];
 
         model.search = search;
-        model.searchAll = searchAll;
+        model.searchLocation = searchLocation;
         model.moreInfo = moreInfo;
         model.requestAppt = requestAppt;
         model.writeReview = writeReview;
@@ -35,7 +35,7 @@
                 });
         }
 
-        function searchAll() {
+        function searchLocation() {
             model.hasResults = false;
             model.hasNoResults = false;
             WalkerService

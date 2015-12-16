@@ -5,9 +5,10 @@
         .module("DogWalkingApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController(OwnerService, WalkerService, ApptService, $scope, $rootScope, $location, ngDialog) {
+    function HeaderController(OwnerService, WalkerService, ApptService, $scope, $rootScope, $location, ngDialog, $cookies) {
         var model = this;
         $scope.$location = $location;
+        $rootScope.isUser = $cookies.get('loggedin');
 
         model.logout = logout;
         model.confirmDelete = confirmDelete;
@@ -17,6 +18,7 @@
             delete $rootScope.user;
             $rootScope.isUser = $rootScope.isWalker = false;
             $location.url("/home");
+            $cookies.put("loggedin", "");
         }
 
         function confirmDelete() {

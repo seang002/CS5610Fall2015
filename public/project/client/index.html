@@ -20,6 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
     <script src="app.js"></script>
     <script src="config.js"></script>
+    <script src="js/angular-cookies.js"></script>
 
     <!-- AngularJS Controllers -->
     <script src="views/application/application.controller.js"></script>
@@ -35,6 +36,8 @@
     <script src="views/profile/appointments/appt.request.controller.js"></script>
     <script src="views/profile/reviews/createReview.controller.js"></script>
     <script src="views/profile/reports/sendReport.controller.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsrciORkudaxRsVMIXS1Tv1zyHj386n_M">
+    </script>
 
     <!-- Services -->
     <script src="services/OwnerService.js"></script>
@@ -57,6 +60,30 @@
 
         <div ng-view autoscroll></div>
     </div>
+
+
+    <p>Click the button to get your coordinates.</p>
+
+    <button onclick="getLocation()">Try It</button>
+
+    <p id="demo"></p>
+
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                    "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
 
     <!-- jQuery & Bootstrap JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

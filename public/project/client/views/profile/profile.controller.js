@@ -5,7 +5,7 @@
         .module("DogWalkingApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController(OwnerService, WalkerService, $rootScope, $location) {
+    function ProfileController(OwnerService, WalkerService, $rootScope, $location, $cookies) {
         var model = this;
         if (!$rootScope.user) {
             $location.url("/home");
@@ -22,6 +22,7 @@
             service
                 .updateUser(user._id, user)
                 .then(function(user) {
+                    $cookies.put("loggedin", user);
                     model.success = true;
                     console.log("Profile updated!");
                     console.log(user);

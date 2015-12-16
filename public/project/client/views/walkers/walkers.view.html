@@ -17,7 +17,7 @@
             </div>
             <button ng-click="model.search(criteria)" ng-disabled="searchForm.$invalid" class="btn btn-primary">Search</button>
              or
-            <button ng-click="model.searchAll()" class="btn btn-primary">Search All Walkers</button>
+            <button ng-click="model.searchLocation()" class="btn btn-primary">Search Walkers Near You!</button>
         </form>
         <hr>
         <div ng-show="model.hasNoResults" class="row">
@@ -47,5 +47,6 @@
         </table>
     </div>
 </div>
+
 
 
