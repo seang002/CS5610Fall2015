@@ -1,0 +1,55 @@
+<div class="ngdialog-message">
+    <div class="text-center">
+        <h1 ng-hide="model.oldReview">Send Report Card</h1>
+        <h1 ng-show="model.oldReview">Update Report Card</h1>
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Walker:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.walker.firstName}} {{model.walker.lastName}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Dog:</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{model.owner.dogName}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Time Walked:</label>
+            <div class="col-sm-8">
+                <input ng-model="report.timeWalked" type="number" min="1" class="form-control" placeholder="{{model.olderReport.timeWalked}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Pooped?</label>
+            <div class="col-sm-8">
+                <select ng-model="report.pooped" class="form-control">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Peed?</label>
+            <div class="col-sm-8">
+                <select ng-model="report.peed" class="form-control">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Message to Owner:</label>
+            <div class="col-sm-8">
+                <textarea ng-model="report.notes" rows="3" class="form-control" placeholder="{{model.olderReport.notes}}"></textarea>
+            </div>
+        </div>
+        <div class="ngdialog-buttons">
+            <button ng-show="model.oldReport" ng-click="model.editReport(report); closeThisDialog(1)" class="ngdialog-button ngdialog-button-primary">Update</button>
+            <button ng-hide="model.oldReport" ng-click="model.createReport(report); closeThisDialog(1)" class="ngdialog-button ngdialog-button-primary">Send</button>
+            <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(1)">Cancel</button>
+        </div>
+    </form>
+</div>

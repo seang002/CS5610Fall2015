@@ -10,6 +10,14 @@
                 <th class="col-sm-5">Review</th>
                 <th class="col-sm-2"></th>
             </tr>
+            <tr ng-show="model.canEdit">
+                <th></th>
+                <th><input type="number" ng-model="model.rating" min="1" max="5" class="form-control"></th>
+                <th><input type="text" ng-model="model.note" class="form-control"></th>
+                <th>
+                    <button class="btn btn-info btn-sm" ng-click="model.updateReview(model.rating, model.note)"> <span class="hidden-sm hidden-xs">Update</span></button>
+                </th>
+            </tr>
             </thead>
             <tbody>
             <tr ng-repeat="review in model.reviews">
@@ -18,7 +26,7 @@
                 <td><span class="badge"><i class="fa fa-star"></i> {{review.rating}}</span></td>
                 <td>{{review.note}}</td>
                 <td>
-                    <button ng-show="canEdit" class="btn btn-warning btn-sm" ng-click="" title="Edit"><i class="fa fa-pencil"></i> <span class="hidden-sm hidden-xs">Edit</span></button>
+                    <button ng-show="model.canEdit" class="btn btn-warning btn-sm" ng-click="model.selectReview($index)" title="Edit"><i class="fa fa-pencil"></i> <span class="hidden-sm hidden-xs">Select</span></button>
                     <button ng-show="model.canEdit" class="btn btn-danger btn-sm" ng-click="model.deleteReview($index)" title="Delete"><i class="fa fa-times"></i> <span class="hidden-sm hidden-xs">Delete</span></button>
                 </td>
             </tr>

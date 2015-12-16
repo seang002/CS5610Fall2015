@@ -27,6 +27,7 @@
         model.openWalker = openWalker;
         model.openOwner = openOwner;
         model.openRequest = openRequest;
+        model.sendReport = sendReport;
 
         function init() {
             ApptService
@@ -92,6 +93,14 @@
                 template: './views/profile/appointments/appt.details.html',
                 controller: 'RequestController as model',
                 data: {appt: appt}
+            })
+        }
+
+        function sendReport(ownerId, walkerId) {
+            ngDialog.open({
+                template: './views/profile/reports/sendReport.view.html',
+                controller: 'sendReportController as model',
+                data: {walkerId: walkerId, ownerId: ownerId}
             })
         }
     }

@@ -4,8 +4,9 @@ module.exports = function(mongoose) {
     var reportSchema = mongoose.Schema({
         ownerId: String,
         walkerId: String,
-        distanceWalked: Number,
         timeWalked: Number,
+        dogName: String,
+        walker: String,
         pooped: {type: String, enum: ["Yes", "No"]},
         peed: {type: String, enum: ["Yes", "No"]},
         notes: String

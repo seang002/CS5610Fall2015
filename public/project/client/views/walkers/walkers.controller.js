@@ -101,7 +101,7 @@
                     template: './views/profile/reviews/createReview.view.html',
                     controller: 'createReviewController as model',
                     data: {walkerId: id}
-                })
+                });
             }
         }
     }

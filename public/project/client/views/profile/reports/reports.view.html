@@ -4,18 +4,35 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th class="col-sm-2">Date</th>
-                <th ng-show="isWalker" class="col-sm-4">Dog</th>
-                <th ng-hide="isWalker" class="col-sm-4">Walker</th>
-                <th class="col-sm-6">Report Card</th>
+                <th ng-show="isWalker" class="col-sm-3">Dog</th>
+                <th ng-hide="isWalker" class="col-sm-3">Walker</th>
+                <th class="col-sm-2">Time Walked</th>
+                <th class="col-sm-1">Pooped?</th>
+                <th class="col-sm-1">Peed?</th>
+                <th class="col-sm-3">Notes</th>
+                <th></th>
+            </tr>
+            <tr ng-show="model.canEdit">
+                <th></th>
+                <th><input type="number" min="0" ng-model="model.timeWalked" class="form-control"></th>
+                <th><input type="text" ng-model="model.pooped" class="form-control"></th>
+                <th><input type="text" ng-model="model.peed" class="form-control"></th>
+                <th><input type="text" ng-model="model.notes" class="form-control"></th>
+                <th><button class="btn btn-info btn-sm" ng-click="model.updateReport(model.timeWalked, model.pooped, model.peed, model.notes)"> <span class="hidden-sm hidden-xs">Update</span></button></th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="report in model.reports">
-                <td>{{report.date}}</td>
                 <td ng-show="isWalker">{{report.dogName}}</td>
                 <td ng-hide="isWalker">{{report.walker}}</td>
-                <td><a>Read now</a></td>
+                <td>{{report.timeWalked}}</td>
+                <td>{{report.pooped}}</td>
+                <td>{{report.peed}}</td>
+                <td>{{report.notes}}</td>
+                <td>
+                    <button ng-show="model.canEdit" class="btn btn-warning btn-sm" ng-click="model.selectReport($index)" title="Edit"><i class="fa fa-pencil"></i> <span class="hidden-sm hidden-xs">Select</span></button>
+                    <button ng-show="model.canEdit" class="btn btn-danger btn-sm" ng-click="model.deleteReport($index)" title="Delete"><i class="fa fa-times"></i> <span class="hidden-sm hidden-xs">Delete</span></button>
+                </td>
             </tr>
             </tbody>
         </table>

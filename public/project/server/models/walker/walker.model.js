@@ -18,7 +18,12 @@ module.exports = function(mongoose, db) {
         findAllWalkerReviews: findAllWalkerReviews,
         createReview: createReview,
         deleteReview: deleteReview,
-        updateReview: updateReview
+        updateReview: updateReview,
+
+        findAllWalkerReports: findAllWalkerReports,
+        createReport: createReport,
+        deleteReport: deleteReport,
+        updateReport: updateReport
     };
     return api;
 
@@ -190,6 +195,69 @@ module.exports = function(mongoose, db) {
                     if (reviews[i].ownerId == ownerId) {
                         reviews[i].rating = review.rating;
                         reviews[i].note = review.note;
+                        walker.save(function (err, walker) {
+                            deferred.resolve(walker);
+                        });
+                    }
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findAllWalkerReports(id) {
+        var deferred = q.defer();
+        WalkerModel
+            .findById(id, function(err, walker) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(walker.reports);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function createReport(id, report) {
+        var deferred = q.defer();
+
+        WalkerModel
+            .findById(id, function(err, walker) {
+                walker.reports.push(report);
+                walker.save(function(err, report) {
+                    deferred.resolve(report);
+                });
+            });
+        return deferred.promise;
+    }
+
+    function deleteReport(id, ownerId) {
+        var deferred = q.defer();
+        WalkerModel
+            .findById(id, function(err, walker) {
+                var reports = walker.reports;
+                for (var i in reports) {
+                    if (reports[i].ownerId == ownerId) {
+                        reports.splice(i, 1);
+                        walker.save(function(err, walker) {
+                            deferred.resolve(walker);
+                        });
+                    }
+                }
+            });
+        return deferred.promise;
+    }
+
+    function updateReport(id, ownerId, report) {
+        var deferred = q.defer();
+        WalkerModel
+            .findById(id, function (err, walker) {
+                var reports = walker.reports;
+                for (var i in reports) {
+                    if (reports[i].ownerId == ownerId) {
+                        reports[i].timeWalked = report.timeWalked;
+                        reports[i].pooped = report.pooped;
+                        reports[i].peed = report.peed;
+                        reports[i].notes = report.notes;
                         walker.save(function (err, walker) {
                             deferred.resolve(walker);
                         });

@@ -25,6 +25,7 @@
                 <td ng-show="isWalker" class="text-center">
                     <button class="btn btn-success btn-sm" ng-click="model.acceptAppt($index, 'Yes')" title="Accept"><i class="fa fa-check"></i><span class="hidden-sm hidden-xs"> Accept</span></button>
                     <button class="btn btn-danger btn-sm" ng-click="model.acceptAppt($index, 'No')" title="Decline"><i class="fa fa-times"></i><span class="hidden-sm hidden-xs"> Decline</span></button>
+                    <button class="btn btn-info btn-sm" ng-click="model.sendReport(appt.ownerId, appt.walkerId)" title="Report Card"><i class="fa fa-pencil"></i><span class="hidden-sm hidden-xs"> Report</span></button>
                 </td>
             </tr>
             </tbody>
