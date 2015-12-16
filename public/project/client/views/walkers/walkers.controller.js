@@ -5,7 +5,7 @@
         .module("DogWalkingApp")
         .controller("WalkersController", WalkersController);
 
-    function WalkersController(WalkerService, ngDialog, $rootScope) {
+    function WalkersController(WalkerService, ngDialog, $rootScope, $cookies) {
         var model = this;
         model.days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
         model.times = ["6-9a", "9-12p", "12-3p", "3-6p"];
@@ -17,6 +17,8 @@
         model.requestAppt = requestAppt;
         model.writeReview = writeReview;
         model.walkers = [];
+
+        $rootScope.isUser = $cookies.get('loggedin');
 
         function search(criteria) {
             model.hasResults = false;

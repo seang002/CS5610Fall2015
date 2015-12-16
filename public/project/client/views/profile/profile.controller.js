@@ -7,6 +7,9 @@
 
     function ProfileController(OwnerService, WalkerService, $rootScope, $location, $cookies) {
         var model = this;
+        $rootScope.user = $cookies.getObject('loggeduser');
+        $rootScope.isWalker = $cookies.get("walker");
+
         if (!$rootScope.user) {
             $location.url("/home");
         }

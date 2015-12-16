@@ -5,8 +5,11 @@
         .module("DogWalkingApp")
         .controller("ReportController", ReportController);
 
-    function ReportController($rootScope, $location, ReportService, $routeParams) {
+    function ReportController($rootScope, $location, ReportService, $routeParams, $cookies) {
         var model = this;
+        $rootScope.user = $cookies.getObject('loggeduser');
+        $rootScope.isWalker = $cookies.get("walker");
+
         if (!$rootScope.user) {
             $location.url("/home");
         } else {

@@ -27,6 +27,7 @@
                         console.log($rootScope.user);
 
                         $location.url("/walkers");
+                        $cookies.putObject("loggeduser", user);
                         $cookies.put("loggedin", true);
                     }
                 });
@@ -47,6 +48,9 @@
                         console.log($rootScope.user);
 
                         $location.url("/profile/" + $rootScope.user._id);
+                        $cookies.putObject("loggeduser", user);
+                        $cookies.put("loggedin", true);
+                        $cookies.put("walker", true);
                     }
                 });
         }

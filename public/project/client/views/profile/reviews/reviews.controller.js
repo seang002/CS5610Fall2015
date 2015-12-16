@@ -5,8 +5,11 @@
         .module("DogWalkingApp")
         .controller("ReviewController", ReviewController);
 
-    function ReviewController($rootScope, $location, ReviewService, $routeParams) {
+    function ReviewController($rootScope, $location, ReviewService, $routeParams, $cookies) {
         var model = this;
+        $rootScope.user = $cookies.getObject('loggeduser');
+        $rootScope.isWalker = $cookies.get("walker");
+
         if (!$rootScope.user) {
             $location.url("/home");
         } else {

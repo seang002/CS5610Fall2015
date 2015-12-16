@@ -8,7 +8,9 @@
     function HeaderController(OwnerService, WalkerService, ApptService, $scope, $rootScope, $location, ngDialog, $cookies) {
         var model = this;
         $scope.$location = $location;
+        $rootScope.user = $cookies.getObject('loggeduser');
         $rootScope.isUser = $cookies.get('loggedin');
+        $rootScope.isWalker = $cookies.get("walker");
 
         model.logout = logout;
         model.confirmDelete = confirmDelete;
@@ -18,7 +20,9 @@
             delete $rootScope.user;
             $rootScope.isUser = $rootScope.isWalker = false;
             $location.url("/home");
-            $cookies.put("loggedin", "");
+            $cookies.remove("loggedin");
+            $cookies.remove("loggeduser");
+            $cookies.remove("walker");
         }
 
         function confirmDelete() {

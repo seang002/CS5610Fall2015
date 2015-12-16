@@ -5,8 +5,11 @@
         .module("DogWalkingApp")
         .controller("ApptController", ApptController);
 
-    function ApptController(ApptService, $rootScope, $location, ngDialog) {
+    function ApptController(ApptService, $rootScope, $location, ngDialog, $cookies) {
         var model = this;
+        $rootScope.user = $cookies.getObject('loggeduser');
+        $rootScope.isWalker = $cookies.get("walker");
+
         if (!$rootScope.user) {
             $location.url("/home");
         } else {
